@@ -93,6 +93,8 @@ export const AsideMenu = styled.div`
   @media (min-width: 768px) {
     width: 290px;
     height: 100vh;
+    position: absolute;
+    height: auto;
   }
 `;
 

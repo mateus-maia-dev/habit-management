@@ -8,8 +8,8 @@ import GlobalStyles from "./styles/global";
 function App() {
   return (
     <div className="App">
-      {/* <Header /> */}
-      <TemporaryDrawer />
+      <Header />
+      {/* <TemporaryDrawer /> */}
       <Routes />
       <GlobalStyles />
     </div>
