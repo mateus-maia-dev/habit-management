@@ -5,7 +5,7 @@ export const Container = styled.div`
 `;
 
 export const Menu = styled.div`
-  width: 60px;
+  width: 30px;
   height: 50px;
   margin-right: 10px;
   cursor: pointer;
@@ -15,6 +15,10 @@ export const Menu = styled.div`
     height: 100%;
     color: ${({ clicked }) => (clicked ? "#b81568" : "white")};
     transition: 0.3s ease;
+  }
+
+  @media (min-width: 1440px) {
+    margin-right: 30px;
   }
 `;
 export const AsideBar = styled.div`
