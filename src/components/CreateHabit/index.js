@@ -1,9 +1,12 @@
-import ModalCreateHabit from "./ModalCreateHabit";
+import SimpleModal from "../SimpleModal";
+import FormCreateHabit from "../CreateHabit/FormCreateHabit";
 
 const CreateHabit = () => {
   return (
     <>
-      <ModalCreateHabit />
+      <SimpleModal buttonText="Adicionar hábito">
+        <FormCreateHabit />
+      </SimpleModal>
     </>
   );
 };

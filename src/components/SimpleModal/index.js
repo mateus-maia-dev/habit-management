@@ -1,7 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
-import FormCreateHabit from "../FormCreateHabit";
 import { ButtonStyled } from "./styles";
 
 function getModalStyle() {
@@ -26,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ModalCreateHabit() {
+export default function SimpleModal({ children, buttonText }) {
   const classes = useStyles();
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(false);
@@ -41,14 +40,14 @@ export default function ModalCreateHabit() {
 
   const body = (
     <div style={modalStyle} className={classes.paper}>
-      <FormCreateHabit />
+      {children}
     </div>
   );
 
   return (
     <div>
       <ButtonStyled type="button" onClick={handleOpen}>
-        Adicionar hábito
+        {buttonText}
       </ButtonStyled>
       <Modal open={open} onClose={handleClose}>
         {body}
