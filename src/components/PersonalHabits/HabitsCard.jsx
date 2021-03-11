@@ -1,14 +1,11 @@
 import api from "../../services/api";
 import { CardContainer, ContentCard } from "./CardStyle";
 
-const HabitsList = ({ item }) => {
-  const tokenTempParaTest =
-    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE1NzI4MTA0LCJqdGkiOiIyYmIxNzRjOWYwOGI0NWFkOTVlZTIyMmFkYzUwZDNhZSIsInVzZXJfaWQiOjR9.hwj93WWyyXQqMkHIB_pAEFUO41V068hyYPYazO9tcgk";
-
+const HabitsList = ({ token, item }) => {
   const deleteHabit = (id) => {
     api.delete(`habits/${id}/`, {
       headers: {
-        Authorization: `Bearer ${tokenTempParaTest}`,
+        Authorization: `Bearer ${token}`,
       },
     });
   };

@@ -6,6 +6,8 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FormWrapper } from "./styles";
 import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { signInThunk } from "../../store/modules/userLogin/thunk";
 
 const schema = yup.object().shape({
   username: yup.string().required("campo obrigatório."),
@@ -16,12 +18,15 @@ const schema = yup.object().shape({
 });
 
 const FormLogin = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(schema),
   });
 
   const handleData = (data) => {
-    // console.log(data);
+    dispatch(signInThunk(data, history));
   };
 
   return (
