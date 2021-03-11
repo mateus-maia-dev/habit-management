@@ -1,12 +1,13 @@
 import HabitsCard from "./HabitsCard";
+import { Container } from "./ListStyle";
 
 const HabitsList = ({ items }) => {
   return (
-    <div>
+    <Container>
       {items.map((item, index) => (
         <HabitsCard key={index} item={item} />
       ))}
-    </div>
+    </Container>
   );
 };
 

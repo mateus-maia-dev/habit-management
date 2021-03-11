@@ -1,12 +1,14 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { Routes } from "./routes";
-import Login from "./pages/Login";
+import { Header } from "./components/Header";
+import GlobalStyles from "./styles/global";
 
 function App() {
   return (
     <div className="App">
-      <Login />
+      <Header />
+      <Routes />
+      <GlobalStyles />
     </div>
   );
 }
