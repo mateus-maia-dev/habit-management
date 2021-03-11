@@ -13,8 +13,9 @@ const Dashboard = () => {
   useEffect(() => {
     api
       .get("/habits/personal/", {
-        /*Aqui entra o token quando o login estiver Pronto */
-        headers: { Authorization: `Bearer ${tokenTempParaTest}` },
+        headers: {
+          Authorization: `Bearer ${tokenTempParaTest}`,
+        },
       })
       .then((response) => setUserPersonalHabits(response.data))
       .catch((e) => console.log(e));
