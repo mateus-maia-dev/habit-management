@@ -1,12 +1,13 @@
 import logo from "./logo.svg";
 import "./App.css";
 import { Routes } from "./routes";
-import Login from "./pages/Login";
+import CreateHabit from "./components/CreateHabit";
 
 function App() {
   return (
     <div className="App">
-      <Login />
+      <Routes />
+      <CreateHabit />
     </div>
   );
 }
