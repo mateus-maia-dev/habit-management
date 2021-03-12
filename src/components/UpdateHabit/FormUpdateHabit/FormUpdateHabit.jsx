@@ -16,7 +16,7 @@ const schema = yup.object().shape({
   title: yup.string().required("campo obrigatório."),
 });
 
-const FormCreateHabit = () => {
+const FormUpdateHabit = () => {
   const changeHabit = useSelector((state) => state.changeHabitReduce);
   const dispatch = useDispatch();
 
@@ -29,7 +29,7 @@ const FormCreateHabit = () => {
 
   const handleData = (data) => {
     api
-      .post("/habits/", data, {
+      .patch("/habits/", data, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .catch((error) => {
@@ -96,4 +96,4 @@ const FormCreateHabit = () => {
   );
 };
 
-export default FormCreateHabit;
+export default FormUpdateHabit;

@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 80%;
-  height: auto;
+  width: 90%;
+  min-height: 100vh;
+  height: 100%;
   margin: 0 auto;
 
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
 
   //background: #282c34;

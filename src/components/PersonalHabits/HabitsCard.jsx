@@ -1,14 +1,16 @@
-import api from "../../services/api";
+import UpdateHabit from "../UpdateHabit/index";
+
+import { useSelector, useDispatch } from "react-redux";
+import { deleteHabitThunk } from "../../store/modules/changeHabit/thunk";
+
+import { useHistory } from "react-router-dom";
+
 import { CardContainer, ContentCard } from "./CardStyle";
 
-const HabitsList = ({ token, item }) => {
-  const deleteHabit = (id) => {
-    api.delete(`habits/${id}/`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-  };
+const HabitsList = ({ item }) => {
+  const changeHabit = useSelector((state) => state.changeHabitReduce);
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   return (
     <CardContainer>
@@ -17,7 +19,14 @@ const HabitsList = ({ token, item }) => {
         <h3>Dificuldade: {item.difficulty}</h3>
         <h3>{item.frequency}</h3>
       </ContentCard>
-      <button onClick={() => deleteHabit(item.id)}>Excluir Habito</button>
+      <UpdateHabit />
+      <UpdateHabit
+        onClick={() =>
+          dispatch(deleteHabitThunk(changeHabit, item.id, history))
+        }
+      >
+        Excluir Hábito
+      </UpdateHabit>
     </CardContainer>
   );
 };

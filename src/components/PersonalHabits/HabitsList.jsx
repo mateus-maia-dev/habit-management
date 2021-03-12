@@ -1,11 +1,11 @@
 import HabitsCard from "./HabitsCard";
 import { Container } from "./ListStyle";
 
-const HabitsList = ({ token, items }) => {
+const HabitsList = ({ items }) => {
   return (
     <Container>
       {items.map((item, index) => (
-        <HabitsCard key={index} item={item} token={token} />
+        <HabitsCard key={index} item={item} />
       ))}
     </Container>
   );
