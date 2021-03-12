@@ -5,7 +5,7 @@ const HabitsList = ({ token, items }) => {
   return (
     <Container>
       {items.map((item, index) => (
-        <HabitsCard key={index} token={token} item={item} />
+        <HabitsCard key={index} item={item} token={token} />
       ))}
     </Container>
   );

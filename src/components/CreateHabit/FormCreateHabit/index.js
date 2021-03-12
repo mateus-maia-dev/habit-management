@@ -1,29 +1,31 @@
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import { useSelector } from "react-redux";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FormWrapper } from "./styles";
 
 import api from "../../../services/api";
+import jwt_decode from "jwt-decode";
 
 const schema = yup.object().shape({
   title: yup.string().required("campo obrigatório."),
 });
 
 const FormCreateHabit = () => {
+  const token = useSelector((state) => state.signInReducer.token);
+  const decoded = jwt_decode(token);
+
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(schema),
   });
-
-  const tokenTempParaTest =
-    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE1NzI4MTA0LCJqdGkiOiIyYmIxNzRjOWYwOGI0NWFkOTVlZTIyMmFkYzUwZDNhZSIsInVzZXJfaWQiOjR9.hwj93WWyyXQqMkHIB_pAEFUO41V068hyYPYazO9tcgk";
 
   const handleData = (data) => {
     console.log(data);
     api
       .post("/habits/", data, {
-        headers: { Authorization: `Bearer ${tokenTempParaTest}` },
+        headers: { Authorization: `Bearer ${token}` },
       })
       .catch((error) => {
         console.log(error);
@@ -63,7 +65,11 @@ const FormCreateHabit = () => {
           <option value="Mensal">Mensal</option>
         </select>
 
-        <select ref={register} name="achieved">
+        <select ref={register} name="achieved" hidden>
+          <option value="false">Terminou</option>
+        </select>
+
+        <select ref={register} name="how_much_achieved">
           <option value="">Progresso</option>
           <option value="0">0%</option>
           <option value="25">25%</option>
@@ -73,7 +79,7 @@ const FormCreateHabit = () => {
         </select>
 
         <select ref={register} name="user" hidden>
-          <option value="2" />
+          <option value={decoded.user_id} />
         </select>
 
         <Button variant="contained" color="default" size="small" type="submit">

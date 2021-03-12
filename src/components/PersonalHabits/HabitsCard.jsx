@@ -14,9 +14,8 @@ const HabitsList = ({ token, item }) => {
     <CardContainer>
       <ContentCard>
         <h2>{item.title}</h2>
-        <h2>{item.category}</h2>
-        <p>{item.difficulty}</p>
-        <p>{item.frequency}</p>
+        <h3>Dificuldade: {item.difficulty}</h3>
+        <h3>{item.frequency}</h3>
       </ContentCard>
       <button onClick={() => deleteHabit(item.id)}>Excluir Habito</button>
     </CardContainer>
