@@ -34,6 +34,7 @@ const FormRegistro = () => {
       <form onSubmit={handleSubmit(handleData)}>
         <p>REGISTRAR</p>
         <TextField
+          className="inputBox"
           variant="outlined"
           label="nome de usuário"
           name="username"
@@ -44,16 +45,7 @@ const FormRegistro = () => {
           error={!!errors.username}
         />
         <TextField
-          variant="outlined"
-          label="senha"
-          name="password"
-          type="password"
-          size="small"
-          inputRef={register}
-          helperText={errors.password?.message}
-          error={!!errors.password}
-        />
-        <TextField
+          className="inputBox"
           variant="outlined"
           label="Email"
           name="email"
@@ -63,9 +55,28 @@ const FormRegistro = () => {
           helperText={errors.email?.message}
           error={!!errors.password}
         />
-        <Button variant="contained" color="default" size="small" type="submit">
-          enviar
-        </Button>
+        <TextField
+          className="inputBox"
+          variant="outlined"
+          label="senha"
+          name="password"
+          type="password"
+          size="small"
+          inputRef={register}
+          helperText={errors.password?.message}
+          error={!!errors.password}
+        />
+
+        <div>
+          <Button
+            variant="contained"
+            color="default"
+            size="small"
+            type="submit"
+          >
+            enviar
+          </Button>
+        </div>
       </form>
     </FormWrapper>
   );

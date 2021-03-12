@@ -1,4 +1,4 @@
-import FormRegistro from "../../components/FormRegistro";
+import FormRegistro from "../../components/FormRegistro/index";
 
 import { Background } from "./style.js";
 
