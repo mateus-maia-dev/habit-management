@@ -23,7 +23,9 @@ const Dashboard = () => {
   console.log(userPersonalHabits);
 
   return (
-    <div>{/* <HabitsList token={token} items={userPersonalHabits} /> */}</div>
+    <div className="bgGuitar">
+      <HabitsList items={userPersonalHabits} />
+    </div>
   );
 };
 
