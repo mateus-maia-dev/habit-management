@@ -22,7 +22,7 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <div>
+    <div className="bgGuitar">
       <HabitsList items={userPersonalHabits} />
     </div>
   );
