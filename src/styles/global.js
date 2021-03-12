@@ -1,4 +1,8 @@
 import { createGlobalStyle } from "styled-components";
+import musician from "../images/musician.png";
+import mixer from "../images/mixer.png";
+import guitar from "../images/guitar.png";
+import band from "../images/band.png";
 
 export default createGlobalStyle`
     * {
@@ -10,13 +14,13 @@ export default createGlobalStyle`
     }
 
     body {
-        background-color: #f5f5f5;
+        background-color: #222222;
         color: #312e38;
         /* -webkit-font-smoothing: antialiased !important; */
     }
 
     body, input, button {
-        font-family: Arial, Helvetica, sans-serif;
+        font-family: "Roboto", sans-serif;
         font-size: 16px;
     }
 
@@ -28,6 +32,62 @@ export default createGlobalStyle`
     text-decoration: none;
     font-size: 1.3rem;
     color: white;
+  }
+
+  &.bgMusician {
+    background-image: url(${musician});
+    background-position: center;
+    background-size: cover;
+    padding-top: 60px; // para descontar a altura do Header
+    height: 100vh;
+    margin: auto;
+    width: 80%;
+
+        @media (max-width: 768px) {
+            width: 100%;
+    }
+  }
+
+  &.bgMixer {
+    background-image: url(${mixer});
+    background-position: center;
+    background-size: cover;
+    padding-top: 60px; // para descontar a altura do Header
+    height: 100vh;
+    margin: auto;
+    width: 80%;
+
+        @media (max-width: 768px) {
+            width: 100%;
+    }
+  }
+
+  &.bgGuitar{
+    background-image: url(${guitar});
+    background-position: right;
+    background-size: cover;
+    padding-top: 60px; // para descontar a altura do Header
+    height: 100vh;
+    margin: auto;
+    width: 80%;
+
+        @media (max-width: 768px) {
+            width: 100%;
+    }
+  }
+
+  &.bgBand{
+    background-image: url(${band});
+    background-position: center;
+    background-size: cover;
+    padding-top: 60px; // para descontar a altura do Header
+    height: 100vh;
+    margin: auto;
+    width: 80%;
+
+        @media (max-width: 768px) {
+            width: 100%;
+    }
   }
 
 `;
