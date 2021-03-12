@@ -11,10 +11,11 @@ import {
   ContainerNav,
 } from "./styles";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 export const MenuBar = () => {
   const [clicked, setClicked] = useState(false);
-  console.log(clicked);
+  const history = useHistory();
   return (
     <>
       <>
@@ -62,8 +63,8 @@ export const MenuBar = () => {
             </LinksContainer>
           </Navigation>
           <ButtonsContainer>
-            <button>Login</button>
-            <button>Register</button>
+            <button onClick={() => history.push("/login")}>Login</button>
+            <button onClick={() => history.push("/registro")}>Register</button>
           </ButtonsContainer>
         </ContainerNav>
       </AsideMenu>

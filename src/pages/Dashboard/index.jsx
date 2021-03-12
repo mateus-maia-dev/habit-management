@@ -6,7 +6,7 @@ import HabitsList from "../../components/PersonalHabits/HabitsList";
 
 const Dashboard = () => {
   const token = useSelector((state) => state.signInReducer.token);
-
+  console.log(token);
   const [userPersonalHabits, setUserPersonalHabits] = useState([]);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ const Dashboard = () => {
           Authorization: `Bearer ${token}`,
         },
       }) //Os nossos usuarios estao sem habitos ainda
-      .then((response) => setUserPersonalHabits(response))
+      .then((response) => setUserPersonalHabits(response.data))
       .catch((e) => console.log(e));
   }, []);
 

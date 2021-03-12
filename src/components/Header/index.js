@@ -1,4 +1,4 @@
-// import { MenuBar } from "../MenuBar";
+import { MenuBar } from "../MenuBar";
 import { UserBar } from "../MenuBarDashboard";
 import { Container, Stripe, Stripes } from "./styles";
 
@@ -13,7 +13,8 @@ export const Header = () => {
           <Stripe />
           <Stripe />
         </Stripes>
-        <UserBar />
+        {/* <UserBar /> */}
+        <MenuBar />
       </Container>
     </>
   );
