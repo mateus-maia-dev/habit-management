@@ -41,10 +41,10 @@ export default createGlobalStyle`
     padding-top: 60px; // para descontar a altura do Header
     height: 100vh;
     margin: auto;
-    width: 80%;
+    width: 100%;
 
-        @media (max-width: 768px) {
-            width: 100%;
+        @media (min-width: 768px) {
+            width: 80%;
     }
   }
 
@@ -55,10 +55,10 @@ export default createGlobalStyle`
     padding-top: 60px; // para descontar a altura do Header
     height: 100vh;
     margin: auto;
-    width: 80%;
+    width: 100%;
 
-        @media (max-width: 768px) {
-            width: 100%;
+        @media (min-width: 768px) {
+            width: 80%;
     }
   }
 
@@ -69,10 +69,10 @@ export default createGlobalStyle`
     padding-top: 60px; // para descontar a altura do Header
     height: 100vh;
     margin: auto;
-    width: 80%;
+    width: 100%;
 
-        @media (max-width: 768px) {
-            width: 100%;
+        @media (min-width: 768px) {
+            width: 80%;
     }
   }
 
@@ -83,10 +83,10 @@ export default createGlobalStyle`
     padding-top: 60px; // para descontar a altura do Header
     height: 100vh;
     margin: auto;
-    width: 80%;
+    width: 100%;
 
-        @media (max-width: 768px) {
-            width: 100%;
+        @media (min-width: 768px) {
+            width: 80%;
     }
   }
 
