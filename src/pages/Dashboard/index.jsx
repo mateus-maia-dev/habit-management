@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import api from "../../services/api";
 
 import HabitsList from "../../components/PersonalHabits/HabitsList";
 
 const Dashboard = () => {
-  //Token temporario, para testar a aplicacao
-  const tokenTempParaTest =
-    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE1NzI4MTA0LCJqdGkiOiIyYmIxNzRjOWYwOGI0NWFkOTVlZTIyMmFkYzUwZDNhZSIsInVzZXJfaWQiOjR9.hwj93WWyyXQqMkHIB_pAEFUO41V068hyYPYazO9tcgk";
+  const token = useSelector((state) => state.signInReducer.token);
 
   const [userPersonalHabits, setUserPersonalHabits] = useState([]);
 
@@ -14,12 +13,14 @@ const Dashboard = () => {
     api
       .get("/habits/personal/", {
         headers: {
-          Authorization: `Bearer ${tokenTempParaTest}`,
+          Authorization: `Bearer ${token}`,
         },
-      })
-      .then((response) => setUserPersonalHabits(response.data))
+      }) //Os nossos usuarios estao sem habitos ainda
+      .then((response) => setUserPersonalHabits(response))
       .catch((e) => console.log(e));
   }, []);
+
+  console.log(userPersonalHabits);
 
   return (
     <div className="bgGuitar">
