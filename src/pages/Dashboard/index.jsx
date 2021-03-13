@@ -51,10 +51,16 @@ const Dashboard = () => {
   // }, [changeHabit]);
 
   return (
+<<<<<<< HEAD
     <Container>
       <HabitsList token={token} items={userPersonalHabits} />
       <CreateHabit />
     </Container>
+=======
+    <div className="bgGuitar">
+      <HabitsList items={userPersonalHabits} />
+    </div>
+>>>>>>> 2
   );
 };
 
