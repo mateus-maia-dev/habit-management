@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
-import { Container, Menu, Navigation, AsideBar, Icon } from "./styles";
+import { Container, Menu, Navigation, AsideBar /*Icon*/ } from "./styles";
 
 export const UserBar = () => {
   const [clicked, setClicked] = useState(false);

@@ -1,7 +1,7 @@
 import UpdateHabit from "../UpdateHabit/index";
 
 import { useSelector, useDispatch } from "react-redux";
-import { deleteHabitThunk } from "../../store/modules/changeHabit/thunk";
+import { deleteHabitThunk } from "../../store/modules/habitReduce/thunk";
 
 import { useHistory } from "react-router-dom";
 
@@ -19,14 +19,14 @@ const HabitsList = ({ item }) => {
         <h3>Dificuldade: {item.difficulty}</h3>
         <h3>{item.frequency}</h3>
       </ContentCard>
-      <UpdateHabit />
-      <UpdateHabit
+      <UpdateHabit id={item.id} />
+      <button
         onClick={() =>
           dispatch(deleteHabitThunk(changeHabit, item.id, history))
         }
       >
         Excluir Hábito
-      </UpdateHabit>
+      </button>
     </CardContainer>
   );
 };

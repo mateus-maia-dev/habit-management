@@ -2,7 +2,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
 import { useSelector, useDispatch } from "react-redux";
-import { changeHabitThunk } from "../../../store/modules/changeHabit/thunk";
+import { changeHabitThunk } from "../../../store/modules/habitReduce/thunk";
 
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
@@ -16,7 +16,7 @@ const schema = yup.object().shape({
   title: yup.string().required("campo obrigatório."),
 });
 
-const FormUpdateHabit = () => {
+const FormUpdateHabit = ({ id }) => {
   const changeHabit = useSelector((state) => state.changeHabitReduce);
   const dispatch = useDispatch();
 
@@ -29,7 +29,7 @@ const FormUpdateHabit = () => {
 
   const handleData = (data) => {
     api
-      .patch("/habits/", data, {
+      .patch(`/habits/${id}/`, data, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .catch((error) => {

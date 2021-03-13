@@ -2,7 +2,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
 import { useSelector, useDispatch } from "react-redux";
-import { changeHabitThunk } from "../../../store/modules/changeHabit/thunk";
+import { changeHabitThunk } from "../../../store/modules/habitReduce/thunk";
 
 import * as yup from "yup";
 import { useForm } from "react-hook-form";

@@ -1,11 +1,11 @@
 import SimpleModal from "../SimpleModal";
 import FormUpdateHabit from "./FormUpdateHabit/FormUpdateHabit";
 
-const UpdateHabit = () => {
+const UpdateHabit = ({ id }) => {
   return (
     <>
       <SimpleModal buttonText="Editar Hábito">
-        <FormUpdateHabit />
+        <FormUpdateHabit id={id} />
       </SimpleModal>
     </>
   );
