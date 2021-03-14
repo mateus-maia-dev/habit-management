@@ -1,16 +1,12 @@
 import UpdateHabit from "../UpdateHabit/index";
 
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { deleteHabitThunk } from "../../store/modules/habitReduce/thunk";
-
-import { useHistory } from "react-router-dom";
 
 import { CardContainer, ContentCard } from "./CardStyle";
 
 const HabitsList = ({ item }) => {
-  const changeHabit = useSelector((state) => state.changeHabitReduce);
   const dispatch = useDispatch();
-  const history = useHistory();
 
   return (
     <CardContainer>
@@ -20,11 +16,7 @@ const HabitsList = ({ item }) => {
         <h3>{item.frequency}</h3>
       </ContentCard>
       <UpdateHabit id={item.id} />
-      <button
-        onClick={() =>
-          dispatch(deleteHabitThunk(changeHabit, item.id, history))
-        }
-      >
+      <button onClick={() => dispatch(deleteHabitThunk(item.id))}>
         Excluir Hábito
       </button>
     </CardContainer>

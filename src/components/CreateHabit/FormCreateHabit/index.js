@@ -2,14 +2,13 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
 import { useSelector, useDispatch } from "react-redux";
-import { changeHabitThunk } from "../../../store/modules/habitReduce/thunk";
+import { createHabitThunk } from "../../../store/modules/habitReduce/thunk";
 
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FormWrapper } from "./styles";
 
-import api from "../../../services/api";
 import jwt_decode from "jwt-decode";
 
 const schema = yup.object().shape({
@@ -17,7 +16,6 @@ const schema = yup.object().shape({
 });
 
 const FormCreateHabit = () => {
-  const changeHabit = useSelector((state) => state.changeHabitReduce);
   const dispatch = useDispatch();
 
   const token = useSelector((state) => state.signInReducer.token);
@@ -28,14 +26,7 @@ const FormCreateHabit = () => {
   });
 
   const handleData = (data) => {
-    api
-      .post("/habits/", data, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    dispatch(changeHabitThunk(changeHabit));
+    dispatch(createHabitThunk(data));
   };
 
   return (

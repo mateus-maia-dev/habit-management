@@ -1,6 +1,5 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import api from "../../services/api";
 
 import { Container } from "./style";
 
@@ -11,48 +10,27 @@ import HabitsList from "../../components/PersonalHabits/HabitsList";
 import CreateHabit from "../../components/CreateHabit/index";
 
 const Dashboard = () => {
-  const token = useSelector((state) => state.signInReducer.token);
-  // const changeHabit = useSelector((state) => state.changeHabitReduce);
-  // const dispatch = useDispatch();
-  // console.log(changeHabit);
+  const userPersonalHabits = useSelector(
+    (state) => state.changeHabitReduce.userData
+  );
 
-  const [userPersonalHabits, setUserPersonalHabits] = useState([]);
-  //const [change, setChange] = useState(false);
+  const changeReduce = useSelector((state) => state.changeHabitReduce.change);
 
-  const requestPersonalHabits = () => {
-    api
-      .get("/habits/personal/", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((response) => setUserPersonalHabits(response.data))
-      .catch((e) => console.log(e));
-  };
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    requestPersonalHabits();
+    dispatch(requestHabitThunk());
     // eslint-disable-next-line
   }, []);
 
-  // useEffect(() => {
-  //   dispatch(requestHabitThunk(change, setChange));
-  //   // eslint-disable-next-line
-  // }, []);
-
-  // useEffect(() => {
-  //   setUserPersonalHabits(changeHabit);
-  //   // eslint-disable-next-line
-  // }, [change]);
-
-  // useEffect(() => {
-  //   requestPersonalHabits();
-  //   // eslint-disable-next-line
-  // }, [changeHabit]);
+  useEffect(() => {
+    dispatch(requestHabitThunk());
+    // eslint-disable-next-line
+  }, [changeReduce]);
 
   return (
     <Container>
-      <HabitsList token={token} items={userPersonalHabits} />
+      <HabitsList items={userPersonalHabits} />
       <CreateHabit />
     </Container>
   );
