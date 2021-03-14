@@ -1,13 +1,23 @@
-import { changeHabitType, deleteHabitType } from "./actionType";
+import {
+  requestHabitType,
+  createHabitType,
+  updateHabitType,
+  deleteHabitType,
+} from "./actionType";
 
 export const requestHabitAction = (requestHabit) => ({
-  type: "@request/HABIT",
+  type: requestHabitType,
   requestHabit,
 });
 
-export const changeHabitAction = (change) => ({
-  type: changeHabitType,
-  change,
+export const createHabitAction = (createHabit) => ({
+  type: createHabitType,
+  createHabit,
+});
+
+export const updateHabitAction = (updateHabit) => ({
+  type: updateHabitType,
+  updateHabit,
 });
 
 export const deleteHabitAction = (deleteHabit) => ({

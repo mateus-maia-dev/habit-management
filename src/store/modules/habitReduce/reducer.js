@@ -1,34 +1,46 @@
-import { changeHabitType, deleteHabitType } from "./actionType";
+import {
+  requestHabitType,
+  createHabitType,
+  updateHabitType,
+  deleteHabitType,
+} from "./actionType";
 
-const changeHabitReduce = (state = false, action) => {
-  switch (action.type) {
-    case changeHabitType:
-      return (state = action.change);
-
-    case deleteHabitType:
-      return (state = action.deleteHabit);
-
-    default:
-      return state;
-  }
+const defaulState = {
+  userData: [],
+  change: false,
 };
-export default changeHabitReduce;
 
-/*
+const changeHabitReduce = (state = defaulState, action) => {
+  const change = false;
 
-
-const changeHabitReduce = (state = [], action) => {
   switch (action.type) {
-    case "@request/HABIT":
+    case requestHabitType:
       const { requestHabit } = action;
-      console.log(requestHabit);
-      return (state = requestHabit);
-    //(state = [...state, requestHabit]);
-    case changeHabitType:
-      return state();
+      return (state = {
+        userData: [...requestHabit],
+        change: change,
+      });
+
+    case createHabitType:
+      const { createHabit } = action;
+      return (state = {
+        userData: [...createHabit],
+        change: !change,
+      });
+
+    case updateHabitType:
+      const { updateHabit } = action;
+      return (state = {
+        userData: [...updateHabit],
+        change: !change,
+      });
 
     case deleteHabitType:
-      return (state = action.deleteHabit);
+      const { deleteHabit } = action;
+      return (state = {
+        userData: [...deleteHabit],
+        change: !change,
+      });
 
     default:
       return state;
@@ -36,4 +48,3 @@ const changeHabitReduce = (state = [], action) => {
 };
 
 export default changeHabitReduce;
-*/
