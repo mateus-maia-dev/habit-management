@@ -16,11 +16,9 @@ const Dashboard = () => {
           Authorization: `Bearer ${token}`,
         },
       }) //Os nossos usuarios estao sem habitos ainda
-      .then((response) => setUserPersonalHabits(response))
+      .then((response) => setUserPersonalHabits(response.data))
       .catch((e) => console.log(e));
   }, []);
-
-  console.log(userPersonalHabits);
 
   return (
     <div className="bgGuitar">
