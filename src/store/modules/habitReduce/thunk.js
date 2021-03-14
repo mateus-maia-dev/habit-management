@@ -1,39 +1,59 @@
 import api from "../../../services/api";
 
 import {
-  changeHabitAction,
-  deleteHabitAction,
   requestHabitAction,
+  createHabitAction,
+  deleteHabitAction,
+  updateHabitAction,
 } from "./action";
 
-// export const requestHabitThunk = (change, setChange) => (dispatch) => {
-//   const token = localStorage.getItem("token");
-//   let user = [];
-//   api
-//     .get("/habits/personal/", {
-//       headers: {
-//         Authorization: `Bearer ${token}`,
-//       },
-//     })
-//     .then((response) => user.push(response.data))
-//     .then(() => dispatch(requestHabitAction(user)))
-//     .then(() => setChange(!change))
-//     .catch((e) => console.log(e));
-// };
+const token = localStorage.getItem("token");
 
-export const changeHabitThunk = (change) => (dispatch) => {
-  dispatch(changeHabitAction(!change));
+const requestUserData = (dispatch, token, habitAction) => {
+  api
+    .get("/habits/personal/", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((response) => dispatch(habitAction(response.data)))
+    .catch((e) => console.log(e));
 };
 
-export const deleteHabitThunk = (change, id, history) => (dispatch) => {
-  const token = localStorage.getItem("token");
+export const requestHabitThunk = () => (dispatch) => {
+  requestUserData(dispatch, token, requestHabitAction);
+};
+
+export const createHabitThunk = (data) => (dispatch) => {
+  api
+    .post("/habits/", data, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+
+  requestUserData(dispatch, token, createHabitAction);
+};
+
+export const updateHabitThunk = (data, id) => (dispatch) => {
+  api
+    .patch(`/habits/${id}/`, data, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  requestUserData(dispatch, token, updateHabitAction);
+};
+
+export const deleteHabitThunk = (id) => (dispatch) => {
   api
     .delete(`habits/${id}/`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
-    .then(dispatch(deleteHabitAction(!change)))
-    .then(history.push("/dashboard"))
     .catch((e) => console.log(e));
+  requestUserData(dispatch, token, deleteHabitAction);
 };

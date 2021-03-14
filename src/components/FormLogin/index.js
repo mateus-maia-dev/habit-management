@@ -7,6 +7,7 @@ import { FormWrapper } from "./styles";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { signInThunk } from "../../store/modules/userLogin/thunk";
+import { requestHabitThunk } from "../../store/modules/habitReduce/thunk";
 
 const schema = yup.object().shape({
   username: yup.string().required("campo obrigatório."),
