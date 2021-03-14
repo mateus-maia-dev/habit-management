@@ -11,16 +11,27 @@ import {
   ContainerNav,
 } from "./styles";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
-export const MenuBar = () => {
-  const [clicked, setClicked] = useState(false);
-  console.log(clicked);
+export const MenuBar = ({ open, setOpen }) => {
+  const history = useHistory();
+
+  const handleClickLogin = () => {
+    setOpen(!open);
+    history.push("/login");
+  };
+
+  const handleClickRegister = () => {
+    setOpen(!open);
+    history.push("/registro");
+  };
+
   return (
     <>
       <>
-        {clicked ? (
+        {open ? (
           <>
-            <Container onClick={() => setClicked(!clicked)}>
+            <Container onClick={() => setOpen(!open)}>
               <Bar1
                 inputColor="white"
                 inputRotate="-45deg"
@@ -35,7 +46,7 @@ export const MenuBar = () => {
             </Container>
           </>
         ) : (
-          <Container onClick={() => setClicked(!clicked)}>
+          <Container onClick={() => setOpen(!open)}>
             <Bar1 />
             <Bar2 />
             <Bar3 />
@@ -43,7 +54,7 @@ export const MenuBar = () => {
         )}
       </>
 
-      <AsideMenu input={clicked}>
+      <AsideMenu input={open}>
         <ContainerNav>
           <Navigation>
             <LinksContainer>
@@ -62,8 +73,8 @@ export const MenuBar = () => {
             </LinksContainer>
           </Navigation>
           <ButtonsContainer>
-            <button>Login</button>
-            <button>Register</button>
+            <button onClick={() => handleClickLogin()}>Login</button>
+            <button onClick={() => handleClickRegister()}>Register</button>
           </ButtonsContainer>
         </ContainerNav>
       </AsideMenu>

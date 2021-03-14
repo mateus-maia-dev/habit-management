@@ -1,18 +1,23 @@
 import { useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
-import { Container, Menu, Navigation, AsideBar /*Icon*/ } from "./styles";
+import { Container, Menu, Navigation, AsideBar, Icon } from "./styles";
+import { useHistory } from "react-router-dom";
 
-export const UserBar = () => {
-  const [clicked, setClicked] = useState(false);
+export const UserBar = ({ open, setOpen }) => {
+  // const [open, setOpen] = useState(false);
+
+  const handleLogout = () => {
+    localStorage.clear();
+  };
 
   return (
     <>
       <Container>
-        <Menu onClick={() => setClicked(!clicked)} clicked={clicked}>
+        <Menu onClick={() => setOpen(!open)} clicked={open}>
           <FaUserCircle />
         </Menu>
       </Container>
-      <AsideBar input={clicked}>
+      <AsideBar input={open}>
         <Navigation>
           <li>
             <a href="#home">Meus hábitos</a>
@@ -21,7 +26,9 @@ export const UserBar = () => {
             <a href="#home">Configuração</a>
           </li>
           <li>
-            <a href="#home">Sair</a>
+            <a href="/" onClick={() => handleLogout()}>
+              Sair
+            </a>
           </li>
         </Navigation>
       </AsideBar>
