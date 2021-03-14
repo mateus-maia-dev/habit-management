@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 //import { MenuBar } from "../MenuBar";
-=======
-// import { MenuBar } from "../MenuBar";
->>>>>>> 2
 import { UserBar } from "../MenuBarDashboard";
 import { Container, Stripe, Stripes } from "./styles";
 
