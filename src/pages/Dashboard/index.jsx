@@ -6,7 +6,7 @@ import HabitsList from "../../components/PersonalHabits/HabitsList";
 
 const Dashboard = () => {
   const token = useSelector((state) => state.signInReducer.token);
-  console.log(token);
+
   const [userPersonalHabits, setUserPersonalHabits] = useState([]);
 
   useEffect(() => {
@@ -19,8 +19,6 @@ const Dashboard = () => {
       .then((response) => setUserPersonalHabits(response.data))
       .catch((e) => console.log(e));
   }, []);
-
-  console.log(userPersonalHabits);
 
   return (
     <div className="bgGuitar">
