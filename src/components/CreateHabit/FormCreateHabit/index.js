@@ -1,32 +1,33 @@
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-
-import { useSelector, useDispatch } from "react-redux";
-import { createHabitThunk } from "../../../store/modules/habitReduce/thunk";
-
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FormWrapper } from "./styles";
 
-import jwt_decode from "jwt-decode";
+import api from "../../../services/api";
 
 const schema = yup.object().shape({
   title: yup.string().required("campo obrigatório."),
 });
 
 const FormCreateHabit = () => {
-  const dispatch = useDispatch();
-
-  const token = useSelector((state) => state.signInReducer.token);
-  const decoded = jwt_decode(token);
-
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(schema),
   });
 
+  const tokenTempParaTest =
+    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE1NzI4MTA0LCJqdGkiOiIyYmIxNzRjOWYwOGI0NWFkOTVlZTIyMmFkYzUwZDNhZSIsInVzZXJfaWQiOjR9.hwj93WWyyXQqMkHIB_pAEFUO41V068hyYPYazO9tcgk";
+
   const handleData = (data) => {
-    dispatch(createHabitThunk(data));
+    console.log(data);
+    api
+      .post("/habits/", data, {
+        headers: { Authorization: `Bearer ${tokenTempParaTest}` },
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -62,11 +63,7 @@ const FormCreateHabit = () => {
           <option value="Mensal">Mensal</option>
         </select>
 
-        <select ref={register} name="achieved" hidden>
-          <option value="false">Terminou</option>
-        </select>
-
-        <select ref={register} name="how_much_achieved">
+        <select ref={register} name="achieved">
           <option value="">Progresso</option>
           <option value="0">0%</option>
           <option value="25">25%</option>
@@ -76,7 +73,7 @@ const FormCreateHabit = () => {
         </select>
 
         <select ref={register} name="user" hidden>
-          <option value={decoded.user_id} />
+          <option value="2" />
         </select>
 
         <Button variant="contained" color="default" size="small" type="submit">
