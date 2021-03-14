@@ -8,14 +8,6 @@ export const ContentCard = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  h2 {
-    padding: 10px;
-  }
-
-  h3 {
-    padding: 10px;
-  }
 `;
 
 export const CardContainer = styled.div`

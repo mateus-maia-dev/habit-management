@@ -5,6 +5,7 @@ export const signInThunk = (userData, history) => (dispatch) => {
   api
     .post("/sessions/", userData)
     .then((response) => {
+      localStorage.clear();
       localStorage.setItem("token", response.data.access);
 
       dispatch(singInAction(response.data.access));
