@@ -8,24 +8,12 @@ import {
   updateHabitAction,
 } from "./action";
 
-const token = localStorage.getItem("token");
-
-// const requestUserData = (dispatch, token, habitAction) => {
-//   api
-//     .get("/habits/personal/", {
-//       headers: {
-//         Authorization: `Bearer ${token}`,
-//       },
-//     })
-//     .then((response) => dispatch(habitAction(response.data)))
-//     .catch((e) => console.log(e));
-// };
-
 export const requestHabitThunk = () => (dispatch) => {
   requestUserData(dispatch, requestHabitAction);
 };
 
 export const createHabitThunk = (data) => (dispatch) => {
+  const token = localStorage.getItem("token");
   api
     .post("/habits/", data, {
       headers: { Authorization: `Bearer ${token}` },
@@ -38,6 +26,7 @@ export const createHabitThunk = (data) => (dispatch) => {
 };
 
 export const updateHabitThunk = (data, id) => (dispatch) => {
+  const token = localStorage.getItem("token");
   api
     .patch(`/habits/${id}/`, data, {
       headers: { Authorization: `Bearer ${token}` },
@@ -49,6 +38,7 @@ export const updateHabitThunk = (data, id) => (dispatch) => {
 };
 
 export const deleteHabitThunk = (id) => (dispatch) => {
+  const token = localStorage.getItem("token");
   api
     .delete(`habits/${id}/`, {
       headers: {
