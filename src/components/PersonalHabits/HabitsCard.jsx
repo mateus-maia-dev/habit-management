@@ -1,6 +1,7 @@
 import api from "../../services/api";
 import { CardContainer, ContentCard } from "./CardStyle";
 
+<<<<<<< HEAD
 const HabitsList = ({ token, item }) => {
   const deleteHabit = (id) => {
     api.delete(`habits/${id}/`, {
@@ -9,6 +10,10 @@ const HabitsList = ({ token, item }) => {
       },
     });
   };
+=======
+const HabitsCard = ({ item }) => {
+  const dispatch = useDispatch();
+>>>>>>> feature/cards/dinamicos
 
   return (
     <CardContainer>
@@ -23,4 +28,4 @@ const HabitsList = ({ token, item }) => {
   );
 };
 
-export default HabitsList;
+export default HabitsCard;

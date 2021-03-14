@@ -9,8 +9,10 @@ export const signInThunk = (userData, history) => (dispatch) => {
       localStorage.clear();
       localStorage.setItem("token", response.data.access);
       dispatch(singInAction(response.data.access));
-      dispatch(requestHabitThunk());
-      history.push("/dashboard");
+      // dispatch(requestHabitThunk());
+      // history.push("/dashboard");
     })
+    .then(() => dispatch(requestHabitThunk()))
+    .then(() => history.push("/dashboard"))
     .catch((err) => console.log(err));
 };
