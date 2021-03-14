@@ -53,7 +53,7 @@ const FormRegistro = () => {
           size="small"
           inputRef={register}
           helperText={errors.email?.message}
-          error={!!errors.password}
+          error={!!errors.email}
         />
         <TextField
           className="inputBox"
