@@ -7,12 +7,14 @@ import Dashboard from "../pages/Dashboard/index";
 import Login from "../pages/Login/index";
 import Group from "../pages/Group/index";
 import Home from "../pages/Home";
+import Register from "../pages/Register/index";
 
 export const Routes = () => {
   return (
     <Switch>
       <Route path="/" exact component={Home} />
       <Route path="/login" exact component={Login} />
+      <Route path="/register" exact component={Register} />
       <Route path="/dashboard" exact component={Dashboard} isPrivate />
       <Route path="/group" exact component={Group} />
       {/* <Route path='/' exact component={Groups}/> */}

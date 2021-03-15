@@ -23,7 +23,7 @@ export const MenuBar = ({ open, setOpen }) => {
 
   const handleClickRegister = () => {
     setOpen(!open);
-    history.push("/registro");
+    history.push("/register");
   };
 
   return (
