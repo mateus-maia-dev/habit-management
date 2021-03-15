@@ -1,4 +1,5 @@
 import api from "../../../services/api";
+import { requestUserData } from "../../../utils/requestUserData";
 
 import {
   requestHabitAction,
@@ -7,24 +8,12 @@ import {
   updateHabitAction,
 } from "./action";
 
-const token = localStorage.getItem("token");
-
-const requestUserData = (dispatch, token, habitAction) => {
-  api
-    .get("/habits/personal/", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-    .then((response) => dispatch(habitAction(response.data)))
-    .catch((e) => console.log(e));
-};
-
 export const requestHabitThunk = () => (dispatch) => {
-  requestUserData(dispatch, token, requestHabitAction);
+  requestUserData(dispatch, requestHabitAction);
 };
 
 export const createHabitThunk = (data) => (dispatch) => {
+  const token = localStorage.getItem("token");
   api
     .post("/habits/", data, {
       headers: { Authorization: `Bearer ${token}` },
@@ -33,10 +22,11 @@ export const createHabitThunk = (data) => (dispatch) => {
       console.log(error);
     });
 
-  requestUserData(dispatch, token, createHabitAction);
+  requestUserData(dispatch, createHabitAction);
 };
 
 export const updateHabitThunk = (data, id) => (dispatch) => {
+  const token = localStorage.getItem("token");
   api
     .patch(`/habits/${id}/`, data, {
       headers: { Authorization: `Bearer ${token}` },
@@ -44,10 +34,11 @@ export const updateHabitThunk = (data, id) => (dispatch) => {
     .catch((error) => {
       console.log(error);
     });
-  requestUserData(dispatch, token, updateHabitAction);
+  requestUserData(dispatch, updateHabitAction);
 };
 
 export const deleteHabitThunk = (id) => (dispatch) => {
+  const token = localStorage.getItem("token");
   api
     .delete(`habits/${id}/`, {
       headers: {
@@ -55,5 +46,5 @@ export const deleteHabitThunk = (id) => (dispatch) => {
       },
     })
     .catch((e) => console.log(e));
-  requestUserData(dispatch, token, deleteHabitAction);
+  requestUserData(dispatch, deleteHabitAction);
 };
