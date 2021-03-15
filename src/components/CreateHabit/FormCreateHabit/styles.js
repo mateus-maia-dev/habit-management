@@ -18,4 +18,19 @@ export const FormWrapper = styled.div`
     width: 225px;
     padding: 10px 0;
   }
+
+  button {
+    background: #3a3a3a;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 15px;
+    border: 0px;
+    color: #fff;
+    height: 30px;
+    padding: 0 30px;
+    box-shadow: 0 3px 5px 2px rgba(0, 0, 0, 0.3);
+    font-size: 1rem;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
 `;
