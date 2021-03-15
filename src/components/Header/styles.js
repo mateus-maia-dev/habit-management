@@ -7,8 +7,17 @@ export const Container = styled.div`
   background-color: black;
   display: flex;
   align-items: center;
+<<<<<<< HEAD
+  justify-content: space-around;
+  position: fixed;
+
+  @media (min-width: 1440px) {
+    justify-content: space-between;
+  }
+=======
   justify-content: center;
   /* position: fixed; */
+>>>>>>> develop
 `;
 
 export const Stripes = styled.div`
