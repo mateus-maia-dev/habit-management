@@ -1,4 +1,5 @@
 import api from "../../../services/api";
+import { requestHabitThunk } from "../habitReduce/thunk";
 import { singInAction } from "./action";
 
 export const signInThunk = (userData, history) => (dispatch) => {
@@ -7,9 +8,9 @@ export const signInThunk = (userData, history) => (dispatch) => {
     .then((response) => {
       localStorage.clear();
       localStorage.setItem("token", response.data.access);
-
       dispatch(singInAction(response.data.access));
-      history.push("/dashboard");
     })
+    .then(() => dispatch(requestHabitThunk()))
+    .then(() => history.push("/dashboard"))
     .catch((err) => console.log(err));
 };

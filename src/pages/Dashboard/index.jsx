@@ -1,29 +1,38 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import api from "../../services/api";
+
+import { Container } from "./style";
+
+import { useDispatch } from "react-redux";
+import { requestHabitThunk } from "../../store/modules/habitReduce/thunk";
 
 import HabitsList from "../../components/PersonalHabits/HabitsList";
+import CreateHabit from "../../components/CreateHabit/index";
 
 const Dashboard = () => {
-  const token = useSelector((state) => state.signInReducer.token);
+  const userPersonalHabits = useSelector(
+    (state) => state.changeHabitReduce.userData
+  );
 
-  const [userPersonalHabits, setUserPersonalHabits] = useState([]);
+  const changeReduce = useSelector((state) => state.changeHabitReduce.change);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    api
-      .get("/habits/personal/", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }) //Os nossos usuarios estao sem habitos ainda
-      .then((response) => setUserPersonalHabits(response))
-      .catch((e) => console.log(e));
+    dispatch(requestHabitThunk());
+    // eslint-disable-next-line
   }, []);
 
-  console.log(userPersonalHabits);
+  useEffect(() => {
+    dispatch(requestHabitThunk());
+    // eslint-disable-next-line
+  }, [changeReduce]);
 
   return (
-    <div>{/* <HabitsList token={token} items={userPersonalHabits} /> */}</div>
+    <Container>
+      <HabitsList items={userPersonalHabits} />
+      <CreateHabit />
+    </Container>
   );
 };
 
