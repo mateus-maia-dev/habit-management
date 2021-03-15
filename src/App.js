@@ -1,13 +1,15 @@
 import "./App.css";
 import { Routes } from "./routes";
-import GroupsList from './components/Groups/groupsList'
+import { Header } from "./components/Header";
+import GlobalStyles from "./styles/global";
 
 function App() {
   return (
-    <div className="App">
+    <>
+      <Header />
       <Routes />
-      <GroupsList/>
-    </div>
+      <GlobalStyles />
+    </>
   );
 }
 

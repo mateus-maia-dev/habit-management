@@ -1,29 +1,41 @@
-import { useState, useEffect } from "react";
-import api from "../../services/api";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+
+import { Container } from "./style";
+
+import { useDispatch } from "react-redux";
+import { requestHabitThunk } from "../../store/modules/habitReduce/thunk";
 
 import HabitsList from "../../components/PersonalHabits/HabitsList";
+import CreateHabit from "../../components/CreateHabit/index";
+
+import GroupList from '../../components/Groups/GroupList'
 
 const Dashboard = () => {
-  //Token temporario, para testar a aplicacao
-  const tokenTempParaTest =
-    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE1NzI4MTA0LCJqdGkiOiIyYmIxNzRjOWYwOGI0NWFkOTVlZTIyMmFkYzUwZDNhZSIsInVzZXJfaWQiOjR9.hwj93WWyyXQqMkHIB_pAEFUO41V068hyYPYazO9tcgk";
+  const userPersonalHabits = useSelector(
+    (state) => state.changeHabitReduce.userData
+  );
 
-  const [userPersonalHabits, setUserPersonalHabits] = useState([]);
+  const changeReduce = useSelector((state) => state.changeHabitReduce.change);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    api
-      .get("/habits/personal/", {
-        /*Aqui entra o token quando o login estiver Pronto */
-        headers: { Authorization: `Bearer ${tokenTempParaTest}` },
-      })
-      .then((response) => setUserPersonalHabits(response.data))
-      .catch((e) => console.log(e));
+    dispatch(requestHabitThunk());
+    // eslint-disable-next-line
   }, []);
 
+  useEffect(() => {
+    dispatch(requestHabitThunk());
+    // eslint-disable-next-line
+  }, [changeReduce]);
+
   return (
-    <div>
+    <Container>
       <HabitsList items={userPersonalHabits} />
-    </div>
+      <CreateHabit />
+      <GroupList />
+    </Container>
   );
 };
 
