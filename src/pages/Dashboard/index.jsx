@@ -8,11 +8,17 @@ import { requestHabitThunk } from "../../store/modules/habitReduce/thunk";
 
 import HabitsList from "../../components/PersonalHabits/HabitsList";
 import CreateHabit from "../../components/CreateHabit/index";
+import jwtDecode from "jwt-decode";
 
 const Dashboard = () => {
   const userPersonalHabits = useSelector(
     (state) => state.changeHabitReduce.userData
   );
+
+  const { token } = useSelector((state) => state.signInReducer);
+  const decoded = jwtDecode(token);
+
+  console.log(decoded);
 
   const changeReduce = useSelector((state) => state.changeHabitReduce.change);
 

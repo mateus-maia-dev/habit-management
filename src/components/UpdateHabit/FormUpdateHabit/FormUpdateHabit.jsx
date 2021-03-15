@@ -20,7 +20,6 @@ const FormUpdateHabit = ({ id }) => {
   const token = useSelector((state) => state.signInReducer.token);
   const decoded = jwt_decode(token);
 
-  console.log(decoded);
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(schema),
   });
