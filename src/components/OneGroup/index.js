@@ -8,6 +8,7 @@ import {
 import api from "../../services/api";
 import { useEffect, useState } from "react";
 import { Doughnut } from "react-chartjs-2";
+import { useSelector } from "react-redux";
 
 const data = {
   labels: [],
@@ -26,9 +27,11 @@ const tokenTempParaTest =
 const OneGroup = () => {
   const [group, setGroup] = useState({});
 
+  const { groupID } = useSelector()
+
   const getOneGroup = () => {
     api
-      .get("/groups/2/", {
+      .get(`/groups/${groupID}/`, {
         headers: {
           Authorization: `Bearer ${tokenTempParaTest}`,
         },
