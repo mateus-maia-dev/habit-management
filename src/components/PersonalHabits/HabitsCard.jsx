@@ -1,14 +1,11 @@
-import api from "../../services/api";
 import { CardContainer, ContentCard } from "./CardStyle";
+import UpdateHabit from "../UpdateHabit/index";
 
-const HabitsList = ({ token, item }) => {
-  const deleteHabit = (id) => {
-    api.delete(`habits/${id}/`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-  };
+import { useDispatch } from "react-redux";
+import { deleteHabitThunk } from "../../store/modules/habitReduce/thunk";
+
+const HabitsCard = ({ item }) => {
+  const dispatch = useDispatch();
 
   return (
     <CardContainer>
@@ -18,9 +15,12 @@ const HabitsList = ({ token, item }) => {
         <p>{item.difficulty}</p>
         <p>{item.frequency}</p>
       </ContentCard>
-      <button onClick={() => deleteHabit(item.id)}>Excluir Habito</button>
+      <UpdateHabit id={item.id} />
+      <button onClick={() => dispatch(deleteHabitThunk(item.id))}>
+        Excluir Habito
+      </button>
     </CardContainer>
   );
 };
 
-export default HabitsList;
+export default HabitsCard;

@@ -3,13 +3,12 @@ import Button from "@material-ui/core/Button";
 
 import { useSelector, useDispatch } from "react-redux";
 import { updateHabitThunk } from "../../../store/modules/habitReduce/thunk";
+import jwt_decode from "jwt-decode";
 
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FormWrapper } from "./styles";
-
-import jwt_decode from "jwt-decode";
 
 const schema = yup.object().shape({
   title: yup.string().required("campo obrigatório."),
