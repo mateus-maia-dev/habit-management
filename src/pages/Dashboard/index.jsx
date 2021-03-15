@@ -30,8 +30,8 @@ const Dashboard = () => {
 
   return (
     <Container>
-      <HabitsList items={userPersonalHabits} />
       <CreateHabit />
+      <HabitsList items={userPersonalHabits} />
     </Container>
   );
 };

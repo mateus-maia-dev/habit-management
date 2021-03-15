@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { deleteHabitThunk } from "../../store/modules/habitReduce/thunk";
 import { CardContainer, ContentCard } from "./CardStyle";
+import UpdateHabit from "../UpdateHabit/index";
 
 const HabitsCard = ({ item }) => {
   const dispatch = useDispatch();
@@ -13,7 +14,10 @@ const HabitsCard = ({ item }) => {
         <p>{item.difficulty}</p>
         <p>{item.frequency}</p>
       </ContentCard>
-      <button onClick={() => deleteHabitThunk(item.id)}>Excluir Habito</button>
+      <UpdateHabit id={item.id} />
+      <button onClick={() => dispatch(deleteHabitThunk(item.id))}>
+        Excluir Habito
+      </button>
     </CardContainer>
   );
 };
