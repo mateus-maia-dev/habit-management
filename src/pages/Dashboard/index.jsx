@@ -10,6 +10,8 @@ import HabitsList from "../../components/PersonalHabits/HabitsList";
 import CreateHabit from "../../components/CreateHabit/index";
 import jwtDecode from "jwt-decode";
 
+import GroupList from '../../components/Groups/GroupList'
+
 const Dashboard = () => {
   const userPersonalHabits = useSelector(
     (state) => state.changeHabitReduce.userData
@@ -38,6 +40,7 @@ const Dashboard = () => {
     <Container>
       <HabitsList items={userPersonalHabits} />
       <CreateHabit />
+      <GroupList />
     </Container>
   );
 };

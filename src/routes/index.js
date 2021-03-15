@@ -5,6 +5,7 @@ import { Route } from "./route";
 //Importação dos components
 import Dashboard from "../pages/Dashboard/index";
 import Login from "../pages/Login/index";
+import Registro from "../pages/Registro/index";
 import Group from "../pages/Group/index";
 import Habit from "../pages/Habit/index";
 import LandingPage from "../pages/LandingPage/index";
@@ -15,6 +16,7 @@ export const Routes = () => {
     <Switch>
       <Route path="/" exact component={LandingPage} />
       <Route path="/login" exact component={Login} />
+      <Route path="/registro" exact component={Registro} />
       <Route path="/dashboard" exact component={Dashboard} isPrivate />
       <Route path="/group" exact component={Group} isPrivate />
       <Route path="/habit" exact component={Habit} isPrivate />
