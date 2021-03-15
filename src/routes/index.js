@@ -6,12 +6,13 @@ import { Route } from "./route";
 import Dashboard from "../pages/Dashboard/index";
 import Login from "../pages/Login/index";
 import Group from "../pages/Group/index";
-import Home from "../pages/Home";
+import LandingPage from "../pages/LandingPage/index";
+//import Home from "../pages/Home";
 
 export const Routes = () => {
   return (
     <Switch>
-      <Route path="/" exact component={Home} />
+      <Route path="/" exact component={LandingPage} />
       <Route path="/login" exact component={Login} />
       <Route path="/dashboard" exact component={Dashboard} isPrivate />
       <Route path="/group" exact component={Group} />
