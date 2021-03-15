@@ -25,6 +25,7 @@ const FormRegistro = () => {
 
   const handleData = (data) => {
     console.log(data);
+
     api.post("/users/", data).then((response) => {
       reset();
       history.push("/login");
