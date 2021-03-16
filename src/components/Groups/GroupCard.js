@@ -9,7 +9,12 @@ const GroupCard = ({ group }) => {
       <p>{group.name}</p>
       <h1>{group.category}</h1>
       <h2>{group.description}</h2>
-      <GroupUpdate id={group.id} name={group.name} description={group.description}/>
+
+      <GroupUpdate
+        id={group.id}
+        name={group.name}
+        description={group.description}
+      />
     </div>
   );
 };
