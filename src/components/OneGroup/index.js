@@ -26,6 +26,13 @@ const data = {
 };
 
 const OneGroup = () => {
+  const history = useHistory();
+
+  const groupData =
+    useSelector((state) => state.getOneGroupReducer.groupData) || {};
+  const activities = groupData.activities;
+  const goals = groupData.goals;
+
   return (
     <div className="bgBand">
       <Title>
@@ -37,7 +44,7 @@ const OneGroup = () => {
           <br></br>
           <span>
             <h3>
-              Progresso:<span>14%</span>{" "}
+              Progresso:<span>14%</span>
             </h3>
           </span>
         </Graph>
@@ -48,7 +55,7 @@ const OneGroup = () => {
                 <h5>
                   group.users.length <span>inscritos</span>
                 </h5>
-                <p>group.description</p>
+                <p>{groupData}.description</p>
               </CardHeader>
             </CardContainer>
           </span>
