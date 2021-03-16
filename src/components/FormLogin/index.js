@@ -7,6 +7,9 @@ import { FormWrapper } from "./styles";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { signInThunk } from "../../store/modules/userLogin/thunk";
+import { requestHabitThunk } from "../../store/modules/habitReduce/thunk";
+import { useState } from "react";
+import Snackbars from "../Snackbar";
 
 const schema = yup.object().shape({
   username: yup.string().required("campo obrigatório."),
@@ -17,6 +20,7 @@ const schema = yup.object().shape({
 });
 
 const FormLogin = () => {
+  const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -25,8 +29,10 @@ const FormLogin = () => {
   });
 
   const handleData = (data) => {
-    dispatch(signInThunk(data, history));
+    dispatch(signInThunk(data, history, setOpen));
   };
+
+  console.log(open);
 
   return (
     <FormWrapper>
@@ -57,6 +63,9 @@ const FormLogin = () => {
         </Button>
         <Button color="default">não possui uma conta?</Button>
       </form>
+      <Snackbars open={open} severity="error">
+        Usuário ou Senha Incorreta
+      </Snackbars>
     </FormWrapper>
   );
 };

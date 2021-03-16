@@ -1,56 +1,149 @@
 import styled from "styled-components";
 
 export const PageWrapper = styled.div`
+  width: 300px;
+  height: auto;
   display: flex;
-  margin: 0 auto;
-  margin-top: 100px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 20px;
+  span {
+    width: 100%;
+  }
 
-  @media (min-width: 768px) {
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    margin: auto;
+  @media (min-width: 440px) {
+    min-width: 400px;
+  }
 
-    span {
-      display: flex;
-      justify-content: center;
-    }
+  @media (min-width: 620px) {
+    min-width: 300px;
+    align-items: right;
+    margin-left: 2%;
+    margin-right: 2%;
+  }
+
+  @media (min-width: 960px) {
+    min-width: 450px;
+    align-items: right;
   }
 `;
 
 export const Graph = styled.div`
   width: 300px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 
-  @media (min-width: 768px) {
-    width: 400px;
+  > span {
+    position: relative;
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+  }
+
+  span h3 > span {
+    color: #bc494c;
+  }
+  @media (min-width: 440px) {
+    min-width: 400px;
+  }
+
+  @media (min-width: 620px) {
+    min-width: 300px;
+    justify-content: left;
+  }
+
+  @media (min-width: 960px) {
+    min-width: 460px;
+    justify-content: center;
   }
 `;
 
 export const CardContainer = styled.div`
-  width: 300px;
   background-color: #f1f1f1;
   display: flex;
   flex-direction: column;
+  border-radius: 8px;
 `;
 
 export const CardHeader = styled.div`
   text-align: left;
+  padding: 5px 10px;
+
+  h5 {
+    color: #bc494c;
+  }
+  h5 > span {
+    color: #312e38;
+  }
+  p {
+    margin: 5px 0px;
+  }
 `;
 
 export const CardList = styled.div`
   display: flex;
   flex-direction: column;
   border-top: 1px solid black;
+  padding: 5px 10px;
 
-  p {
-    font-weight: ${(props) => props.weight};
+  > p {
+    font-weight: 500;
+    color: #bc494c;
   }
 
   span {
     display: flex;
-    justify-content: space-around;
+    justify-content: right;
   }
+
+  span:last-child {
+    font-weight: 450;
+  }
+`;
+
+export const DisplayF = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row-reverse;
+  justify-content: center;
+`;
+
+export const PageWrapper2 = styled.div`
+  width: 300px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  span {
+    width: 100%;
+  }
+
+  @media (min-width: 440px) {
+    min-width: 400px;
+  }
+
+  @media (min-width: 620px) {
+    min-width: 300px;
+    align-items: right;
+    justify-content: right;
+    margin-left: 1%;
+    margin-right: 1%;
+  }
+
+  @media (min-width: 960px) {
+    min-width: 450px;
+    justify-content: right;
+    align-items: right;
+  }
+`;
+
+export const Title = styled.div`
+  width: 100%;
+  text-align: center;
 `;

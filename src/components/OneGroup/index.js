@@ -4,6 +4,9 @@ import {
   CardList,
   PageWrapper,
   Graph,
+  DisplayF,
+  PageWrapper2,
+  Title,
 } from "./styles";
 
 import { useHistory } from "react-router-dom";
@@ -23,46 +26,74 @@ const data = {
 };
 
 const OneGroup = () => {
-  const history = useHistory();
-
-  const groupData =
-    useSelector((state) => state.getOneGroupReducer.groupData) || {};
-  const activities = groupData.activities;
-  const goals = groupData.goals;
-
   return (
-    <PageWrapper>
-      <h1>{groupData.name}</h1>
-      <span>
-        <CardContainer>
-          <CardHeader>
-            <h6>{groupData.users.length} inscritos </h6>
-            <p>{groupData.description}</p>
-          </CardHeader>
-
-          <h2>metas</h2>
-
-          {groupData.goals.map((goal, index) => (
-            <CardList key={index}>
-              <p>{goal.title} </p>
-              <span>
-                <p>Dificuldade:</p>
-                <p>{goal.difficulty} </p>
-              </span>
-              <span>
-                <p>Progresso: </p>
-                <p>{goal.how_much_achieved}</p>
-              </span>
-            </CardList>
-          ))}
-        </CardContainer>
-
+    <div className="bgBand">
+      <Title>
+        <h1>gruop.name</h1>
+      </Title>
+      <DisplayF>
         <Graph>
           <Doughnut data={data} />
+          <br></br>
+          <span>
+            <h3>
+              Progresso:<span>14%</span>{" "}
+            </h3>
+          </span>
         </Graph>
-      </span>
-      <button onClick={() => history.push("/groups")}>Voltar</button>
-    </PageWrapper>
+        <PageWrapper>
+          <span>
+            <CardContainer>
+              <CardHeader>
+                <h5>
+                  group.users.length <span>inscritos</span>
+                </h5>
+                <p>group.description</p>
+              </CardHeader>
+            </CardContainer>
+          </span>
+        </PageWrapper>
+      </DisplayF>
+      <DisplayF>
+        <PageWrapper2>
+          <span>
+            <CardContainer>
+              <CardHeader>
+                <h2>Atividades Realizadas</h2>
+              </CardHeader>
+              <CardList>
+                <p>goal.title </p>
+                <span>
+                  <p>Dificuldade:</p>
+                  <p>realization_time </p>
+                </span>
+              </CardList>
+            </CardContainer>
+          </span>
+        </PageWrapper2>
+
+        <PageWrapper2>
+          <span>
+            <CardContainer>
+              <CardHeader>
+                <h2>metas</h2>
+              </CardHeader>
+              <CardList>
+                <p>goal.title </p>
+                <span>
+                  <p>Dificuldade:</p>
+                  <p>goal.difficulty </p>
+                </span>
+                <span>
+                  <p>Progresso: </p>
+                  <p>goal.how_much_achieved</p>
+                </span>
+              </CardList>
+            </CardContainer>
+          </span>
+        </PageWrapper2>
+      </DisplayF>
+    </div>
   );
 };
 
