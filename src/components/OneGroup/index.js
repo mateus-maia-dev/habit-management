@@ -4,6 +4,9 @@ import {
   CardList,
   PageWrapper,
   Graph,
+  DisplayF,
+  PageWrapper2,
+  Title,
 } from "./styles";
 import api from "../../services/api";
 import { useEffect, useState } from "react";
@@ -21,19 +24,18 @@ const data = {
   ],
 };
 
-const tokenTempParaTest =
-  "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE1NzI4MTA0LCJqdGkiOiIyYmIxNzRjOWYwOGI0NWFkOTVlZTIyMmFkYzUwZDNhZSIsInVzZXJfaWQiOjR9.hwj93WWyyXQqMkHIB_pAEFUO41V068hyYPYazO9tcgk";
+//const token = localStorage.getItem("token");
 
 const OneGroup = () => {
+  /*
   const [group, setGroup] = useState({});
-
-  const { groupID } = useSelector()
+  const groupID = useSelector((state) => state.groupIDReducer);
 
   const getOneGroup = () => {
     api
-      .get(`/groups/${groupID}/`, {
+      .get(`/groups/3/`, {
         headers: {
-          Authorization: `Bearer ${tokenTempParaTest}`,
+          Authorization: `Bearer ${token}`,
         },
       })
       .then((response) => setGroup(response.data))
@@ -45,39 +47,75 @@ const OneGroup = () => {
   }, []);
 
   console.log(group);
-
+ */
   return (
-    <PageWrapper>
-      <h1>{group.name}</h1>
-      <span>
-        <CardContainer>
-          <CardHeader>
-            <h6>{group.users.length} inscritos </h6>
-            <p>{group.description}</p>
-          </CardHeader>
-
-          <h2>metas</h2>
-
-          {group.goals.map((goal, index) => (
-            <CardList key={index}>
-              <p>{goal.title} </p>
-              <span>
-                <p>Dificuldade:</p>
-                <p>{goal.difficulty} </p>
-              </span>
-              <span>
-                <p>Progresso: </p>
-                <p>{goal.how_much_achieved}</p>
-              </span>
-            </CardList>
-          ))}
-        </CardContainer>
-
+    <div className="bgBand">
+      <Title>
+        <h1>gruop.name</h1>
+      </Title>
+      <DisplayF>
         <Graph>
           <Doughnut data={data} />
+          <br></br>
+          <span>
+            <h3>
+              Progresso:<span>14%</span>{" "}
+            </h3>
+          </span>
         </Graph>
-      </span>
-    </PageWrapper>
+        <PageWrapper>
+          <span>
+            <CardContainer>
+              <CardHeader>
+                <h5>
+                  group.users.length <span>inscritos</span>
+                </h5>
+                <p>group.description</p>
+              </CardHeader>
+            </CardContainer>
+          </span>
+        </PageWrapper>
+      </DisplayF>
+      <DisplayF>
+        <PageWrapper2>
+          <span>
+            <CardContainer>
+              <CardHeader>
+                <h2>Atividades Realizadas</h2>
+              </CardHeader>
+              <CardList>
+                <p>goal.title </p>
+                <span>
+                  <p>Dificuldade:</p>
+                  <p>realization_time </p>
+                </span>
+              </CardList>
+            </CardContainer>
+          </span>
+        </PageWrapper2>
+
+        <PageWrapper2>
+          <span>
+            <CardContainer>
+              <CardHeader>
+                <h2>metas</h2>
+              </CardHeader>
+              <CardList>
+                <p>goal.title </p>
+                <span>
+                  <p>Dificuldade:</p>
+                  <p>goal.difficulty </p>
+                </span>
+                <span>
+                  <p>Progresso: </p>
+                  <p>goal.how_much_achieved</p>
+                </span>
+              </CardList>
+            </CardContainer>
+          </span>
+        </PageWrapper2>
+      </DisplayF>
+    </div>
   );
 };
 

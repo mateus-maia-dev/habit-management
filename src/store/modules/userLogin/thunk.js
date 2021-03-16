@@ -1,9 +1,8 @@
 import api from "../../../services/api";
 import { requestHabitThunk } from "../habitReduce/thunk";
 import { singInAction } from "./action";
-import { UserGroupThunk } from "../userGroup/thunks";
 
-export const signInThunk = (userData, history) => (dispatch) => {
+export const signInThunk = (userData, history, setOpen) => (dispatch) => {
   api
     .post("/sessions/", userData)
     .then((response) => {
@@ -12,7 +11,11 @@ export const signInThunk = (userData, history) => (dispatch) => {
       dispatch(singInAction(response.data.access));
     })
     .then(() => dispatch(requestHabitThunk()))
-    // .then(() => dispatch(UserGroupThunk()))
+
     .then(() => history.push("/dashboard"))
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      if (err.response.status !== 200) {
+        setOpen(true);
+      }
+    });
 };
