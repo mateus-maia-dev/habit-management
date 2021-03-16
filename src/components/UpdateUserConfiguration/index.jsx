@@ -7,16 +7,16 @@ import { FormWrapper } from "./styles";
 import api from "../../services/api";
 import { useHistory } from "react-router-dom";
 
+import jwt_decode from "jwt-decode";
+
 const schema = yup.object().shape({
   username: yup.string().required("campo obrigatório."),
-  password: yup
-    .string()
-    .min(6, "A senha deve conter no mínimo de 6 dígitos.")
-    .required("campo obrigatório."),
-  email: yup.string().email("E-mail invalido").required("campo obrigatório."),
 });
 
 const FormRegistro = () => {
+  const token = localStorage.getItem("token");
+  const decoded = jwt_decode(token);
+
   const history = useHistory();
 
   const { register, handleSubmit, errors, reset } = useForm({
@@ -24,16 +24,17 @@ const FormRegistro = () => {
   });
 
   const handleData = (data) => {
-    api.post("/users/", data).then((response) => {
+    api.patch(`/users/${decoded.user_id}/`, data).then((response) => {
       reset();
-      history.push("/login");
+      console.log(response);
+      history.push("/dashboard");
     });
   };
 
   return (
     <FormWrapper>
       <form onSubmit={handleSubmit(handleData)}>
-        <p>REGISTRAR</p>
+        <p>Alterar Nome</p>
         <TextField
           className="inputBox"
           variant="outlined"
@@ -45,29 +46,6 @@ const FormRegistro = () => {
           helperText={errors.username?.message}
           error={!!errors.username}
         />
-        <TextField
-          className="inputBox"
-          variant="outlined"
-          label="Email"
-          name="email"
-          type="email"
-          size="small"
-          inputRef={register}
-          helperText={errors.email?.message}
-          error={!!errors.email}
-        />
-        <TextField
-          className="inputBox"
-          variant="outlined"
-          label="senha"
-          name="password"
-          type="password"
-          size="small"
-          inputRef={register}
-          helperText={errors.password?.message}
-          error={!!errors.password}
-        />
-
         <div>
           <Button
             variant="contained"

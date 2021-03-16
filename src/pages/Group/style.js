@@ -12,4 +12,8 @@ export const Container = styled.div`
   align-items: center;
 
   color: #fff;
+
+  button {
+    margin-top: 30%;
+  }
 `;

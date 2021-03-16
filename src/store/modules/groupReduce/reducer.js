@@ -1,13 +1,23 @@
-const groupIDReducer = (state = "", action) => {
-    switch (action.type) {
-      case "@group/GET_ID":
-        const { groupID } = action;
-        return (state = groupID);
+import { groupRequestType } from "./actionsType";
 
-      default:
-        return state;
-    }
-  };
-  
-  export default groupIDReducer;
-  
+const defaulState = {
+  groupData: [],
+  change: false,
+};
+
+const groupIDReducer = (state = defaulState, action) => {
+  const change = false;
+  switch (action.type) {
+    case groupRequestType:
+      const { group } = action;
+      return (state = {
+        groupData: [...group.results],
+        change: change,
+      });
+
+    default:
+      return state;
+  }
+};
+
+export default groupIDReducer;

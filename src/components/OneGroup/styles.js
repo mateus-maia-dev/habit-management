@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const PageWrapper = styled.div`
   display: flex;
   margin: 0 auto;
+  margin-top: 100px;
   flex-direction: column;
   justify-content: center;
   align-items: center;

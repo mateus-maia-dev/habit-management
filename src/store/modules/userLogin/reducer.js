@@ -4,7 +4,6 @@ const token = localStorage.getItem("token") || "";
 
 const defaultState = {
   token,
-  user: {},
 };
 
 const signInReducer = (state = defaultState, action) => {

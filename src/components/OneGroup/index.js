@@ -5,8 +5,9 @@ import {
   PageWrapper,
   Graph,
 } from "./styles";
-import api from "../../services/api";
-import { useEffect, useState } from "react";
+
+import { useHistory } from "react-router-dom";
+
 import { Doughnut } from "react-chartjs-2";
 import { useSelector } from "react-redux";
 
@@ -21,44 +22,27 @@ const data = {
   ],
 };
 
-const tokenTempParaTest =
-  "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE1NzI4MTA0LCJqdGkiOiIyYmIxNzRjOWYwOGI0NWFkOTVlZTIyMmFkYzUwZDNhZSIsInVzZXJfaWQiOjR9.hwj93WWyyXQqMkHIB_pAEFUO41V068hyYPYazO9tcgk";
-
 const OneGroup = () => {
-  const [group, setGroup] = useState({});
+  const history = useHistory();
 
-  const { groupID } = useSelector()
-
-  const getOneGroup = () => {
-    api
-      .get(`/groups/${groupID}/`, {
-        headers: {
-          Authorization: `Bearer ${tokenTempParaTest}`,
-        },
-      })
-      .then((response) => setGroup(response.data))
-      .catch((e) => console.log(e));
-  };
-
-  useEffect(() => {
-    getOneGroup();
-  }, []);
-
-  console.log(group);
+  const groupData =
+    useSelector((state) => state.getOneGroupReducer.groupData) || {};
+  const activities = groupData.activities;
+  const goals = groupData.goals;
 
   return (
     <PageWrapper>
-      <h1>{group.name}</h1>
+      <h1>{groupData.name}</h1>
       <span>
         <CardContainer>
           <CardHeader>
-            <h6>{group.users.length} inscritos </h6>
-            <p>{group.description}</p>
+            <h6>{groupData.users.length} inscritos </h6>
+            <p>{groupData.description}</p>
           </CardHeader>
 
           <h2>metas</h2>
 
-          {group.goals.map((goal, index) => (
+          {groupData.goals.map((goal, index) => (
             <CardList key={index}>
               <p>{goal.title} </p>
               <span>
@@ -77,6 +61,7 @@ const OneGroup = () => {
           <Doughnut data={data} />
         </Graph>
       </span>
+      <button onClick={() => history.push("/groups")}>Voltar</button>
     </PageWrapper>
   );
 };

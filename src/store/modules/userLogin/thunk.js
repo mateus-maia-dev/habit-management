@@ -11,6 +11,7 @@ export const signInThunk = (userData, history) => (dispatch) => {
       dispatch(singInAction(response.data.access));
     })
     .then(() => dispatch(requestHabitThunk()))
+    //.then(() => dispatch())
     .then(() => history.push("/dashboard"))
     .catch((err) => console.log(err));
 };

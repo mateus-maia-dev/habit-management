@@ -10,8 +10,7 @@ export const ContentCard = styled.div`
   align-items: center;
 
   h2,
-  h3,
-  p {
+  h3 {
     padding: 15px;
   }
 

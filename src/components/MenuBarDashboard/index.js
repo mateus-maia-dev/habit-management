@@ -6,7 +6,10 @@ import { useHistory } from "react-router-dom";
 export const UserBar = ({ open, setOpen }) => {
   // const [open, setOpen] = useState(false);
 
+  const history = useHistory();
+
   const handleLogout = () => {
+    history.push("/");
     localStorage.clear();
   };
 
@@ -20,10 +23,10 @@ export const UserBar = ({ open, setOpen }) => {
       <AsideBar input={open}>
         <Navigation>
           <li>
-            <a href="#home">Meus hábitos</a>
+            <a href="/dashboard">Meus hábitos</a>
           </li>
           <li>
-            <a href="#home">Configuração</a>
+            <a href="/configuration">Configuração</a>
           </li>
           <li>
             <a href="/" onClick={() => handleLogout()}>
