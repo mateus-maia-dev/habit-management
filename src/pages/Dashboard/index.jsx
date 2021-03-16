@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
-import { Container } from "./style";
+import { Container, HeaderLine } from "./style";
 
 import { useDispatch } from "react-redux";
 import { requestHabitThunk } from "../../store/modules/habitReduce/thunk";
@@ -9,7 +9,8 @@ import { requestHabitThunk } from "../../store/modules/habitReduce/thunk";
 import HabitsList from "../../components/PersonalHabits/HabitsList";
 import CreateHabit from "../../components/CreateHabit/index";
 
-import GroupList from '../../components/Groups/GroupList'
+import GroupList from "../../components/Groups/GroupList";
+import Button from "../../components/Buttons/styles";
 
 const Dashboard = () => {
   const userPersonalHabits = useSelector(
@@ -31,11 +32,17 @@ const Dashboard = () => {
   }, [changeReduce]);
 
   return (
-    <Container>
-      <HabitsList items={userPersonalHabits} />
-      <CreateHabit />
-      <GroupList />
-    </Container>
+    <div className="bgGuitar">
+      <Container>
+        <HeaderLine>
+          <h1>MEUS HÁBITOS</h1>
+          <CreateHabit />
+        </HeaderLine>
+        <HabitsList items={userPersonalHabits} />
+
+        <GroupList />
+      </Container>
+    </div>
   );
 };
 

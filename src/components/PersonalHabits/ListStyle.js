@@ -10,5 +10,9 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
 
+  @media (min-width: 765px) {
+    justify-content: flex-start;
+  }
+
   //background: #282c34;
 `;
