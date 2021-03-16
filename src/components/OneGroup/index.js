@@ -21,19 +21,18 @@ const data = {
   ],
 };
 
-const tokenTempParaTest =
-  "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE1NzI4MTA0LCJqdGkiOiIyYmIxNzRjOWYwOGI0NWFkOTVlZTIyMmFkYzUwZDNhZSIsInVzZXJfaWQiOjR9.hwj93WWyyXQqMkHIB_pAEFUO41V068hyYPYazO9tcgk";
+const token = localStorage.getItem("token");
 
 const OneGroup = () => {
   const [group, setGroup] = useState({});
 
-  const { groupID } = useSelector()
+  const { groupID } = useSelector();
 
   const getOneGroup = () => {
     api
       .get(`/groups/${groupID}/`, {
         headers: {
-          Authorization: `Bearer ${tokenTempParaTest}`,
+          Authorization: `Bearer ${token}`,
         },
       })
       .then((response) => setGroup(response.data))
