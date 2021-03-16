@@ -10,6 +10,7 @@ import HabitsList from "../../components/PersonalHabits/HabitsList";
 import CreateHabit from "../../components/CreateHabit/index";
 
 import GroupList from '../../components/Groups/GroupList'
+import OneGroup from "../../components/OneGroup";
 
 const Dashboard = () => {
   const userPersonalHabits = useSelector(
@@ -35,6 +36,7 @@ const Dashboard = () => {
       <HabitsList items={userPersonalHabits} />
       <CreateHabit />
       <GroupList />
+      <OneGroup />
     </Container>
   );
 };
