@@ -26,11 +26,11 @@ const token = localStorage.getItem("token");
 const OneGroup = () => {
   const [group, setGroup] = useState({});
 
-  const { groupID } = useSelector();
+  const { groupIDReducer } = useSelector(state => state);
 
   const getOneGroup = () => {
     api
-      .get(`/groups/${groupID}/`, {
+      .get(`/groups/${groupIDReducer}/`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -41,9 +41,7 @@ const OneGroup = () => {
 
   useEffect(() => {
     getOneGroup();
-  }, []);
-
-  console.log(group);
+  }, [groupIDReducer]);
 
   return (
     <PageWrapper>
@@ -51,13 +49,13 @@ const OneGroup = () => {
       <span>
         <CardContainer>
           <CardHeader>
-            <h6>{group.users.length} inscritos </h6>
+            <h6>{group.user ? group.users.length : "0"} inscritos </h6>
             <p>{group.description}</p>
           </CardHeader>
 
           <h2>metas</h2>
 
-          {group.goals.map((goal, index) => (
+          {group.goals && group.goals.map((goal, index) => (
             <CardList key={index}>
               <p>{goal.title} </p>
               <span>
