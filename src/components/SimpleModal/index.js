@@ -2,6 +2,10 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import { ButtonStyled } from "./styles";
+import Button from "../Buttons/index";
+import DeleteIcon from "@material-ui/icons/Delete";
+import EditIcon from "@material-ui/icons/Edit";
+import AddIcon from "@material-ui/icons/Add";
 
 function getModalStyle() {
   const top = 50;
@@ -25,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SimpleModal({ children, buttonText }) {
+export default function SimpleModal({ children, buttonText, icon }) {
   const classes = useStyles();
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(false);
@@ -46,12 +50,26 @@ export default function SimpleModal({ children, buttonText }) {
 
   return (
     <div>
-      <ButtonStyled type="button" onClick={handleOpen}>
-        {buttonText}
-      </ButtonStyled>
-      <Modal open={open} onClose={handleClose}>
-        {body}
-      </Modal>
+      {icon === "edit" ? (
+        <>
+          <ButtonStyled type="button" onClick={handleOpen}>
+            {buttonText}
+            <EditIcon fontSize="small" />
+          </ButtonStyled>
+          <Modal open={open} onClose={handleClose}>
+            {body}
+          </Modal>
+        </>
+      ) : (
+        <>
+          <ButtonStyled type="button" onClick={handleOpen}>
+            {buttonText}
+          </ButtonStyled>
+          <Modal open={open} onClose={handleClose}>
+            {body}
+          </Modal>
+        </>
+      )}
     </div>
   );
 }

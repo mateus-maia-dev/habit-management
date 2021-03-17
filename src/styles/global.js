@@ -36,12 +36,17 @@ export default createGlobalStyle`
 
   &.bgMusician {
     background-image: url(${musician});
-    background-position: center;
+    /* background-position: center;
     background-size: cover;
     padding-top: 60px; // para descontar a altura do Header
     height: 100vh;
-    margin: auto;
+    margin: auto; */
     width: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: right;
+    margin: auto;
 
         @media (min-width: 768px) {
             width: 80%;
@@ -50,12 +55,17 @@ export default createGlobalStyle`
 
   &.bgMusicianIntro {
     background-image: url(${musician});
-    background-position: center;
+    /* background-position: center;
     background-size: cover;
     padding-top: 0px; // para descontar a altura do Header
     height: 60vh;
-    margin: auto;
+    margin: auto; */
     width: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: right;
+    margin: auto;
 
         @media (min-width: 768px) {
             width: 80%;
@@ -65,12 +75,17 @@ export default createGlobalStyle`
 
   &.bgMixer {
     background-image: url(${mixer});
-    background-position: center;
+    /* background-position: center;
     background-size: cover;
     padding-top: 60px; // para descontar a altura do Header
     height: 100vh;
-    margin: auto;
+    margin: auto; */
     width: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: right;
+    margin: auto;
 
         @media (min-width: 768px) {
             width: 80%;
@@ -79,12 +94,18 @@ export default createGlobalStyle`
 
   &.bgGuitar{
     background-image: url(${guitar});
-    background-position: right;
+    /* background-position: right;
     background-size: cover;
-    padding-top: 60px; // para descontar a altura do Header
+    padding-top: 0px; // para descontar a altura do Header
     height: 100vh;
-    margin: auto;
+    margin: auto; */
     width: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: right;
+    margin: auto;
+
 
         @media (min-width: 768px) {
             width: 80%;
@@ -93,12 +114,19 @@ export default createGlobalStyle`
 
   &.bgBand{
     background-image: url(${band});
-    background-position: center;
+    /* background-position: center;
     background-size: cover;
     padding-top: 60px; // para descontar a altura do Header
     height: 100vh;
-    margin: auto;
+    margin: auto; */
     width: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: right;
+    margin: auto;
+    min-height: 100vh;
+    height: auto;
 
         @media (min-width: 768px) {
             width: 80%;

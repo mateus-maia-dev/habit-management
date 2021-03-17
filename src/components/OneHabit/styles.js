@@ -1,30 +1,69 @@
 import styled from "styled-components";
 
 export const PageWrapper = styled.div`
+  width: 300px;
+  height: auto;
   display: flex;
-  margin: 0 auto;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
 
-  @media (min-width: 768px) {
-    flex-direction: column;
-    justify-content: space-evenly;
+  span {
+    width: 100%;
+    display: flex;
+    justify-content: center;
     align-items: center;
-    margin: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 
-    span {
-      display: flex;
-      justify-content: center;
-    }
+  @media (min-width: 420px) {
+    min-width: 90%;
+  }
+
+  @media (min-width: 620px) {
+    min-width: 90%;
+    align-items: right;
+    margin-left: 2%;
+    margin-right: 2%;
+  }
+
+  @media (min-width: 960px) {
+    min-width: 700px;
+    align-items: right;
   }
 `;
 
 export const Graph = styled.div`
   width: 300px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
 
-  @media (min-width: 768px) {
-    width: 400px;
+  > span {
+    position: relative;
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+  }
+
+  span h3 > span {
+    color: #bc494c;
+  }
+  @media (min-width: 440px) {
+    min-width: 350px;
+  }
+
+  @media (min-width: 620px) {
+    justify-content: left;
+  }
+
+  @media (min-width: 960px) {
+    min-width: 460px;
+    justify-content: center;
   }
 `;
 
@@ -33,23 +72,60 @@ export const CardContainer = styled.div`
   background-color: #f1f1f1;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  border-radius: 8px;
+  margin-top: 20px;
+
+  @media (min-width: 440px) {
+    min-width: 100%;
+  }
+
+  @media (min-width: 620px) {
+    min-width: 460px;
+    justify-content: left;
+  }
 `;
 
 export const CardHeader = styled.div`
   text-align: left;
+  padding: 5px 10px;
 `;
 
 export const CardList = styled.div`
   display: flex;
   flex-direction: column;
   border-top: 1px solid black;
+  padding: 10px;
 
-  p {
-    font-weight: ${(props) => props.weight};
+  > span p:last-child {
+    font-weight: 500;
+    color: #bc494c;
   }
 
   span {
     display: flex;
-    justify-content: space-around;
+    justify-content: right;
+    margin: 5px;
   }
+  span:last-child {
+    font-weight: 450;
+  }
+`;
+
+export const DisplayF = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Title = styled.div`
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+`;
+
+export const Section = styled.div`
+  width: 100%;
 `;
