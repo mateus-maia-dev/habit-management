@@ -12,8 +12,6 @@ import CreateHabit from "../../components/CreateHabit/index";
 import jwtDecode from "jwt-decode";
 
 import OneGroup from "../../components/OneGroup";
-import ActivityDelete from "../../components/ActivityDelete/ActivityDelete";
-import ActivityUpdate from "../../components/AcitivityUpdate/ActivityUpdate";
 
 const Dashboard = () => {
   const [groupID, setGroupID] = useState(null);
@@ -78,8 +76,6 @@ const Dashboard = () => {
       <Container>
         <HabitsList items={userPersonalHabits} />
         <CreateHabit />
-        <ActivityDelete/>
-        <ActivityUpdate/>
         <OneGroup />
       </Container>
     </>
