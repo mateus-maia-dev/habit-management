@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import { useState, useEffect } from "react";
+=======
+import { useEffect, useState } from "react";
+>>>>>>> 2144f8758773e2a9dbc1b981db9fd07a6d8971a6
 import { useSelector } from "react-redux";
+import api from "../../services/api";
 
 import { Container } from "./style";
 
@@ -8,6 +13,7 @@ import { requestHabitThunk } from "../../store/modules/habitReduce/thunk";
 
 import HabitsList from "../../components/PersonalHabits/HabitsList";
 import CreateHabit from "../../components/CreateHabit/index";
+import jwtDecode from "jwt-decode";
 
 import jwt_decoded from "jwt-decode";
 import api from "../../services/api";
@@ -38,6 +44,9 @@ const Dashboard = () => {
     (state) => state.changeHabitReduce.userData
   );
 
+  const token = useSelector((state) => state.signInReducer.token);
+  const decoded = jwtDecode(token);
+
   const changeReduce = useSelector((state) => state.changeHabitReduce.change);
 
   useEffect(() => {
@@ -48,7 +57,6 @@ const Dashboard = () => {
 
   useEffect(() => {
     dispatch(requestHabitThunk());
-    // eslint-disable-next-line
   }, [changeReduce]);
 
   return (
