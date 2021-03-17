@@ -1,4 +1,4 @@
-import { CardContainer, ContentCard } from "./CardStyle";
+import { CardContainer, ContentButtons, ContentCard } from "./CardStyle";
 import UpdateHabit from "../UpdateHabit/index";
 import Button from "../Buttons";
 
@@ -10,8 +10,8 @@ const HabitsCard = ({ item }) => {
 
   return (
     <CardContainer>
+      <h2>{item.title}</h2>
       <ContentCard>
-        <h2>{item.title}</h2>
         <div>
           <p>Dificuldade:</p>
           <p>{item.difficulty}</p>
@@ -21,10 +21,15 @@ const HabitsCard = ({ item }) => {
           <p>{item.frequency}</p>
         </div>
       </ContentCard>
-      <UpdateHabit id={item.id} />
-      <Button icon="delete" onClick={() => dispatch(deleteHabitThunk(item.id))}>
-        Excluir
-      </Button>
+      <ContentButtons>
+        <UpdateHabit id={item.id} />
+        <Button
+          icon="delete"
+          onClick={() => dispatch(deleteHabitThunk(item.id))}
+        >
+          Excluir
+        </Button>
+      </ContentButtons>
     </CardContainer>
   );
 };

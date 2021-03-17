@@ -9,6 +9,7 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  padding-top: 60px;
 `;
 
 export const HeaderLine = styled.div`
@@ -18,7 +19,6 @@ export const HeaderLine = styled.div`
   align-items: center;
   margin: 20px 0px 5px 8px;
   flex-direction: column;
-  padding-top: 60px;
 
   @media (min-width: 400px) {
     width: 80%;

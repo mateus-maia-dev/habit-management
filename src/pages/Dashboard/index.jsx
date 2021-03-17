@@ -12,11 +12,7 @@ import CreateHabit from "../../components/CreateHabit/index";
 import jwtDecode from "jwt-decode";
 
 import GroupList from "../../components/Groups/GroupList";
-<<<<<<< HEAD
-import Button from "../../components/Buttons/styles";
-=======
-import OneGroup from "../../components/OneGroup";
->>>>>>> develop
+import Button from "../../components/Buttons/index";
 
 const Dashboard = () => {
   const [groupID, setGroupID] = useState(null);
@@ -67,7 +63,6 @@ const Dashboard = () => {
   }, [changeReduce]);
 
   return (
-<<<<<<< HEAD
     <div className="bgGuitar">
       <Container>
         <HeaderLine>
@@ -76,29 +71,14 @@ const Dashboard = () => {
         </HeaderLine>
         <HabitsList items={userPersonalHabits} />
 
-        <GroupList />
+        <HeaderLine>
+          <h1>MEUS GRUPOS</h1>
+          <Button icon="add">Pesquisar grupos</Button>
+        </HeaderLine>
+
+        {/* <GroupList /> */}
       </Container>
     </div>
-=======
-    <>
-      <div>
-        {userGroup ? (
-          <div>Você faz parte do grupo de {userGroup.name}</div>
-        ) : (
-          <>
-            <div>Você não faz parte de nenhum grupo.</div>
-            <button>Ver grupos disponíveis</button>
-          </>
-        )}
-      </div>
-      <Container>
-        <HabitsList items={userPersonalHabits} />
-        <CreateHabit />
-        <GroupList />
-        <OneGroup />
-      </Container>
-    </>
->>>>>>> develop
   );
 };
 

@@ -1,23 +1,16 @@
 import styled from "styled-components";
 
 export const ButtonStyled = styled.button`
-  margin: 0;
-  padding: 0;
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 0px;
+  background-color: #d5d5d5;
+  padding: 5px;
+  border-radius: 5px;
 
-  button {
-    background-color: white;
-    width: 120px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: auto;
-    border: 0px;
+  &:hover {
     background-color: #f6f6f6;
-    padding: 5px;
-    border-radius: 5px;
-
-    &:hover {
-      background-color: #d5d5d5;
-    }
   }
 `;
