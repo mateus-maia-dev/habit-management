@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import api from "../../services/api";
 
-import { Container, HeaderLine } from "./style";
+import { Container, HeaderLine, CardContainer, ContentCard } from "./style";
 
 import { useDispatch } from "react-redux";
 import { requestHabitThunk } from "../../store/modules/habitReduce/thunk";
@@ -30,6 +31,9 @@ const Dashboard = () => {
   const getGroups = () => {
     api.get("/groups/").then((response) => setGroups(response.data.results));
   };
+  const [myGroup, setMyGroup] = useState("");
+
+  const history = useHistory();
 
   const handleUserData = () => {
     api
@@ -40,6 +44,8 @@ const Dashboard = () => {
       })
       .then((response) => setUserData(response.data));
   };
+
+  console.log("myGroup", myGroup);
 
   const userPersonalHabits = useSelector(
     (state) => state.changeHabitReduce.userData
@@ -57,6 +63,18 @@ const Dashboard = () => {
   useEffect(() => {
     dispatch(requestHabitThunk());
   }, [changeReduce]);
+
+  useEffect(() => {
+    userData.group &&
+      api
+        .get(`/groups/${userData.group}/`, {
+          headers: {
+            Authorization: `Bearer ${token.token}`,
+          },
+        })
+        .then((response) => setMyGroup(response.data));
+    // eslint-disable-next-line
+  }, [userData]);
 
   return (
     // <Container>
@@ -76,10 +94,23 @@ const Dashboard = () => {
 
         <HeaderLine>
           <h1>MEUS GRUPOS</h1>
-          {userData.group && <div>{userData.group}</div>}
-          {!userData.group && <div>Nao Tem Grupo</div>}
-          <Button icon="add">Pesquisar grupos</Button>
+
+          <button onClick={() => history.push("/groups")}>
+            Pesquisar grupos
+          </button>
         </HeaderLine>
+
+        {userData.group && (
+          <CardContainer>
+            <ContentCard>
+              <h2>{myGroup.name}</h2>
+              <p>{myGroup.description}</p>
+              <p>{myGroup.users.length} usuários</p>
+              <p>{myGroup.goals.length} metas</p>
+            </ContentCard>
+          </CardContainer>
+        )}
+        {!userData.group && <div>Nao Tem Grupo</div>}
 
         {/* <GroupList /> */}
       </Container>
