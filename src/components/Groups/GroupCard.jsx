@@ -1,12 +1,9 @@
 import { CardContainer, ContentCard } from "./CardStyle";
-import { useDispatch } from "react-redux";
-import { getOneGroupThunk } from "../../store/modules/getOneGroup/thunk";
-import { useHistory } from "react-router-dom";
+// import { useDispatch } from "react-redux";
+// import { getOneGroupThunk } from "../../store/modules/getOneGroup/thunk";
+// import { useHistory } from "react-router-dom";
 
-const GroupCard = ({ item }) => {
-  const dispatch = useDispatch();
-  const history = useHistory();
-
+const GroupCard = ({ item, handleId }) => {
   return (
     <CardContainer>
       <ContentCard>
@@ -15,9 +12,7 @@ const GroupCard = ({ item }) => {
         <h3>{item.description}</h3>
       </ContentCard>
 
-      <button onClick={() => dispatch(getOneGroupThunk(item.id, history))}>
-        Mais informacoes
-      </button>
+      <button onClick={() => handleId(item.id)}>Mais informacoes</button>
     </CardContainer>
   );
 };

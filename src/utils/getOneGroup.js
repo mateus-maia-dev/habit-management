@@ -1,6 +1,6 @@
 import api from "../services/api";
 
-export const getOneGroup = (id, dispatch, habitAction, history) => {
+export const getOneGroup = (id, setUserData, showOneGroup, setShowOneGroup) => {
   const token = localStorage.getItem("token");
   api
     .get(`/groups/${id}/`, {
@@ -8,7 +8,8 @@ export const getOneGroup = (id, dispatch, habitAction, history) => {
         Authorization: `Bearer ${token}`,
       },
     })
-    .then((response) => dispatch(habitAction(response.data)))
-    .then(() => history.push("/onegroup"))
+    .then((response) => setUserData(response.data))
+    .then(() => setShowOneGroup(!showOneGroup))
+    //.then(() => history.push("/onegroup"))
     .catch((e) => console.log(e));
 };

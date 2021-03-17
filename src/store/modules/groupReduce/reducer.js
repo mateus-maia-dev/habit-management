@@ -11,7 +11,7 @@ const groupIDReducer = (state = defaulState, action) => {
     case groupRequestType:
       const { group } = action;
       return (state = {
-        groupData: [...group.results],
+        groupData: group.results,
         change: change,
       });
 

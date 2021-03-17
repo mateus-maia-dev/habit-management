@@ -9,10 +9,9 @@ import {
   Title,
 } from "./styles";
 
-import { useHistory } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 import { Doughnut } from "react-chartjs-2";
-import { useSelector } from "react-redux";
 
 const data = {
   labels: [],
@@ -25,18 +24,27 @@ const data = {
   ],
 };
 
-const OneGroup = () => {
-  const history = useHistory();
+const OneGroup = ({ userData, showOneGroup, setShowOneGroup }) => {
+  //const [userData, setUserData] = useState([]);
 
-  const groupData =
-    useSelector((state) => state.getOneGroupReducer.groupData) || {};
-  const activities = groupData.activities;
-  const goals = groupData.goals;
+  useEffect(() => {
+    //getOneGroup(userId);new Date(item.realization_time
+  }, []);
+
+  const activities = userData.activities.map((item) => ({
+    group: item.group,
+    id: item.id,
+    realization_time: new Date(item.realization_time).toDateString(),
+    title: item.title,
+  }));
+
+  // console.log(activities);
+  // console.log(userData);
 
   return (
     <div className="bgBand">
       <Title>
-        <h1>gruop.name</h1>
+        <h1>{userData.name}</h1>
       </Title>
       <DisplayF>
         <Graph>
@@ -53,9 +61,9 @@ const OneGroup = () => {
             <CardContainer>
               <CardHeader>
                 <h5>
-                  group.users.length <span>inscritos</span>
+                  {userData.users.length} <span>inscritos</span>
                 </h5>
-                <p>{groupData}.description</p>
+                <p>{userData.description}</p>
               </CardHeader>
             </CardContainer>
           </span>
@@ -68,13 +76,14 @@ const OneGroup = () => {
               <CardHeader>
                 <h2>Atividades Realizadas</h2>
               </CardHeader>
-              <CardList>
-                <p>goal.title </p>
-                <span>
-                  <p>Dificuldade:</p>
-                  <p>realization_time </p>
-                </span>
-              </CardList>
+              {activities.map((item, index) => (
+                <CardList key={index}>
+                  <p>{item.title}</p>
+                  <span>
+                    <p>{item.realization_time}</p>
+                  </span>
+                </CardList>
+              ))}
             </CardContainer>
           </span>
         </PageWrapper2>
@@ -83,23 +92,24 @@ const OneGroup = () => {
           <span>
             <CardContainer>
               <CardHeader>
-                <h2>metas</h2>
+                <h2>Metas</h2>
               </CardHeader>
-              <CardList>
-                <p>goal.title </p>
-                <span>
-                  <p>Dificuldade:</p>
-                  <p>goal.difficulty </p>
-                </span>
-                <span>
-                  <p>Progresso: </p>
-                  <p>goal.how_much_achieved</p>
-                </span>
-              </CardList>
+              {userData.goals.map((item, index) => (
+                <CardList key={index}>
+                  <p>{item.title}</p>
+                  <span>
+                    <p>Dificuldade: {item.difficulty}</p>
+                  </span>
+                  <span>
+                    <p>Progresso: {item.how_much_achieved}</p>
+                  </span>
+                </CardList>
+              ))}
             </CardContainer>
           </span>
         </PageWrapper2>
       </DisplayF>
+      <button onClick={() => setShowOneGroup(!showOneGroup)}>Voltar</button>
     </div>
   );
 };
