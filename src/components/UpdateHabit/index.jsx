@@ -1,5 +1,6 @@
 import SimpleModal from "../SimpleModal";
 import FormUpdateHabit from "./FormUpdateHabit/FormUpdateHabit";
+
 const UpdateHabit = ({ id }) => {
   return (
     <>

@@ -11,6 +11,7 @@ export const signInThunk = (userData, history, setOpen) => (dispatch) => {
       dispatch(singInAction(response.data.access));
     })
     .then(() => dispatch(requestHabitThunk()))
+
     .then(() => history.push("/dashboard"))
     .catch((err) => {
       if (err.response.status !== 200) {
