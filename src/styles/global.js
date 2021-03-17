@@ -79,12 +79,18 @@ export default createGlobalStyle`
 
   &.bgGuitar{
     background-image: url(${guitar});
-    background-position: right;
+    /* background-position: right;
     background-size: cover;
-    padding-top: 60px; // para descontar a altura do Header
+    padding-top: 0px; // para descontar a altura do Header
     height: 100vh;
-    margin: auto;
+    margin: auto; */
     width: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: right;
+    margin: auto;
+
 
         @media (min-width: 768px) {
             width: 80%;

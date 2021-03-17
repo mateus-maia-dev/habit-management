@@ -18,6 +18,7 @@ export const HeaderLine = styled.div`
   align-items: center;
   margin: 20px 0px 5px 8px;
   flex-direction: column;
+  padding-top: 60px;
 
   @media (min-width: 400px) {
     width: 80%;

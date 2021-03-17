@@ -7,5 +7,5 @@ import groupIDReducer from "./groupReduce/reducer";
 export default combineReducers({
   signInReducer,
   changeHabitReduce,
-  groupIDReducer
+  groupIDReducer,
 });

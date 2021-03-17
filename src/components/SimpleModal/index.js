@@ -62,7 +62,6 @@ export default function SimpleModal({ children, buttonText, icon }) {
         </>
       ) : (
         <>
-          {" "}
           <ButtonStyled type="button" onClick={handleOpen}>
             {buttonText}
           </ButtonStyled>
