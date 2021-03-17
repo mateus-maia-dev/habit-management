@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import { useState, useEffect } from "react";
-=======
-import { useEffect, useState } from "react";
->>>>>>> 2144f8758773e2a9dbc1b981db9fd07a6d8971a6
 import { useSelector } from "react-redux";
 import api from "../../services/api";
 
@@ -16,7 +12,6 @@ import CreateHabit from "../../components/CreateHabit/index";
 import jwtDecode from "jwt-decode";
 
 import jwt_decoded from "jwt-decode";
-import api from "../../services/api";
 
 //import GroupList from "../../components/Groups/GroupList";
 
@@ -43,9 +38,6 @@ const Dashboard = () => {
   const userPersonalHabits = useSelector(
     (state) => state.changeHabitReduce.userData
   );
-
-  const token = useSelector((state) => state.signInReducer.token);
-  const decoded = jwtDecode(token);
 
   const changeReduce = useSelector((state) => state.changeHabitReduce.change);
 
