@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import api from "../../services/api";
 
-import { Container } from "./style";
+import { Container, HeaderLine } from "./style";
 
 import { useDispatch } from "react-redux";
 import { requestHabitThunk } from "../../store/modules/habitReduce/thunk";
@@ -12,7 +12,7 @@ import CreateHabit from "../../components/CreateHabit/index";
 import jwtDecode from "jwt-decode";
 
 import GroupList from "../../components/Groups/GroupList";
-import OneGroup from "../../components/OneGroup";
+import Button from "../../components/Buttons/index";
 
 const Dashboard = () => {
   const [groupID, setGroupID] = useState(null);
@@ -63,24 +63,22 @@ const Dashboard = () => {
   }, [changeReduce]);
 
   return (
-    <>
-      <div>
-        {userGroup ? (
-          <div>Você faz parte do grupo de {userGroup.name}</div>
-        ) : (
-          <>
-            <div>Você não faz parte de nenhum grupo.</div>
-            <button>Ver grupos disponíveis</button>
-          </>
-        )}
-      </div>
+    <div className="bgGuitar">
       <Container>
+        <HeaderLine>
+          <h1>MEUS HÁBITOS</h1>
+          <CreateHabit />
+        </HeaderLine>
         <HabitsList items={userPersonalHabits} />
-        <CreateHabit />
-        <GroupList />
-        <OneGroup />
+
+        <HeaderLine>
+          <h1>MEUS GRUPOS</h1>
+          <Button icon="add">Pesquisar grupos</Button>
+        </HeaderLine>
+
+        {/* <GroupList /> */}
       </Container>
-    </>
+    </div>
   );
 };
 
