@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import api from "../../services/api";
 
 import { Container } from "./style";
 
@@ -8,9 +9,9 @@ import { requestHabitThunk } from "../../store/modules/habitReduce/thunk";
 
 import HabitsList from "../../components/PersonalHabits/HabitsList";
 import CreateHabit from "../../components/CreateHabit/index";
+import jwtDecode from "jwt-decode";
 
 import jwt_decoded from "jwt-decode";
-import api from "../../services/api";
 
 //import GroupList from "../../components/Groups/GroupList";
 
@@ -48,7 +49,6 @@ const Dashboard = () => {
 
   useEffect(() => {
     dispatch(requestHabitThunk());
-    // eslint-disable-next-line
   }, [changeReduce]);
 
   return (
