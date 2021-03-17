@@ -19,11 +19,17 @@ const Dashboard = () => {
   const dispatch = useDispatch();
 
   const [userData, setUserData] = useState([]);
+  const [groups, setGroups] = useState([]);
+
+  console.log(groups);
 
   const token = useSelector((state) => state.signInReducer);
   const decoded = jwt_decoded(token.token);
   // console.log(userData);
-  console.log(decoded.user_id);
+
+  const getGroups = () => {
+    api.get("/groups/").then((response) => setGroups(response.data.results));
+  };
 
   const handleUserData = () => {
     api
@@ -44,6 +50,7 @@ const Dashboard = () => {
   useEffect(() => {
     dispatch(requestHabitThunk());
     handleUserData();
+    getGroups();
     // eslint-disable-next-line
   }, []);
 
