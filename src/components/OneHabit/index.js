@@ -1,18 +1,16 @@
-import { CardContainer, CardList, PageWrapper, Graph } from "./styles";
+import {
+  CardContainer,
+  CardList,
+  PageWrapper,
+  Graph,
+  CardHeader,
+  Title,
+  DisplayF,
+  Section,
+} from "./styles";
 import api from "../../services/api";
 import { useEffect, useState } from "react";
 import { Doughnut } from "react-chartjs-2";
-
-const data = {
-  labels: [],
-  datasets: [
-    {
-      data: [70, 30],
-      backgroundColor: ["#bc494c", "#494f56"],
-      hoverBackgroundColor: [],
-    },
-  ],
-};
 
 const token = localStorage.getItem("token");
 
@@ -21,7 +19,7 @@ const OneHabit = () => {
 
   const getOneHabit = () => {
     api
-      .get("/habits/1/", {
+      .get("/habits/473/", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -34,35 +32,67 @@ const OneHabit = () => {
     getOneHabit();
   }, []);
 
+  const data = {
+    labels: [],
+    datasets: [
+      {
+        data: [
+          Number(habit.how_much_achieved),
+          100 - Number(habit.how_much_achieved),
+        ],
+        backgroundColor: ["#bc494c", "#494f56"],
+        hoverBackgroundColor: [],
+      },
+    ],
+  };
   //   console.log(habit);
 
   return (
-    <PageWrapper>
-      <h1>{habit.title}</h1>
-      <span>
-        <CardContainer>
-          <CardList>
+    <div className="bgBand">
+      <Title>
+        <h1>{habit.title}</h1>
+      </Title>
+      <DisplayF>
+        <Section>
+          <Graph>
+            <Doughnut data={data} />
+            <br></br>
             <span>
-              <p>Dificuldade:</p>
-              <p>{habit.difficulty} </p>
+              <h3>
+                Progresso: <span>{habit.how_much_achieved}%</span>
+              </h3>
             </span>
+          </Graph>
+        </Section>
+        <PageWrapper>
+          <span>
+            <CardContainer>
+              <CardHeader>
+                <h2>Descrição</h2>
+              </CardHeader>
+              <CardList>
+                <span>
+                  <p>Dificuldade:&nbsp; </p>
+                  <p>{habit.difficulty} </p>
+                </span>
 
-            <span>
-              <p>Frequência:</p>
-              <p>{habit.frequency} </p>
-            </span>
-            <span>
-              <p>Progresso: </p>
-              <p>{habit.achieved}</p>
-            </span>
-          </CardList>
-        </CardContainer>
-
-        <Graph>
-          <Doughnut data={data} />
-        </Graph>
-      </span>
-    </PageWrapper>
+                <span>
+                  <p>Frequência:&nbsp; </p>
+                  <p>{habit.frequency} </p>
+                </span>
+                <span>
+                  <p>Concluída:&nbsp; </p>
+                  <p>{habit.achieved ? "Sim" : "Não"}</p>
+                </span>
+              </CardList>
+            </CardContainer>
+            <CardContainer>
+              <button>Editar Atividade</button>
+            </CardContainer>
+          </span>
+        </PageWrapper>
+      </DisplayF>
+    </div>
   );
 };
 
