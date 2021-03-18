@@ -20,18 +20,19 @@ const Dashboard = () => {
   const dispatch = useDispatch();
 
   const [userData, setUserData] = useState([]);
-  const [groups, setGroups] = useState([]);
-
-  console.log(groups);
+  // const [groups, setGroups] = useState([]);
+  const [myGroup, setMyGroup] = useState([]);
+  console.log(userData);
+  console.log(myGroup);
 
   const token = useSelector((state) => state.signInReducer);
   const decoded = jwt_decoded(token.token);
+  // console.log(myGroup);
   // console.log(userData);
 
-  const getGroups = () => {
-    api.get("/groups/").then((response) => setGroups(response.data.results));
-  };
-  const [myGroup, setMyGroup] = useState("");
+  // const getGroups = () => {
+  //   api.get("/groups/").then((response) => setGroups(response.data.results));
+  // };
 
   const history = useHistory();
 
@@ -45,34 +46,44 @@ const Dashboard = () => {
       .then((response) => setUserData(response.data));
   };
 
-  console.log("myGroup", myGroup);
-
   const userPersonalHabits = useSelector(
     (state) => state.changeHabitReduce.userData
   );
 
   const changeReduce = useSelector((state) => state.changeHabitReduce.change);
 
+  async function getUserGroup() {
+    await api
+      .get(`/groups/${userData.group}/`, {
+        headers: {
+          Authorization: `Bearer ${token.token}`,
+        },
+      })
+      .then((response) => setMyGroup(response.data));
+  }
+
   useEffect(() => {
+    console.log("entrou1");
     dispatch(requestHabitThunk());
     handleUserData();
-    getGroups();
+    console.log(userData.group);
     // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
+    console.log("entrou2");
     dispatch(requestHabitThunk());
   }, [changeReduce]);
 
   useEffect(() => {
-    userData.group &&
-      api
-        .get(`/groups/${userData.group}/`, {
-          headers: {
-            Authorization: `Bearer ${token.token}`,
-          },
-        })
-        .then((response) => setMyGroup(response.data));
+    console.log("entrou3");
+    console.log(userData.group);
+    console.log(myGroup.length);
+    if (!!userData.group) {
+      console.log("entrou!");
+      getUserGroup();
+    }
+
     // eslint-disable-next-line
   }, [userData]);
 
@@ -100,17 +111,18 @@ const Dashboard = () => {
           </button>
         </HeaderLine>
 
-        {userData.group && (
+        {userData.group ? (
           <CardContainer>
             <ContentCard>
               <h2>{myGroup.name}</h2>
               <p>{myGroup.description}</p>
-              <p>{myGroup.users.length} usuários</p>
-              <p>{myGroup.goals.length} metas</p>
+              {/* <p>{myGroup.users.length} usuários</p>
+              <p>{myGroup.goals.length} metas</p> */}
             </ContentCard>
           </CardContainer>
+        ) : (
+          <div>Nao Tem Grupo</div>
         )}
-        {!userData.group && <div>Nao Tem Grupo</div>}
 
         {/* <GroupList /> */}
       </Container>
