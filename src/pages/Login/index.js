@@ -1,12 +1,12 @@
 import FormLogin from "../../components/FormLogin";
-import { Background } from "../Login/styles";
+import { Background, ImgLogin } from "../Login/styles";
 const Login = () => {
   return (
-    <div className="bgMusician">
+    <ImgLogin>
       <Background>
         <FormLogin />
       </Background>
-    </div>
+    </ImgLogin>
   );
 };
 

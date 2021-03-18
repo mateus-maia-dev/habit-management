@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import guitarfhd2 from "../../images/guitarfhd2.png";
 
 export const Container = styled.div`
   width: 90%;
@@ -84,4 +85,15 @@ export const ContentCard = styled.div`
 
     color: #282c34;
   }
+`;
+
+export const ImgDashboard = styled.div`
+  background-image: url(${guitarfhd2});
+  width: 100%;
+  max-width: 1400px;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: right;
+  margin: auto;
 `;

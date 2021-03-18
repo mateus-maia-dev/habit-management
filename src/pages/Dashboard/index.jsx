@@ -4,7 +4,13 @@ import { useHistory } from "react-router-dom";
 import api from "../../services/api";
 import { userGroupRequestThunk } from "../../store/modules/groupReduce/thunk";
 
-import { Container, HeaderLine, CardContainer, ContentCard } from "./style";
+import {
+  Container,
+  HeaderLine,
+  CardContainer,
+  ContentCard,
+  ImgDashboard,
+} from "./style";
 
 import { useDispatch } from "react-redux";
 import { requestHabitThunk } from "../../store/modules/habitReduce/thunk";
@@ -94,7 +100,7 @@ const Dashboard = () => {
     //   {userData.group && <div>Tem Grupo</div>}
     //   {!userData.group && <div>Nao Tem Grupo</div>}
     // </Container>
-    <div className="bgGuitar">
+    <ImgDashboard>
       <Container>
         <HeaderLine>
           <h1>MEUS HÁBITOS</h1>
@@ -110,24 +116,25 @@ const Dashboard = () => {
           </button>
         </HeaderLine>
 
-        {userData.group ? (
+        {/* {userData.group && (
           <CardContainer>
             <ContentCard>
               <h2>{myGroup.name}</h2>
               <p>{myGroup.description}</p>
-              {/* <p>{myGroup.users.length} usuários</p>
-              <p>{myGroup.goals.length} metas</p> */}
+              <p>{myGroup.users && myGroup.users.length} usuários</p>
+              <p>{myGroup.goals && myGroup.goals.length} metas</p>
             </ContentCard>
           </CardContainer>
         ) : (
           <div>Nao Tem Grupo</div>
         )}
+        {!userData.group && <div>Nao Tem Grupo</div>} */}
 
         {/* <GroupList /> */}
         {/* <CreateHabit /> */}
         {/* <OneGroup /> */}
       </Container>
-    </div>
+    </ImgDashboard>
   );
 };
 

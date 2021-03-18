@@ -1,6 +1,14 @@
 import { useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
-import { Container, Menu, Navigation, AsideBar, Icon } from "./styles";
+import {
+  Container,
+  Menu,
+  Navigation,
+  AsideBar,
+  ButtonsContainer,
+  LinksContainer,
+  Link,
+} from "./styles";
 import { useHistory } from "react-router-dom";
 
 export const UserBar = ({ open, setOpen }) => {
@@ -9,8 +17,9 @@ export const UserBar = ({ open, setOpen }) => {
   const history = useHistory();
 
   const handleLogout = () => {
-    history.push("/");
     localStorage.clear();
+    history.push("/");
+    window.location.reload();
   };
 
   return (
@@ -22,18 +31,22 @@ export const UserBar = ({ open, setOpen }) => {
       </Container>
       <AsideBar input={open}>
         <Navigation>
-          <li>
-            <a href="/dashboard">Meus hábitos</a>
-          </li>
-          <li>
-            <a href="/configuration">Configuração</a>
-          </li>
-          <li>
-            <a href="/" onClick={() => handleLogout()}>
-              Sair
-            </a>
-          </li>
+          <LinksContainer>
+            <Link>
+              <a href="/configuration">Minha Conta</a>
+            </Link>
+            <Link>
+              <a href="/dashboard">Home</a>
+            </Link>
+            <Link>
+              <a href="/groups">Grupos</a>
+            </Link>
+          </LinksContainer>
         </Navigation>
+
+        <ButtonsContainer>
+          <button onClick={() => handleLogout()}>Sair</button>
+        </ButtonsContainer>
       </AsideBar>
     </>
   );

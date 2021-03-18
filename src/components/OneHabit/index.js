@@ -86,11 +86,11 @@ const OneHabit = () => {
                 </span>
               </CardList>
             </CardContainer>
-            <CardContainer>
-              <button>Editar Atividade</button>
-            </CardContainer>
           </span>
         </PageWrapper>
+        <div className="btn">
+          <button>Editar Atividade</button>
+        </div>
       </DisplayF>
     </div>
   );

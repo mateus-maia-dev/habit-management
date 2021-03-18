@@ -1,11 +1,13 @@
 import UpdateUserConfiguration from "../../components/UpdateUserConfiguration/index";
-import { Background } from "./style.js";
+import { Background, ImgConf } from "./style.js";
 
 const UserConfiguration = () => {
   return (
-    <Background>
-      <UpdateUserConfiguration />
-    </Background>
+    <ImgConf>
+      <Background>
+        <UpdateUserConfiguration />
+      </Background>
+    </ImgConf>
   );
 };
 

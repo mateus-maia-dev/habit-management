@@ -1,9 +1,8 @@
-import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { FormWrapper } from "./styles";
+import { FormWrapper, ButtonForm } from "./styles";
 import api from "../../services/api";
 import { useHistory } from "react-router-dom";
 
@@ -33,50 +32,41 @@ const FormRegistro = () => {
   return (
     <FormWrapper>
       <form onSubmit={handleSubmit(handleData)}>
-        <p>REGISTRAR</p>
-        <TextField
+        <p>CRIAR USUÁRIO</p>
+        <input
           className="inputBox"
           variant="outlined"
-          label="nome de usuário"
+          placeholder="nome de usuário"
           name="username"
           type="text"
           size="small"
-          inputRef={register}
-          helperText={errors.username?.message}
-          error={!!errors.username}
+          ref={register}
         />
-        <TextField
+        {errors.username && <span>{errors.username.message}</span>}
+        <input
           className="inputBox"
           variant="outlined"
-          label="Email"
+          placeholder="email"
           name="email"
           type="email"
           size="small"
-          inputRef={register}
-          helperText={errors.email?.message}
-          error={!!errors.email}
+          ref={register}
         />
-        <TextField
+        {errors.email && <span>{errors.email.message}</span>}
+        <input
           className="inputBox"
           variant="outlined"
-          label="senha"
+          placeholder="senha"
           name="password"
           type="password"
           size="small"
-          inputRef={register}
-          helperText={errors.password?.message}
-          error={!!errors.password}
+          ref={register}
         />
-
+        {errors.password && <span>{errors.password.message}</span>}
         <div>
-          <Button
-            variant="contained"
-            color="default"
-            size="small"
-            type="submit"
-          >
-            enviar
-          </Button>
+          <ButtonForm bgColor="#bebebe" btnWidth="100px" type="submit">
+            registrar
+          </ButtonForm>
         </div>
       </form>
     </FormWrapper>

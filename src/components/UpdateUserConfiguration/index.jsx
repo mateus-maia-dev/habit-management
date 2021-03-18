@@ -3,7 +3,7 @@ import Button from "@material-ui/core/Button";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { FormWrapper } from "./styles";
+import { FormWrapper, ButtonForm } from "./styles";
 import api from "../../services/api";
 import { useHistory } from "react-router-dom";
 
@@ -35,26 +35,20 @@ const FormRegistro = () => {
     <FormWrapper>
       <form onSubmit={handleSubmit(handleData)}>
         <p>Alterar Nome</p>
-        <TextField
+        <input
           className="inputBox"
           variant="outlined"
-          label="nome de usuário"
+          placeholder="nome de usuário"
           name="username"
           type="text"
           size="small"
-          inputRef={register}
-          helperText={errors.username?.message}
-          error={!!errors.username}
+          ref={register}
         />
+        {errors.username && <span>{errors.username.message}</span>}
         <div>
-          <Button
-            variant="contained"
-            color="default"
-            size="small"
-            type="submit"
-          >
-            enviar
-          </Button>
+          <ButtonForm type="submit" bgColor="#bebebe" btnWidth="100px">
+            alterar
+          </ButtonForm>
         </div>
       </form>
     </FormWrapper>

@@ -5,14 +5,23 @@ export const Container = styled.div`
   width: 35px;
   height: 30px;
   position: absolute;
-  right: 40px;
+  right: 20px;
   cursor: pointer;
+  top: 20px;
+
+  @media (min-width: 375px) {
+    right: 40px;
+  }
+
+  @media (min-width: 768px) {
+    right: 80px;
+  }
 `;
 
 export const Bar = styled.div`
   height: 5px;
   width: 100%;
-  background-color: #b81568;
+  background-color: #bc494c;
   display: block;
   border-radius: 5px;
   transition: 0.3s ease;
@@ -47,8 +56,9 @@ export const LinksContainer = styled.ul`
   padding: 16px 0;
   display: flex;
   flex-direction: column;
-  height: 200px;
-  justify-content: space-evenly;
+  height: 150px;
+  padding-top: 100px;
+  justify-content: center;
 
   li:first-child {
     height: 32px;
@@ -56,8 +66,8 @@ export const LinksContainer = styled.ul`
 `;
 
 export const Link = styled.li`
-  /* list-style: none;
-  padding: 16px 0; */
+  list-style: none;
+  margin: 10px;
   border-bottom: 2px solid;
   height: 60px;
 
@@ -67,7 +77,7 @@ export const Link = styled.li`
 `;
 
 export const AsideMenu = styled.div`
-  z-index: 1;
+  z-index: 999;
   width: 220px;
   height: 780px;
   position: fixed;
@@ -76,7 +86,7 @@ export const AsideMenu = styled.div`
   display: flex;
   justify-content: center;
 
-  background-color: #b81568;
+  background-color: #bc494c;
 
   transition: 0.3s ease;
 
@@ -99,14 +109,14 @@ export const ButtonsContainer = styled.div`
     height: 40px;
     font-size: 1.3rem;
     font-weight: 500;
-    background-color: #d25380;
+    background-color: black;
     color: white;
     cursor: pointer;
-  }
-
-  button:nth-child(2) {
-    background-color: black;
     border: none;
+
+    &:hover {
+      background-color: gray;
+    }
   }
 `;
 
@@ -114,7 +124,7 @@ export const ContainerNav = styled.div`
   z-index: 2;
   display: flex;
   flex-direction: column;
-  padding-top: 82px;
+  padding-top: 0px;
 
   width: 216px;
 
