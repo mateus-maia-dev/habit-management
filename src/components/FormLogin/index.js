@@ -32,6 +32,10 @@ const FormLogin = () => {
     dispatch(signInThunk(data, history, setOpen));
   };
 
+  const handleClickRegister = () => {
+    history.push("/register");
+  };
+
   console.log(open);
 
   return (
@@ -39,6 +43,7 @@ const FormLogin = () => {
       <form onSubmit={handleSubmit(handleData)}>
         <p>LOGIN</p>
         <TextField
+          className="inputBox"
           variant="outlined"
           label="nome de usuário"
           name="username"
@@ -49,6 +54,7 @@ const FormLogin = () => {
           error={!!errors.username}
         />
         <TextField
+          className="inputBox"
           variant="outlined"
           label="senha"
           name="password"
@@ -58,10 +64,14 @@ const FormLogin = () => {
           helperText={errors.password?.message}
           error={!!errors.password}
         />
+        <br></br>
         <Button variant="contained" color="default" size="small" type="submit">
           enviar
         </Button>
-        <Button color="default">não possui uma conta?</Button>
+        <br></br>
+        <Button onClick={() => handleClickRegister()} color="default">
+          não possui uma conta?
+        </Button>
       </form>
       <Snackbars open={open} severity="error">
         Usuário ou Senha Incorreta

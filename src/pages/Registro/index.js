@@ -4,9 +4,11 @@ import { Background } from "./style.js";
 
 const Registro = () => {
   return (
-    <Background>
-      <FormRegistro />
-    </Background>
+    <div className="bgMusician">
+      <Background>
+        <FormRegistro />
+      </Background>
+    </div>
   );
 };
 export default Registro;
