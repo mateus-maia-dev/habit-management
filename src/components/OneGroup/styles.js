@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import band from "../../images/band.png";
 
 export const PageWrapper = styled.div`
   width: 300px;
@@ -114,7 +115,6 @@ export const DisplayF = styled.div`
 
 export const PageWrapper2 = styled.div`
   width: 300px;
-  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -146,4 +146,26 @@ export const PageWrapper2 = styled.div`
 export const Title = styled.div`
   width: 100%;
   text-align: center;
+  padding-top: 80px;
+`;
+
+export const ImgOnegruop = styled.div`
+  background-image: url(${band});
+  width: 100%;
+  max-width: 1400px;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  margin: auto;
+`;
+
+export const Heigth = styled.div`
+  height: 100vh;
+  text-align: center;
+
+  button {
+    margin-top: 30px;
+    padding: 10px 50px;
+  }
 `;

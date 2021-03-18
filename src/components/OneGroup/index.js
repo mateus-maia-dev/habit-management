@@ -7,6 +7,8 @@ import {
   DisplayF,
   PageWrapper2,
   Title,
+  ImgOnegruop,
+  Heigth,
 } from "./styles";
 
 import { useState, useEffect } from "react";
@@ -42,75 +44,77 @@ const OneGroup = ({ userData, showOneGroup, setShowOneGroup }) => {
   // console.log(userData);
 
   return (
-    <div className="bgBand">
-      <Title>
-        <h1>{userData.name}</h1>
-      </Title>
-      <DisplayF>
-        <Graph>
-          <Doughnut data={data} />
-          <br></br>
-          <span>
-            <h3>
-              Progresso:<span>14%</span>
-            </h3>
-          </span>
-        </Graph>
-        <PageWrapper>
-          <span>
-            <CardContainer>
-              <CardHeader>
-                <h5>
-                  {userData.users.length} <span>inscritos</span>
-                </h5>
-                <p>{userData.description}</p>
-              </CardHeader>
-            </CardContainer>
-          </span>
-        </PageWrapper>
-      </DisplayF>
-      <DisplayF>
-        <PageWrapper2>
-          <span>
-            <CardContainer>
-              <CardHeader>
-                <h2>Atividades Realizadas</h2>
-              </CardHeader>
-              {activities.map((item, index) => (
-                <CardList key={index}>
-                  <p>{item.title}</p>
-                  <span>
-                    <p>{item.realization_time}</p>
-                  </span>
-                </CardList>
-              ))}
-            </CardContainer>
-          </span>
-        </PageWrapper2>
+    <ImgOnegruop>
+      <Heigth>
+        <Title>
+          <h1>{userData.name}</h1>
+        </Title>
+        <DisplayF>
+          <Graph>
+            <Doughnut data={data} />
+            <br></br>
+            <span>
+              <h3>
+                Progresso:<span>14%</span>
+              </h3>
+            </span>
+          </Graph>
+          <PageWrapper>
+            <span>
+              <CardContainer>
+                <CardHeader>
+                  <h5>
+                    {userData.users.length} <span>inscritos</span>
+                  </h5>
+                  <p>{userData.description}</p>
+                </CardHeader>
+              </CardContainer>
+            </span>
+          </PageWrapper>
+        </DisplayF>
+        <DisplayF>
+          <PageWrapper2>
+            <span>
+              <CardContainer>
+                <CardHeader>
+                  <h2>Atividades Realizadas</h2>
+                </CardHeader>
+                {activities.map((item, index) => (
+                  <CardList key={index}>
+                    <p>{item.title}</p>
+                    <span>
+                      <p>{item.realization_time}</p>
+                    </span>
+                  </CardList>
+                ))}
+              </CardContainer>
+            </span>
+          </PageWrapper2>
 
-        <PageWrapper2>
-          <span>
-            <CardContainer>
-              <CardHeader>
-                <h2>Metas</h2>
-              </CardHeader>
-              {userData.goals.map((item, index) => (
-                <CardList key={index}>
-                  <p>{item.title}</p>
-                  <span>
-                    <p>Dificuldade: {item.difficulty}</p>
-                  </span>
-                  <span>
-                    <p>Progresso: {item.how_much_achieved}</p>
-                  </span>
-                </CardList>
-              ))}
-            </CardContainer>
-          </span>
-        </PageWrapper2>
-      </DisplayF>
-      <button onClick={() => setShowOneGroup(!showOneGroup)}>Voltar</button>
-    </div>
+          <PageWrapper2>
+            <span>
+              <CardContainer>
+                <CardHeader>
+                  <h2>Metas</h2>
+                </CardHeader>
+                {userData.goals.map((item, index) => (
+                  <CardList key={index}>
+                    <p>{item.title}</p>
+                    <span>
+                      <p>Dificuldade: {item.difficulty}</p>
+                    </span>
+                    <span>
+                      <p>Progresso: {item.how_much_achieved}</p>
+                    </span>
+                  </CardList>
+                ))}
+              </CardContainer>
+            </span>
+          </PageWrapper2>
+        </DisplayF>
+        <button onClick={() => setShowOneGroup(!showOneGroup)}>Voltar</button>
+      </Heigth>
+    </ImgOnegruop>
   );
 };
 

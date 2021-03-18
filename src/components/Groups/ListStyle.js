@@ -10,5 +10,4 @@ export const Container = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
 `;
