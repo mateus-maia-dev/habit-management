@@ -85,6 +85,26 @@ export const ContentCard = styled.div`
 
     color: #282c34;
   }
+
+  button {
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background: #f1f1f1;
+
+    text-align: center;
+    border-radius: 15px;
+    border: 0px;
+    color: #3a3a3a;
+    padding: 0 30px;
+    box-shadow: 0 3px 5px 2px rgb(0 0 0 / 30%);
+    font-size: 1rem;
+    margin: 6% 0% 2% 0;
+
+    cursor: pointer;
+  }
 `;
 
 export const ImgDashboard = styled.div`

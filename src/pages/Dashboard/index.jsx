@@ -14,33 +14,33 @@ import {
 import { useDispatch } from "react-redux";
 import { requestHabitThunk } from "../../store/modules/habitReduce/thunk";
 
+import { getOneHabit } from "../../utils/getOneHabit";
+import { getOneGroup } from "../../utils/getOneGroup";
+
 import HabitsList from "../../components/PersonalHabits/HabitsList";
 import CreateHabit from "../../components/CreateHabit/index";
 import jwt_decoded from "jwt-decode";
 
-//import GroupList from "../../components/Groups/GroupList";
-import GroupList from "../../components/Groups/GroupList";
-import Button from "../../components/Buttons/index";
+import Habit from "../Habit/index";
+import OneGroupPage from "../../components/OneGroupPage/index";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
+  const [userHabit, setUserHabit] = useState([]);
+  const [showOneHabit, setShowOneHabit] = useState(false);
+  const [showMygroup, setShowMygroup] = useState(false);
 
   const [userData, setUserData] = useState([]);
   const [groups, setGroups] = useState([]);
 
-  console.log(groups);
-
   const token = useSelector((state) => state.signInReducer);
   const decoded = jwt_decoded(token.token);
   // console.log(userData);
-
   const getGroups = () => {
     api.get("/groups/").then((response) => setGroups(response.data.results));
   };
   const [myGroup, setMyGroup] = useState("");
-
   const history = useHistory();
-
   const handleUserData = () => {
     api
       .get(`/users/${decoded.user_id}/`, {
@@ -50,8 +50,6 @@ const Dashboard = () => {
       })
       .then((response) => setUserData(response.data));
   };
-
-  console.log("myGroup", myGroup);
 
   const userPersonalHabits = useSelector(
     (state) => state.changeHabitReduce.userData
@@ -82,45 +80,66 @@ const Dashboard = () => {
     // eslint-disable-next-line
   }, [userData]);
 
+  const handleId = (id) => {
+    getOneHabit(id, setUserHabit, showOneHabit, setShowOneHabit);
+  };
+
+  const handleId2 = (id) => {
+    getOneGroup(id, setUserHabit, showMygroup, setShowMygroup);
+  };
+
   return (
-    // <Container>
-    //   <HabitsList items={userPersonalHabits} />
-    //   <CreateHabit />
-    //   {/* <GroupList /> */}
-    //   {userData.group && <div>Tem Grupo</div>}
-    //   {!userData.group && <div>Nao Tem Grupo</div>}
-    // </Container>
-    <ImgDashboard>
-      <Container>
-        <HeaderLine>
-          <h1>MEUS HÁBITOS</h1>
-          <CreateHabit />
-        </HeaderLine>
-        <HabitsList items={userPersonalHabits} />
+    <>
+      {!showOneHabit && (
+        <ImgDashboard>
+          <Container>
+            <HeaderLine>
+              <h1>MEUS HÁBITOS</h1>
+              <CreateHabit />
+            </HeaderLine>
+            <HabitsList items={userPersonalHabits} handleId={handleId} />
 
-        <HeaderLine>
-          <h1>MEUS GRUPOS</h1>
+            <HeaderLine>
+              <h1>MEUS GRUPOS</h1>
 
-          <button onClick={() => history.push("/groups")}>
-            Pesquisar grupos
-          </button>
-        </HeaderLine>
+              <button onClick={() => history.push("/groups")}>
+                Pesquisar grupos
+              </button>
+            </HeaderLine>
 
-        {/* {userData.group && (
-          <CardContainer>
-            <ContentCard>
-              <h2>{myGroup.name}</h2>
-              <p>{myGroup.description}</p>
-              <p>{myGroup.users && myGroup.users.length} usuários</p>
-              <p>{myGroup.goals && myGroup.goals.length} metas</p>
-            </ContentCard>
-          </CardContainer>
-        )}
-        {!userData.group && <div>Nao Tem Grupo</div>} */}
+            {userData.group && (
+              <CardContainer>
+                <ContentCard>
+                  <h2>{myGroup.name}</h2>
+                  <p>{myGroup.description}</p>
+                  <p>{myGroup.users && myGroup.users.length} usuários</p>
+                  <p>{myGroup.goals && myGroup.goals.length} metas</p>
+                  <button onClick={() => handleId2(myGroup.id)}>Grupo</button>
+                </ContentCard>
+              </CardContainer>
+            )}
+            {!userData.group && <div>Nao Tem Grupo</div>}
+          </Container>
+        </ImgDashboard>
+      )}
 
-        {/* <GroupList /> */}
-      </Container>
-    </ImgDashboard>
+      {showOneHabit && (
+        <Habit
+          userHabit={userHabit}
+          showOneHabit={showOneHabit}
+          setShowOneHabit={setShowOneHabit}
+        />
+      )}
+
+      {showMygroup && (
+        <OneGroupPage
+          userData={myGroup}
+          setUserData={setMyGroup}
+          showOneGroup={showMygroup}
+          setShowOneGroup={setShowMygroup}
+        />
+      )}
+    </>
   );
 };
 

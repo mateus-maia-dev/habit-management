@@ -9,7 +9,7 @@ import {
   Title,
   ImgOnegruop,
   Heigth,
-} from "./styles";
+} from "./style";
 
 import { useEffect } from "react";
 
@@ -29,7 +29,12 @@ import GoalsButtonPatch from "../Goals/FromPatch/ButtonGoals";
 
 import { Doughnut } from "react-chartjs-2";
 
-const OneGroup = ({ userData, setUserData, showOneGroup, setShowOneGroup }) => {
+const OneGroupPage = ({
+  userData,
+  setUserData,
+  showOneGroup,
+  setShowOneGroup,
+}) => {
   const dispatch = useDispatch();
 
   const change = useSelector((state) => state.groupIDReducer.change);
@@ -181,4 +186,4 @@ const OneGroup = ({ userData, setUserData, showOneGroup, setShowOneGroup }) => {
   );
 };
 
-export default OneGroup;
+export default OneGroupPage;

@@ -1,5 +1,6 @@
 import {
   groupRequestType,
+  groupCreateType,
   activitiesPostType,
   activitiesDeleteType,
   activitiesPatchType,
@@ -11,6 +12,11 @@ import {
 export const groupRequestAction = (group) => ({
   type: groupRequestType,
   group,
+});
+
+export const groupCreateAction = (groupCreate) => ({
+  type: groupCreateType,
+  groupCreate,
 });
 
 export const activitiesPostAction = (groupPost) => ({

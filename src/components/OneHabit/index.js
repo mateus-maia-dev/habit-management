@@ -14,31 +14,31 @@ import { Doughnut } from "react-chartjs-2";
 
 const token = localStorage.getItem("token");
 
-const OneHabit = () => {
-  const [habit, setHabit] = useState({});
+const OneHabit = ({ userHabit, showOneHabit, setShowOneHabit }) => {
+  //const [habit, setHabit] = useState({});
 
-  const getOneHabit = () => {
-    api
-      .get("/habits/473/", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((response) => setHabit(response.data))
-      .catch((e) => console.log(e));
-  };
+  // const getOneHabit = () => {
+  //   api
+  //     .get("/habits/473/", {
+  //       headers: {
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     })
+  //     .then((response) => setHabit(response.data))
+  //     .catch((e) => console.log(e));
+  // };
 
-  useEffect(() => {
-    getOneHabit();
-  }, []);
+  // useEffect(() => {
+  //   getOneHabit();
+  // }, []);
 
   const data = {
     labels: [],
     datasets: [
       {
         data: [
-          Number(habit.how_much_achieved),
-          100 - Number(habit.how_much_achieved),
+          Number(userHabit.how_much_achieved),
+          100 - Number(userHabit.how_much_achieved),
         ],
         backgroundColor: ["#bc494c", "#494f56"],
         hoverBackgroundColor: [],
@@ -50,7 +50,7 @@ const OneHabit = () => {
   return (
     <div className="bgBand">
       <Title>
-        <h1>{habit.title}</h1>
+        <h1>{userHabit.title}</h1>
       </Title>
       <DisplayF>
         <Section>
@@ -59,7 +59,7 @@ const OneHabit = () => {
             <br></br>
             <span>
               <h3>
-                Progresso: <span>{habit.how_much_achieved}%</span>
+                Progresso: <span>{userHabit.how_much_achieved}%</span>
               </h3>
             </span>
           </Graph>
@@ -73,23 +73,26 @@ const OneHabit = () => {
               <CardList>
                 <span>
                   <p>Dificuldade:&nbsp; </p>
-                  <p>{habit.difficulty} </p>
+                  <p>{userHabit.difficulty} </p>
                 </span>
 
                 <span>
                   <p>Frequência:&nbsp; </p>
-                  <p>{habit.frequency} </p>
+                  <p>{userHabit.frequency} </p>
                 </span>
                 <span>
                   <p>Concluída:&nbsp; </p>
-                  <p>{habit.achieved ? "Sim" : "Não"}</p>
+                  <p>{userHabit.achieved ? "Sim" : "Não"}</p>
                 </span>
               </CardList>
             </CardContainer>
           </span>
         </PageWrapper>
-        <div className="btn">
+        {/* <div className="btn">
           <button>Editar Atividade</button>
+        </div> */}
+        <div className="btn">
+          <button onClick={() => setShowOneHabit(!showOneHabit)}>Voltar</button>
         </div>
       </DisplayF>
     </div>

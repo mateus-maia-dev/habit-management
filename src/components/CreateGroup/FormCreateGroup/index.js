@@ -5,6 +5,9 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FormWrapper } from "./styles";
 
+import { useDispatch } from "react-redux";
+import { groupCreateThunk } from "../../../store/modules/groupReduce/thunk";
+
 import api from "../../../services/api";
 
 const schema = yup.object().shape({
@@ -13,22 +16,13 @@ const schema = yup.object().shape({
 });
 
 const FormCreateGroup = () => {
+  const dispatch = useDispatch();
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(schema),
   });
 
-  const tokenTempParaTest =
-    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE1NzI4MTA0LCJqdGkiOiIyYmIxNzRjOWYwOGI0NWFkOTVlZTIyMmFkYzUwZDNhZSIsInVzZXJfaWQiOjR9.hwj93WWyyXQqMkHIB_pAEFUO41V068hyYPYazO9tcgk";
-
   const handleData = (data) => {
-    console.log(data);
-    api
-      .post("/groups/", data, {
-        headers: { Authorization: `Bearer ${tokenTempParaTest}` },
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    dispatch(groupCreateThunk(data));
   };
 
   return (

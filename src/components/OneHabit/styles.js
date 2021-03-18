@@ -126,6 +126,7 @@ export const DisplayF = styled.div`
 
   .btn button {
     margin-top: 30px;
+    margin-bottom: 30px;
     padding: 10px 50px;
   }
 `;
@@ -133,6 +134,7 @@ export const DisplayF = styled.div`
 export const Title = styled.div`
   width: 100%;
   padding: 20px;
+  padding-top: 80px;
   text-align: center;
 `;
 
