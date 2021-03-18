@@ -15,23 +15,27 @@ import { useState, useEffect } from "react";
 
 import { Doughnut } from "react-chartjs-2";
 
-const data = {
-  labels: [],
-  datasets: [
-    {
-      data: [70, 30],
-      backgroundColor: ["#bc494c", "#494f56"],
-      hoverBackgroundColor: [],
-    },
-  ],
-};
+
 
 const OneGroup = ({ userData, showOneGroup, setShowOneGroup }) => {
-  //const [userData, setUserData] = useState([]);
+  // const [ totalGoal, setTotalGoal ] = useState([]);
 
-  useEffect(() => {
-    //getOneGroup(userId);new Date(item.realization_time
-  }, []);
+  // useEffect(() => {
+  //   getOneGroup(userId);new Date(item.realization_time)
+  // }, []);
+  const totalGoal = userData.goals.reduce((acumulator, item) => acumulator + item.how_much_achieved, 0)
+  const goalPercentage = userData.goals.length != 0 ? totalGoal/userData.goals.length : 0
+
+  const data = {
+    labels: ["Concluido", "Não concluido"],
+    datasets: [
+      {
+        data: [goalPercentage, 100-goalPercentage],
+        backgroundColor: ["#bc494c", "#494f56"],
+        hoverBackgroundColor: [],
+      },
+    ],
+  };
 
   const activities = userData.activities.map((item) => ({
     group: item.group,
@@ -39,9 +43,6 @@ const OneGroup = ({ userData, showOneGroup, setShowOneGroup }) => {
     realization_time: new Date(item.realization_time).toDateString(),
     title: item.title,
   }));
-
-  // console.log(activities);
-  // console.log(userData);
 
   return (
     <ImgOnegruop>

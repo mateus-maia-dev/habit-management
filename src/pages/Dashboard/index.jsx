@@ -111,8 +111,8 @@ const Dashboard = () => {
             <ContentCard>
               <h2>{myGroup.name}</h2>
               <p>{myGroup.description}</p>
-              <p>{myGroup.users.length} usuários</p>
-              <p>{myGroup.goals.length} metas</p>
+              <p>{myGroup.users && myGroup.users.length} usuários</p>
+              <p>{myGroup.goals && myGroup.goals.length} metas</p>
             </ContentCard>
           </CardContainer>
         )}
