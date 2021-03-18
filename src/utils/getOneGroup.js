@@ -10,6 +10,17 @@ export const getOneGroup = (id, setUserData, showOneGroup, setShowOneGroup) => {
     })
     .then((response) => setUserData(response.data))
     .then(() => setShowOneGroup(!showOneGroup))
-    //.then(() => history.push("/onegroup"))
+    .catch((e) => console.log(e));
+};
+
+export const getOneGroup2 = (id, dispatch, action) => {
+  const token = localStorage.getItem("token");
+  api
+    .get(`/groups/${id}/`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((response) => dispatch(action(response)))
     .catch((e) => console.log(e));
 };

@@ -19,10 +19,16 @@ const GroupCard = ({ item, handleId }) => {
 
   return (
     <CardContainer>
+      <h2>{item.title}</h2>
       <ContentCard>
         <h2>{item.name}</h2>
-        <h3>Categoria: {item.category}</h3>
-        <h3>{item.description}</h3>
+        <div>
+          <p>Categoria:</p>
+          <p>{item.category}</p>
+        </div>
+        <div>
+          <p>{item.description}</p>
+        </div>
       </ContentCard>
       <button onClick={() => handleClick()}>Se inscrever</button>
       <button onClick={() => handleId(item.id)}>Mais informacoes</button>

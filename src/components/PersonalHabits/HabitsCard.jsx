@@ -1,6 +1,6 @@
-import { CardContainer, ContentButtons, ContentCard } from "./CardStyle";
+import { CardContainer, ContentCard } from "./CardStyle";
 import UpdateHabit from "../UpdateHabit/index";
-import Button from "../Buttons";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 import { useDispatch } from "react-redux";
 import { deleteHabitThunk } from "../../store/modules/habitReduce/thunk";
@@ -23,15 +23,11 @@ const HabitsCard = ({ item }) => {
           <p>{item.frequency}</p>
         </div>
       </ContentCard>
-      <ContentButtons>
-        <UpdateHabit id={item.id} />
-        <Button
-          icon="delete"
-          onClick={() => dispatch(deleteHabitThunk(item.id))}
-        >
-          Excluir
-        </Button>
-      </ContentButtons>
+
+      <UpdateHabit id={item.id} />
+      <button icon="delete" onClick={() => dispatch(deleteHabitThunk(item.id))}>
+        Excluir <DeleteIcon />
+      </button>
     </CardContainer>
   );
 };
