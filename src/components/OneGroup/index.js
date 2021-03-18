@@ -15,22 +15,24 @@ import { useState, useEffect } from "react";
 
 import { Doughnut } from "react-chartjs-2";
 
-
-
 const OneGroup = ({ userData, showOneGroup, setShowOneGroup }) => {
   // const [ totalGoal, setTotalGoal ] = useState([]);
 
   // useEffect(() => {
   //   getOneGroup(userId);new Date(item.realization_time)
   // }, []);
-  const totalGoal = userData.goals.reduce((acumulator, item) => acumulator + item.how_much_achieved, 0)
-  const goalPercentage = userData.goals.length != 0 ? totalGoal/userData.goals.length : 0
+  const totalGoal = userData.goals.reduce(
+    (acumulator, item) => acumulator + item.how_much_achieved,
+    0
+  );
+  const goalPercentage =
+    userData.goals.length != 0 ? totalGoal / userData.goals.length : 0;
 
   const data = {
     labels: ["Concluido", "Não concluido"],
     datasets: [
       {
-        data: [goalPercentage, 100-goalPercentage],
+        data: [goalPercentage, 100 - goalPercentage],
         backgroundColor: ["#bc494c", "#494f56"],
         hoverBackgroundColor: [],
       },
