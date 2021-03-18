@@ -13,17 +13,6 @@ import { useState, useEffect } from "react";
 
 import { Doughnut } from "react-chartjs-2";
 
-const data = {
-  labels: [],
-  datasets: [
-    {
-      data: [70, 30],
-      backgroundColor: ["#bc494c", "#494f56"],
-      hoverBackgroundColor: [],
-    },
-  ],
-};
-
 const OneGroup = ({ userData, showOneGroup, setShowOneGroup }) => {
   //const [userData, setUserData] = useState([]);
 
@@ -38,8 +27,19 @@ const OneGroup = ({ userData, showOneGroup, setShowOneGroup }) => {
     title: item.title,
   }));
 
+  const data = {
+    labels: [],
+    datasets: [
+      {
+        data: [70, 30],
+        backgroundColor: ["#bc494c", "#494f56"],
+        hoverBackgroundColor: [],
+      },
+    ],
+  };
+
   // console.log(activities);
-  // console.log(userData);
+  console.log(userData.goals);
 
   return (
     <div className="bgBand">

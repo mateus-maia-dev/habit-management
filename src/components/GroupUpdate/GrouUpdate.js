@@ -32,7 +32,6 @@ const GroupUpdate = ({id, name, description}) => {
   const token = localStorage.getItem("token")
 
   const handleData = (data) => {
-      console.log(data)
     api
       .patch(`/groups/${id}/`, data, {
         headers: { Authorization: `Bearer ${token}` },

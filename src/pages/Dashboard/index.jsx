@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import api from "../../services/api";
+import { userGroupRequestThunk } from "../../store/modules/groupReduce/thunk";
 
 import { Container, HeaderLine, CardContainer, ContentCard } from "./style";
 
@@ -12,9 +13,7 @@ import HabitsList from "../../components/PersonalHabits/HabitsList";
 import CreateHabit from "../../components/CreateHabit/index";
 import jwt_decoded from "jwt-decode";
 
-//import GroupList from "../../components/Groups/GroupList";
-import GroupList from "../../components/Groups/GroupList";
-import Button from "../../components/Buttons/index";
+import OneGroup from "../../components/OneGroup";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -23,16 +22,14 @@ const Dashboard = () => {
   // const [groups, setGroups] = useState([]);
   const [myGroup, setMyGroup] = useState([]);
   console.log(userData);
-  console.log(myGroup);
+  // console.log(myGroup);
 
   const token = useSelector((state) => state.signInReducer);
   const decoded = jwt_decoded(token.token);
-  // console.log(myGroup);
-  // console.log(userData);
 
-  // const getGroups = () => {
-  //   api.get("/groups/").then((response) => setGroups(response.data.results));
-  // };
+  // const group = useSelector((state) => state.groupIDReducer);
+
+  // console.log(group);
 
   const history = useHistory();
 
@@ -44,6 +41,8 @@ const Dashboard = () => {
         },
       })
       .then((response) => setUserData(response.data));
+
+    // dispatch(userGroupRequestThunk(userData))
   };
 
   const userPersonalHabits = useSelector(
@@ -72,17 +71,17 @@ const Dashboard = () => {
 
   useEffect(() => {
     console.log("entrou2");
+
     dispatch(requestHabitThunk());
   }, [changeReduce]);
 
   useEffect(() => {
     console.log("entrou3");
-    console.log(userData.group);
-    console.log(myGroup.length);
     if (!!userData.group) {
-      console.log("entrou!");
       getUserGroup();
     }
+
+    // dispatch(userGroupRequestThunk(userData));
 
     // eslint-disable-next-line
   }, [userData]);
@@ -125,6 +124,8 @@ const Dashboard = () => {
         )}
 
         {/* <GroupList /> */}
+        {/* <CreateHabit /> */}
+        {/* <OneGroup /> */}
       </Container>
     </div>
   );
