@@ -94,6 +94,6 @@ export const ImgDashboard = styled.div`
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  background-position: center;
+  background-position: right;
   margin: auto;
 `;

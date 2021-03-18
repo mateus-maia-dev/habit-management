@@ -5,13 +5,14 @@ export const Background = styled.div`
   height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  padding-top: 120px;
 `;
 
 export const ImgLogin = styled.div`
   background-image: url(${musician});
   width: 100%;
-  max-width: 1400px;
+  max-width: 1200px;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;

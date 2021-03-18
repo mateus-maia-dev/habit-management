@@ -8,14 +8,14 @@ export const LandingPageWrapper = styled.div`
   text-align: center;
 
   h1 {
-    font-size: 3.75rem;
+    font-size: 3.25rem;
     font-weight: 800;
     color: black;
-    padding-top: 50px;
+    padding-top: 90px;
 
     @media (min-width: 768px) {
-      font-size: 5rem;
-      padding-top: 70px;
+      font-size: 6rem;
+      padding-top: 120px;
     }
   }
 
@@ -31,10 +31,10 @@ export const BottomBar = styled.div`
   background-color: #222222;
   color: white;
   text-align: center;
-  padding-top: 10px;
+  padding-top: 20px;
 
   h2 {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: #bc494c;
     padding: 5px 0;
 
@@ -76,9 +76,13 @@ export const BottomBarList = styled.div`
 export const ImgLandingPage = styled.div`
   background-image: url(${musician});
   width: 100%;
-  max-width: 1400px;
-  height: 75vh;
+  max-width: 1200px;
+  height: 65vh;
   background-size: cover;
   background-position: center;
   margin: auto;
+
+  @media (min-width: 768px) {
+    height: 80vh;
+  }
 `;
