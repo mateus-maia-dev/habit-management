@@ -6,7 +6,7 @@ export const Background = styled.div`
   height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 `;
 
 export const ImgConf = styled.div`

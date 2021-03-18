@@ -33,7 +33,13 @@ const FormLogin = () => {
     history.push("/register");
   };
 
-  console.log(open);
+  setTimeout(
+    function () {
+      setOpen(false);
+    },
+
+    3000
+  );
 
   return (
     <FormWrapper>

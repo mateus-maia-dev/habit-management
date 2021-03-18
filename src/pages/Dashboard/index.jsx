@@ -94,6 +94,7 @@ const Dashboard = () => {
             Pesquisar grupos
           </button>
         </HeaderLine>
+
         {userData.group && (
           <CardContainer>
             <ContentCard>
@@ -105,6 +106,7 @@ const Dashboard = () => {
           </CardContainer>
         )}
         {!userData.group && <div>Nao Tem Grupo</div>}
+
         {/* <GroupList /> */}
       </Container>
     </ImgDashboard>
