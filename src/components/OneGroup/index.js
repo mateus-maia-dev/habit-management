@@ -7,9 +7,24 @@ import {
   DisplayF,
   PageWrapper2,
   Title,
+  ButtonDelete,
 } from "./styles";
 
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+
+import api from "../../services/api";
+
+import { useSelector, useDispatch } from "react-redux";
+
+import {
+  activitiesDeleteThunk,
+  goalsDeleteThunk,
+} from "../../store/modules/groupReduce/thunk";
+
+import ActivitiesButtonPost from "../Activities/FormPost/Button";
+import ActivitiesButtonPatch from "../Activities/FromPatch/ButtonPatch";
+import GoalsButtonPost from "../Goals/FormPost/Button";
+import GoalsButtonPatch from "../Goals/FromPatch/ButtonGoals";
 
 import { Doughnut } from "react-chartjs-2";
 
@@ -24,12 +39,22 @@ const data = {
   ],
 };
 
-const OneGroup = ({ userData, showOneGroup, setShowOneGroup }) => {
-  //const [userData, setUserData] = useState([]);
+const OneGroup = ({ userData, setUserData, showOneGroup, setShowOneGroup }) => {
+  const dispatch = useDispatch();
+
+  const change = useSelector((state) => state.groupIDReducer.change);
 
   useEffect(() => {
-    //getOneGroup(userId);new Date(item.realization_time
-  }, []);
+    const token = localStorage.getItem("token");
+    api
+      .get(`/groups/${userData.id}/`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => setUserData(response.data))
+      .catch((e) => console.log(e));
+  }, [change]);
 
   const activities = userData.activities.map((item) => ({
     group: item.group,
@@ -38,8 +63,13 @@ const OneGroup = ({ userData, showOneGroup, setShowOneGroup }) => {
     title: item.title,
   }));
 
-  // console.log(activities);
-  // console.log(userData);
+  const activitiesHandleDelete = (id) => {
+    dispatch(activitiesDeleteThunk(id, userData.id));
+  };
+
+  const goalsHandleDelete = (id) => {
+    dispatch(goalsDeleteThunk(id, userData.id));
+  };
 
   return (
     <div className="bgBand">
@@ -75,12 +105,25 @@ const OneGroup = ({ userData, showOneGroup, setShowOneGroup }) => {
             <CardContainer>
               <CardHeader>
                 <h2>Atividades Realizadas</h2>
+                <ActivitiesButtonPost groupId={userData.id} />
               </CardHeader>
               {activities.map((item, index) => (
                 <CardList key={index}>
                   <p>{item.title}</p>
                   <span>
                     <p>{item.realization_time}</p>
+                  </span>
+                  <span>
+                    <ActivitiesButtonPatch
+                      key={index}
+                      itemId={item.id}
+                      groupId={userData.id}
+                    />
+                    <ButtonDelete
+                      onClick={() => activitiesHandleDelete(item.id)}
+                    >
+                      Excluir
+                    </ButtonDelete>
                   </span>
                 </CardList>
               ))}
@@ -93,6 +136,7 @@ const OneGroup = ({ userData, showOneGroup, setShowOneGroup }) => {
             <CardContainer>
               <CardHeader>
                 <h2>Metas</h2>
+                <GoalsButtonPost groupId={userData.id} />
               </CardHeader>
               {userData.goals.map((item, index) => (
                 <CardList key={index}>
@@ -102,6 +146,15 @@ const OneGroup = ({ userData, showOneGroup, setShowOneGroup }) => {
                   </span>
                   <span>
                     <p>Progresso: {item.how_much_achieved}</p>
+                  </span>
+                  <span>
+                    <p>Objetivo Concluído: {item.achieved ? "Sim" : "Não"}</p>
+                  </span>
+                  <span>
+                    <GoalsButtonPatch itemId={item.id} groupId={userData.id} />
+                    <ButtonDelete onClick={() => goalsHandleDelete(item.id)}>
+                      Excluir
+                    </ButtonDelete>
                   </span>
                 </CardList>
               ))}

@@ -67,10 +67,33 @@ export const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
   border-radius: 8px;
+
+  /* button {
+    align-items: center;
+    border: 0px;
+    background-color: #d5d5d5;
+    padding: 5px;
+    border-radius: 5px;
+
+    box-shadow: 0 3px 5px 2px rgba(0, 0, 0, 0.3);
+  } */
+`;
+
+export const ButtonDelete = styled.button`
+  margin-left: 2%;
+  color: #000;
+  align-items: center;
+  border: 0px;
+  background-color: #d5d5d5;
+  padding: 5px;
+  border-radius: 5px;
 `;
 
 export const CardHeader = styled.div`
-  text-align: left;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   padding: 5px 10px;
 
   h5 {
