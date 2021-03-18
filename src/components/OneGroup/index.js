@@ -58,7 +58,7 @@ const OneGroup = ({ userData, showOneGroup, setShowOneGroup }) => {
             <br></br>
             <span>
               <h3>
-                Progresso:<span>14%</span>
+                Progresso:<span>{goalPercentage+"%"}</span>
               </h3>
             </span>
           </Graph>
