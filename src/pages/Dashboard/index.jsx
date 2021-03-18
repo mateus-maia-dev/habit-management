@@ -13,7 +13,6 @@ import CreateHabit from "../../components/CreateHabit/index";
 import jwt_decoded from "jwt-decode";
 
 //import GroupList from "../../components/Groups/GroupList";
-import GroupList from "../../components/Groups/GroupList";
 import Button from "../../components/Buttons/index";
 
 const Dashboard = () => {
