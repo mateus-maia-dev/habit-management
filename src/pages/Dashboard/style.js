@@ -13,6 +13,28 @@ export const Container = styled.div`
   padding-top: 60px;
 `;
 
+export const Greetings = styled.div`
+  font-size: 1rem;
+  color: black;
+  font-weight: 600;
+
+  span {
+    font-size: 2rem;
+
+    color: #bc494c;
+  }
+
+  @media (min-width: 400px) {
+    font-size: 2rem;
+
+    span {
+      font-size: 3rem;
+
+      color: #bc494c;
+    }
+  }
+`;
+
 export const HeaderLine = styled.div`
   display: flex;
   justify-content: center;
@@ -20,6 +42,10 @@ export const HeaderLine = styled.div`
   align-items: center;
   margin: 20px 0px 5px 8px;
   flex-direction: column;
+
+  div {
+    margin-left: 50px;
+  }
 
   @media (min-width: 400px) {
     width: 80%;

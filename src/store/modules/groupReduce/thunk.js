@@ -10,6 +10,7 @@ import {
 import api from "../../../services/api";
 
 import { requestGroupData } from "../../../utils/requestGroupData";
+import { requestUserGroupData } from "../../../utils/requestUserGroupData";
 
 import { getOneGroup2 } from "../../../utils/getOneGroup";
 
