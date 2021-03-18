@@ -1,5 +1,6 @@
 import {
   groupRequestType,
+  groupCreateType,
   activitiesPostType,
   activitiesDeleteType,
   activitiesPatchType,
@@ -21,6 +22,13 @@ const groupIDReducer = (state = defaulState, action) => {
       return (state = {
         groupData: group.results,
         change: change,
+      });
+
+    case groupCreateType:
+      const { groupCreate } = action;
+      return (state = {
+        groupData: groupCreate.results,
+        change: !change,
       });
 
     case activitiesPostType:

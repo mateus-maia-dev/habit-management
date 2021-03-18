@@ -1,5 +1,6 @@
 import {
   groupRequestAction,
+  groupCreateAction,
   activitiesPostAction,
   activitiesDeleteAction,
   activitiesPatchAction,
@@ -18,6 +19,18 @@ const token = localStorage.getItem("token");
 
 export const groupRequestThunk = () => (dispacth) => {
   requestGroupData(dispacth, groupRequestAction);
+};
+
+export const groupCreateThunk = (data) => (dispatch) => {
+  api
+    .post("/groups/", data, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+
+  requestGroupData(dispatch, groupCreateAction);
 };
 
 export const activitiesPostThunk = (data, groupId) => (dispatch) => {
