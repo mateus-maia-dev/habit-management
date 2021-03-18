@@ -2,15 +2,14 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import api from "../../services/api";
-
 import {
   Container,
   HeaderLine,
   CardContainer,
   ContentCard,
   ImgDashboard,
+  Greetings,
 } from "./style";
-
 import { useDispatch } from "react-redux";
 import { requestHabitThunk } from "../../store/modules/habitReduce/thunk";
 
@@ -50,11 +49,9 @@ const Dashboard = () => {
       })
       .then((response) => setUserData(response.data));
   };
-
   const userPersonalHabits = useSelector(
     (state) => state.changeHabitReduce.userData
   );
-
   const changeReduce = useSelector((state) => state.changeHabitReduce.change);
 
   useEffect(() => {
@@ -142,5 +139,4 @@ const Dashboard = () => {
     </>
   );
 };
-
 export default Dashboard;
