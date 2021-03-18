@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import musician from "../../images/musician.png";
 
 export const LandingPageWrapper = styled.div`
   display: flex;
@@ -66,11 +67,18 @@ export const BottomBarList = styled.div`
   div {
     margin: 10px;
 
-    @media (min-width: 768px) {
-    }
-
     p {
       padding-left: 5px;
     }
   }
+`;
+
+export const ImgLandingPage = styled.div`
+  background-image: url(${musician});
+  width: 100%;
+  max-width: 1400px;
+  height: 75vh;
+  background-size: cover;
+  background-position: center;
+  margin: auto;
 `;

@@ -3,7 +3,13 @@ import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import api from "../../services/api";
 
-import { Container, HeaderLine, CardContainer, ContentCard } from "./style";
+import {
+  Container,
+  HeaderLine,
+  CardContainer,
+  ContentCard,
+  ImgDashboard,
+} from "./style";
 
 import { useDispatch } from "react-redux";
 import { requestHabitThunk } from "../../store/modules/habitReduce/thunk";
@@ -84,7 +90,7 @@ const Dashboard = () => {
     //   {userData.group && <div>Tem Grupo</div>}
     //   {!userData.group && <div>Nao Tem Grupo</div>}
     // </Container>
-    <div className="bgGuitar">
+    <ImgDashboard>
       <Container>
         <HeaderLine>
           <h1>MEUS HÁBITOS</h1>
@@ -114,7 +120,7 @@ const Dashboard = () => {
 
         {/* <GroupList /> */}
       </Container>
-    </div>
+    </ImgDashboard>
   );
 };
 

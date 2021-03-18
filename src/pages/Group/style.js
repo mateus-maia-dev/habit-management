@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import band from "../../images/band.png";
 
 export const Container = styled.div`
   width: 90%;
@@ -16,4 +17,14 @@ export const Container = styled.div`
   button {
     margin-top: 30%;
   }
+`;
+
+export const ImgBand = styled.div`
+  background-image: url(${band});
+  width: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: right;
+  margin: auto;
 `;

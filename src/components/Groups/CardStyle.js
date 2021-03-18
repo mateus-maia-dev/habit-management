@@ -22,7 +22,7 @@ export const ContentCard = styled.div`
 export const CardContainer = styled.div`
   width: 300px;
   height: auto;
-  margin: 3% 3%;
+  margin: 2% 2%;
   border-radius: 30px;
   background: #2d2d2d;
   color: #fff;
