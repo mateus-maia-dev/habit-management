@@ -100,7 +100,7 @@ const Dashboard = () => {
           </button>
         </HeaderLine>
 
-        {userData.group && (
+        {/* {userData.group && (
           <CardContainer>
             <ContentCard>
               <h2>{myGroup.name}</h2>
@@ -110,7 +110,7 @@ const Dashboard = () => {
             </ContentCard>
           </CardContainer>
         )}
-        {!userData.group && <div>Nao Tem Grupo</div>}
+        {!userData.group && <div>Nao Tem Grupo</div>} */}
 
         {/* <GroupList /> */}
       </Container>
