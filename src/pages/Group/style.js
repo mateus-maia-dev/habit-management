@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import band from "../../images/band.png";
+import guitarfhd2 from "../../images/guitarfhd2.png";
 
 export const Container = styled.div`
   width: 90%;
@@ -68,4 +69,5 @@ export const ImgBand = styled.div`
   background-size: cover;
   background-position: right;
   margin: auto;
+  max-width: 1400px;
 `;
