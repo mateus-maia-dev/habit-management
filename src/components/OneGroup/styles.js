@@ -161,11 +161,13 @@ export const ImgOnegruop = styled.div`
 `;
 
 export const Heigth = styled.div`
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
   text-align: center;
 
   button {
     margin-top: 30px;
     padding: 10px 50px;
+    margin-bottom: 20px;
   }
 `;
