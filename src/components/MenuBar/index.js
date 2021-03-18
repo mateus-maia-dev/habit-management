@@ -59,16 +59,7 @@ export const MenuBar = ({ open, setOpen }) => {
           <Navigation>
             <LinksContainer>
               <Link>
-                <a href="#home">About us</a>
-              </Link>
-              <Link>
-                <a href="#home">Gallery</a>
-              </Link>
-              <Link>
-                <a href="#home">Blog</a>
-              </Link>
-              <Link>
-                <a href="#home">Contact</a>
+                <a href="/">Pagina Inicial</a>
               </Link>
             </LinksContainer>
           </Navigation>
