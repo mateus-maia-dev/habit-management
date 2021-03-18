@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import guitar from "../../images/guitar.png";
+import guitarfhd2 from "../../images/guitarfhd2.png";
 
 export const Container = styled.div`
   width: 90%;
@@ -88,12 +88,12 @@ export const ContentCard = styled.div`
 `;
 
 export const ImgDashboard = styled.div`
-  background-image: url(${guitar});
+  background-image: url(${guitarfhd2});
   width: 100%;
   max-width: 1400px;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  background-position: right;
+  background-position: center;
   margin: auto;
 `;
