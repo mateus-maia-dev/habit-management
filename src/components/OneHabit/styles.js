@@ -118,6 +118,16 @@ export const DisplayF = styled.div`
   flex-direction: row-reverse;
   justify-content: center;
   align-items: center;
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .btn button {
+    margin-top: 30px;
+    padding: 10px 50px;
+  }
 `;
 
 export const Title = styled.div`

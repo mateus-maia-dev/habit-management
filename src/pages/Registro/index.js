@@ -1,12 +1,14 @@
 import FormRegistro from "../../components/FormRegistro/index";
 
-import { Background } from "./style.js";
+import { Background, ImgRegistro } from "./style.js";
 
 const Registro = () => {
   return (
-    <Background>
-      <FormRegistro />
-    </Background>
+    <ImgRegistro>
+      <Background>
+        <FormRegistro />
+      </Background>
+    </ImgRegistro>
   );
 };
 export default Registro;

@@ -1,4 +1,9 @@
-import { BottomBar, BottomBarList, LandingPageWrapper } from "./styles";
+import {
+  BottomBar,
+  BottomBarList,
+  LandingPageWrapper,
+  ImgLandingPage,
+} from "./styles";
 
 import GroupIcon from "@material-ui/icons/Group";
 import PostAddIcon from "@material-ui/icons/PostAdd";
@@ -7,12 +12,12 @@ import BarChartIcon from "@material-ui/icons/BarChart";
 const LandingPage = () => {
   return (
     <>
-      <div className="bgMusicianIntro">
+      <ImgLandingPage>
         <LandingPageWrapper>
           <h1>MUSIC HERO</h1>
           <h2>GERENCIE SEUS HÁBITOS</h2>
         </LandingPageWrapper>
-      </div>
+      </ImgLandingPage>
       <BottomBar>
         <h2>LEVANDO A MÚSICA AO PRÓXIMO NÍVEL</h2>
         <BottomBarList>

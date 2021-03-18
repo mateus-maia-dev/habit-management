@@ -7,7 +7,7 @@
 //   // const dispatch = useDispatch();
 
 //   api
-//     .post(`/groups/${id}/subscribe`, {
+//     .post(`/groups/${id}/subscribe`, key={true} {
 //       headers: { Authorization: `Bearer ${token}` },
 //     })
 //     .catch((e) => console.log(e));
@@ -16,7 +16,6 @@
 // };
 
 // const LeaveGroup = () => {
-//     const {token} = useSelector((state) => state.signInReducer)
-//     const decoded = jwtDecode(token);
+//     userData.group = null;
 
 // }

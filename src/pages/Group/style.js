@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import band from "../../images/band.png";
 
 export const Container = styled.div`
   width: 90%;
@@ -43,8 +44,6 @@ export const HeaderLine = styled.div`
   }
 `;
 
-// import styled from "styled-components";
-
 // export const Container = styled.div`
 //   width: 90%;
 //   min-height: 100vh;
@@ -62,3 +61,11 @@ export const HeaderLine = styled.div`
 //     margin-top: 30%;
 //   }
 // `;
+export const ImgBand = styled.div`
+  width: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: right;
+  margin: auto;
+`;

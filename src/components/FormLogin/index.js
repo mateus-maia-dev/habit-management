@@ -1,9 +1,7 @@
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { FormWrapper } from "./styles";
+import { FormWrapper, ButtonForm } from "./styles";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { signInThunk } from "../../store/modules/userLogin/thunk";
@@ -31,36 +29,44 @@ const FormLogin = () => {
     dispatch(signInThunk(data, history, setOpen));
   };
 
+  const handleClickRegister = () => {
+    history.push("/register");
+  };
+
   console.log(open);
 
   return (
     <FormWrapper>
       <form onSubmit={handleSubmit(handleData)}>
         <p>LOGIN</p>
-        <TextField
+        <input
+          className="inputBox"
           variant="outlined"
-          label="nome de usuário"
+          placeholder="nome de usuário"
           name="username"
           type="text"
           size="small"
-          inputRef={register}
-          helperText={errors.username?.message}
-          error={!!errors.username}
+          ref={register}
         />
-        <TextField
+        {errors.username && <span>{errors.username.message}</span>}
+        <input
+          className="inputBox"
           variant="outlined"
-          label="senha"
+          placeholder="senha"
           name="password"
           type="password"
           size="small"
-          inputRef={register}
-          helperText={errors.password?.message}
-          error={!!errors.password}
+          ref={register}
         />
-        <Button variant="contained" color="default" size="small" type="submit">
+        {errors.password && <span>{errors.password.message}</span>}
+        <br></br>
+        <ButtonForm type="submit" bgColor="#bebebe" btnWidth="100px">
           enviar
-        </Button>
-        <Button color="default">não possui uma conta?</Button>
+        </ButtonForm>
+        <br></br>
+        <ButtonForm onClick={() => handleClickRegister()}>
+          não possui uma conta?
+        </ButtonForm>
       </form>
       <Snackbars open={open} severity="error">
         Usuário ou Senha Incorreta

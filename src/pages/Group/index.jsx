@@ -7,7 +7,7 @@ import { getOneGroup } from "../../utils/getOneGroup";
 import GroupList from "../../components/Groups/GroupList";
 import OneGroup from "../../components/OneGroup/index";
 
-import { Container } from "./style";
+import { Container, ImgBand } from "./style";
 import { useState } from "react";
 
 const Group = () => {
@@ -33,7 +33,7 @@ const Group = () => {
   };
 
   return (
-    <>
+    <ImgBand>
       {!showOneGroup && (
         <div className="bgGuitar">
           <Container>
@@ -50,7 +50,7 @@ const Group = () => {
           setShowOneGroup={setShowOneGroup}
         />
       )}
-    </>
+    </ImgBand>
   );
 };
 

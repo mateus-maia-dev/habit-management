@@ -13,7 +13,8 @@ export const FormWrapper = styled.div`
   p {
     color: #bc494c;
     font-weight: bold;
-    margin: 10px 0px;
+    margin: 10px 0;
+    font-size: 1.5rem;
   }
 
   div {
@@ -31,9 +32,37 @@ export const FormWrapper = styled.div`
   .inputBox {
     width: 80%;
     margin: 10px 0px;
+    z-index: 0;
+    padding: 10px 5px;
+    background-color: #f1f1f1;
+    border-radius: 4px;
+    border: 1px solid lightgray;
+  }
+
+  span {
+    margin: 0;
+    padding: 0;
+    font-size: 0.75rem;
+    text-align: center;
+    width: 100%;
+    display: block;
+    color: #bc494c;
   }
 
   @media (min-width: 440px) {
     min-width: 400px;
+  }
+`;
+
+export const ButtonForm = styled.button`
+  margin-top: 10px;
+  padding: 5px 10px;
+  border: none;
+  background-color: ${(props) => props.bgColor};
+  border-radius: 5px;
+  width: ${(props) => props.btnWidth};
+
+  &:hover {
+    background-color: #f1f1f1;
   }
 `;
