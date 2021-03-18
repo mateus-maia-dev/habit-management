@@ -1,5 +1,38 @@
 import styled from "styled-components";
 
+export const PageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-top: 120px;
+`;
+export const CardContent = styled.div`
+  width: 300px;
+  height: auto;
+  background-color: #f1f1f1;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 15px 10px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+
+  @media (min-width: 440px) {
+    min-width: 400px;
+  }
+
+  h3 {
+    color: #bc494c;
+    font-weight: bold;
+    margin: 10px 0px;
+  }
+
+  p {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+  }
+`;
+
 export const FormWrapper = styled.div`
   width: 300px;
   height: auto;
@@ -10,10 +43,15 @@ export const FormWrapper = styled.div`
   padding: 15px 10px;
   border-radius: 8px;
 
+  @media (min-width: 440px) {
+    min-width: 400px;
+  }
+
   p {
     color: #bc494c;
     font-weight: bold;
     margin: 10px 0px;
+    font-size: 1.1rem;
   }
 
   div {
@@ -64,4 +102,11 @@ export const ButtonForm = styled.button`
   &:hover {
     background-color: #f1f1f1;
   }
+`;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;

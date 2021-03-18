@@ -1,10 +1,14 @@
 import api from "../../services/api";
+import { useState } from "react";
 import { CardContainer, ContentCard } from "./CardStyle";
+import Snackbars from "../Snackbar";
 // import { useDispatch } from "react-redux";
 // import { getOneGroupThunk } from "../../store/modules/getOneGroup/thunk";
 // import { useHistory } from "react-router-dom";
 
 const GroupCard = ({ item, handleId }) => {
+  const [open, setOpen] = useState(false);
+
   const token = localStorage.getItem("token");
 
   const handleClick = () => {
@@ -15,7 +19,16 @@ const GroupCard = ({ item, handleId }) => {
         headers: { Authorization: `Bearer ${token}` },
       }
     );
+    setOpen(true);
   };
+
+  setTimeout(
+    function () {
+      setOpen(false);
+    },
+
+    3000
+  );
 
   return (
     <CardContainer>
@@ -32,6 +45,9 @@ const GroupCard = ({ item, handleId }) => {
       </ContentCard>
       <button onClick={() => handleClick()}>Se inscrever</button>
       <button onClick={() => handleId(item.id)}>Mais informacoes</button>
+      <Snackbars open={open} severity="success">
+        Inscrição realizada com sucesso
+      </Snackbars>
     </CardContainer>
   );
 };
