@@ -4,7 +4,7 @@ import GoalsFormPost from "./Form/GoalsFormPost";
 const GoalsButtonPost = ({ groupId }) => {
   return (
     <>
-      <SimpleModal buttonText="Adicionar Objetivo">
+      <SimpleModal buttonText="Adicionar">
         <GoalsFormPost groupId={groupId} />
       </SimpleModal>
     </>

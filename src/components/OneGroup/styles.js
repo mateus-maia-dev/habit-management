@@ -69,6 +69,20 @@ export const CardContainer = styled.div`
   flex-direction: column;
   border-radius: 8px;
 
+  button {
+    width: 120px;
+    border: none;
+    margin: 0 10px;
+    border: none;
+    background-color: #bebebe;
+
+    border-radius: 15px;
+
+    &:hover {
+      background-color: #bc494c;
+    }
+  }
+
   /* button {
     align-items: center;
     border: 0px;
@@ -93,9 +107,9 @@ export const ButtonDelete = styled.button`
 export const CardHeader = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  padding: 5px 10px;
+  /* padding: 5px 10px; */
 
   h5 {
     color: #bc494c;
@@ -121,7 +135,7 @@ export const CardList = styled.div`
 
   span {
     display: flex;
-    justify-content: right;
+    justify-content: center;
   }
 
   span:last-child {
@@ -175,7 +189,7 @@ export const Title = styled.div`
 export const ImgOnegruop = styled.div`
   background-image: url(${band});
   width: 100%;
-  max-width: 1750px;
+  max-width: 1400px;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -190,7 +204,7 @@ export const Heigth = styled.div`
 
   button {
     margin-top: 30px;
-    padding: 10px 50px;
+    padding: 5px 10px;
     margin-bottom: 20px;
   }
 `;
