@@ -1,15 +1,22 @@
-import api from "../../services/api";
+import { useEffect } from "react";
 import { useState } from "react";
 import { CardContainer, ContentCard, ContentButtons } from "./CardStyle";
 import Snackbars from "../Snackbar";
+import api from "../../services/api";
 // import { useDispatch } from "react-redux";
 // import { getOneGroupThunk } from "../../store/modules/getOneGroup/thunk";
 // import { useHistory } from "react-router-dom";
 
-const GroupCard = ({ item, handleId }) => {
-  const [open, setOpen] = useState(false);
-
+const GroupCard = ({ item, handleId, setMyGroup, myGroup }) => {
   const token = localStorage.getItem("token");
+  const [subscribed, setSubscribed] = useState(false);
+
+  const [open, setOpen] = useState(false);
+  useEffect(() => {
+    Number(myGroup.id) === Number(item.id)
+      ? setSubscribed(true)
+      : setSubscribed(false);
+  }, [myGroup]);
 
   const handleClick = () => {
     api.post(
@@ -20,6 +27,7 @@ const GroupCard = ({ item, handleId }) => {
       }
     );
     setOpen(true);
+    setMyGroup(item);
   };
 
   setTimeout(
@@ -44,7 +52,9 @@ const GroupCard = ({ item, handleId }) => {
         </div>
       </ContentCard>
       <ContentButtons>
-        <button onClick={() => handleClick()}>Inscrever-se</button>
+        <button onClick={() => handleClick()}>
+          {subscribed ? "Inscrito" : "Inscrever-se"}
+        </button>
         <button onClick={() => handleId(item.id)}>Saiba mais</button>
       </ContentButtons>
       <Snackbars open={open} severity="success">

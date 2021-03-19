@@ -10,17 +10,13 @@ export const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   text-align: center;
 
   h2 {
     font-size: 1.2rem;
     margin: 2% 0% 2% 0;
   }
-
-  /* @media (min-width: 400px) {
-    width: 180px;
-    height: 150px;
-  } */
 
   button {
     width: 70%;
@@ -36,13 +32,15 @@ export const CardContainer = styled.div`
     border-radius: 15px;
     border: 0px;
     color: #3a3a3a;
-    height: 30px;
+    //height: 30px;
     padding: 0 30px;
     box-shadow: 0 3px 5px 2px rgba(0, 0, 0, 0.3);
     font-size: 1rem;
     margin: 6% 0% 2% 0;
   }
 `;
+
+export const ButtonDiv = styled.div``;
 
 export const ContentCard = styled.div`
   width: 90%;

@@ -1,10 +1,14 @@
 import OneHabit from "../../components/OneHabit";
 import { ImgBand } from "./style";
 
-const Habit = () => {
+const Habit = ({ userHabit, showOneHabit, setShowOneHabit }) => {
   return (
     <ImgBand>
-      <OneHabit />
+      <OneHabit
+        userHabit={userHabit}
+        showOneHabit={showOneHabit}
+        setShowOneHabit={setShowOneHabit}
+      />
     </ImgBand>
   );
 };

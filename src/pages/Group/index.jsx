@@ -6,10 +6,10 @@ import { getOneGroup } from "../../utils/getOneGroup";
 
 import GroupList from "../../components/Groups/GroupList";
 import OneGroup from "../../components/OneGroup/index";
+import CreateGroup from "../../components/CreateGroup/index";
 
 import { Container, HeaderLine, ImgBand } from "./style";
 import { useState } from "react";
-import CreateGroup from "../../components/CreateGroup";
 
 const Group = () => {
   const changeReduce = useSelector((state) => state.groupIDReducer.change);

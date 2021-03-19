@@ -7,7 +7,7 @@ import { deleteHabitThunk } from "../../store/modules/habitReduce/thunk";
 // import { CardContainer, ContentCard } from "./CardStyle";
 // import UpdateHabit from "../UpdateHabit/index";
 
-const HabitsCard = ({ item }) => {
+const HabitsCard = ({ item, handleId }) => {
   const dispatch = useDispatch();
 
   return (
@@ -23,11 +23,14 @@ const HabitsCard = ({ item }) => {
           <p>{item.frequency}</p>
         </div>
       </ContentCard>
+      <span>
+        <UpdateHabit id={item.id} />
+        <button onClick={() => dispatch(deleteHabitThunk(item.id))}>
+          Excluir <DeleteIcon />
+        </button>
+      </span>
 
-      <UpdateHabit id={item.id} />
-      <button icon="delete" onClick={() => dispatch(deleteHabitThunk(item.id))}>
-        Excluir <DeleteIcon />
-      </button>
+      <button onClick={() => handleId(item.id)}>Mais Informacoes</button>
     </CardContainer>
   );
 };
