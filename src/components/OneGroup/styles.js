@@ -175,7 +175,7 @@ export const Title = styled.div`
 export const ImgOnegruop = styled.div`
   background-image: url(${band});
   width: 100%;
-  max-width: 1400px;
+  max-width: 1750px;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;

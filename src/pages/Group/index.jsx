@@ -7,8 +7,9 @@ import { getOneGroup } from "../../utils/getOneGroup";
 import GroupList from "../../components/Groups/GroupList";
 import OneGroup from "../../components/OneGroup/index";
 
-import { Container, ImgBand } from "./style";
+import { Container, HeaderLine, ImgBand } from "./style";
 import { useState } from "react";
+import CreateGroup from "../../components/CreateGroup";
 
 const Group = () => {
   const changeReduce = useSelector((state) => state.groupIDReducer.change);
@@ -37,6 +38,10 @@ const Group = () => {
       {!showOneGroup && (
         <div className="bgGuitar">
           <Container>
+            <HeaderLine>
+              <h1>GRUPOS DISPONÍVEIS</h1>
+              <CreateGroup />
+            </HeaderLine>
             <GroupList items={group} handleId={handleId} />
           </Container>
         </div>

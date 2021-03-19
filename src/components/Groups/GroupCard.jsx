@@ -1,6 +1,6 @@
 import api from "../../services/api";
 import { useState } from "react";
-import { CardContainer, ContentCard } from "./CardStyle";
+import { CardContainer, ContentCard, ContentButtons } from "./CardStyle";
 import Snackbars from "../Snackbar";
 // import { useDispatch } from "react-redux";
 // import { getOneGroupThunk } from "../../store/modules/getOneGroup/thunk";
@@ -43,8 +43,10 @@ const GroupCard = ({ item, handleId }) => {
           <p>{item.description}</p>
         </div>
       </ContentCard>
-      <button onClick={() => handleClick()}>Se inscrever</button>
-      <button onClick={() => handleId(item.id)}>Mais informacoes</button>
+      <ContentButtons>
+        <button onClick={() => handleClick()}>Inscrever-se</button>
+        <button onClick={() => handleId(item.id)}>Saiba mais</button>
+      </ContentButtons>
       <Snackbars open={open} severity="success">
         Inscrição realizada com sucesso
       </Snackbars>

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import band from "../../images/band.png";
 import guitarfhd2 from "../../images/guitarfhd2.png";
 
 export const Container = styled.div`
@@ -19,8 +18,9 @@ export const HeaderLine = styled.div`
   justify-content: center;
   width: 100%;
   align-items: center;
-  margin: 20px 0px 5px 8px;
+  margin-top: 20px;
   flex-direction: column;
+  text-align: center;
 
   @media (min-width: 400px) {
     width: 80%;
@@ -30,6 +30,7 @@ export const HeaderLine = styled.div`
 
   h1 {
     color: #bc494c;
+    padding-left: 20px;
   }
 
   button {
@@ -38,6 +39,12 @@ export const HeaderLine = styled.div`
     padding: 5px 10px;
     color: #282c34;
     margin-top: 5px;
+    font-size: 1.25rem;
+
+    &:hover {
+      font-weight: bold;
+      background-color: #d5d5d5;
+    }
 
     @media (min-width: 400px) {
       margin-left: 50px;
@@ -45,29 +52,13 @@ export const HeaderLine = styled.div`
   }
 `;
 
-// export const Container = styled.div`
-//   width: 90%;
-//   min-height: 100vh;
-//   height: 100%;
-//   margin: 0 auto;
-
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: flex-start;
-//   align-items: center;
-
-//   color: #fff;
-
-//   button {
-//     margin-top: 30%;
-//   }
-// `;
 export const ImgBand = styled.div`
+  background-image: url(${guitarfhd2});
   width: 100%;
+  max-width: 1750px;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
   background-position: right;
   margin: auto;
-  max-width: 1400px;
 `;
