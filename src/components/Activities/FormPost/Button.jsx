@@ -4,7 +4,7 @@ import ActivitiesFormPost from "./Form/ActivitiesFormPost";
 const ActivitiesButtonPost = ({ groupId }) => {
   return (
     <>
-      <SimpleModal buttonText="Adicionar Atividade">
+      <SimpleModal buttonText="Adicionar ">
         <ActivitiesFormPost groupId={groupId} />
       </SimpleModal>
     </>

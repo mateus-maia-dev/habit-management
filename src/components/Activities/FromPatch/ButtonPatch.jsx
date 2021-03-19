@@ -4,7 +4,7 @@ import ActivitiesFormPatch from "./Form/ActivitiesFormPatch";
 const ActivitiesButtonPatch = ({ itemId, groupId }) => {
   return (
     <>
-      <SimpleModal buttonText="Editar Atividade">
+      <SimpleModal buttonText="Editar ">
         <ActivitiesFormPatch itemId={itemId} groupId={groupId} />
       </SimpleModal>
     </>

@@ -9,6 +9,7 @@ import {
   Title,
   ImgOnegruop,
   Heigth,
+  lastButton,
 } from "./styles";
 
 import { useEffect } from "react";
