@@ -1,9 +1,8 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import api from "../../services/api";
-
-import { CardContainer, ContentCard } from "./CardStyle";
+import { CardContainer, ContentCard, ContentButtons } from "./CardStyle";
 import Snackbars from "../Snackbar";
+import api from "../../services/api";
 // import { useDispatch } from "react-redux";
 // import { getOneGroupThunk } from "../../store/modules/getOneGroup/thunk";
 // import { useHistory } from "react-router-dom";
@@ -52,19 +51,12 @@ const GroupCard = ({ item, handleId, setMyGroup, myGroup }) => {
           <p>{item.description}</p>
         </div>
       </ContentCard>
-
-      {subscribed ? (
-        <button
-          disabled={true}
-          style={{ backgroundColor: "white", color: "#2d2d2d" }}
-        >
-          Inscrito
+      <ContentButtons>
+        <button onClick={() => handleClick()}>
+          {subscribed ? "Inscrito" : "Inscrever-se"}
         </button>
-      ) : (
-        <button onClick={() => handleClick()}>Se inscrever</button>
-      )}
-      <button onClick={() => handleId(item.id)}>Mais informacoes</button>
-
+        <button onClick={() => handleId(item.id)}>Saiba mais</button>
+      </ContentButtons>
       <Snackbars open={open} severity="success">
         Inscrição realizada com sucesso
       </Snackbars>

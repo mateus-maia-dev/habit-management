@@ -4,7 +4,7 @@ import FormCreateGroup from "../CreateGroup/FormCreateGroup";
 const CreateGroup = () => {
   return (
     <>
-      <SimpleModal buttonText="Adicionar grupo">
+      <SimpleModal buttonText="Adicionar grupo ">
         <FormCreateGroup />
       </SimpleModal>
     </>

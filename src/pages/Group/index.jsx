@@ -8,7 +8,7 @@ import GroupList from "../../components/Groups/GroupList";
 import OneGroup from "../../components/OneGroup/index";
 import CreateGroup from "../../components/CreateGroup/index";
 
-import { Container, ImgBand } from "./style";
+import { Container, HeaderLine, ImgBand } from "./style";
 import { useState } from "react";
 
 const Group = () => {
@@ -38,7 +38,10 @@ const Group = () => {
       {!showOneGroup && (
         <div className="bgGuitar">
           <Container>
-            <CreateGroup />
+            <HeaderLine>
+              <h1>GRUPOS DISPONÍVEIS</h1>
+              <CreateGroup />
+            </HeaderLine>
             <GroupList items={group} handleId={handleId} />
           </Container>
         </div>
