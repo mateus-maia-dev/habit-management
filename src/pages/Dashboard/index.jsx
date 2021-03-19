@@ -90,6 +90,9 @@ const Dashboard = () => {
       {!showOneHabit && (
         <ImgDashboard>
           <Container>
+            <Greetings>
+              Bem-vindo &ensp;<span>{userData.username}</span>{" "}
+            </Greetings>
             <HeaderLine>
               <h1>MEUS HÁBITOS</h1>
               <CreateHabit />
