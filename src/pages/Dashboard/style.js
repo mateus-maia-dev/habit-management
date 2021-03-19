@@ -63,6 +63,13 @@ export const HeaderLine = styled.div`
     padding: 5px 10px;
     color: #282c34;
     margin-top: 5px;
+    border-radius: 15px;
+    box-shadow: 0 3px 5px 2px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+
+    &:hover {
+      background-color: red;
+    }
 
     @media (min-width: 400px) {
       margin-left: 50px;
@@ -72,6 +79,7 @@ export const HeaderLine = styled.div`
 
 export const CardContainer = styled.div`
   width: 250px;
+
   height: auto;
   margin: 10px;
   border-radius: 5px;
@@ -87,13 +95,15 @@ export const CardContainer = styled.div`
   }
 
   @media (min-width: 400px) {
-    width: 180px;
-    height: 150px;
+    width: 250px;
+    height: 270px;
   }
 `;
 
 export const ContentCard = styled.div`
   width: 90%;
+  height: 100%;
+  padding: 20px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -136,10 +146,17 @@ export const ContentCard = styled.div`
 export const ImgDashboard = styled.div`
   background-image: url(${guitarfhd2});
   width: 100%;
-  max-width: 1400px;
+  max-width: 1750px;
+
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
   background-position: right;
   margin: auto;
+`;
+
+export const ButtonsContainer = styled.div`
+  &:hover {
+    background-color: red;
+  }
 `;

@@ -52,6 +52,7 @@ const GroupCard = ({ item, handleId, setMyGroup, myGroup }) => {
           <p>{item.description}</p>
         </div>
       </ContentCard>
+
       {subscribed ? (
         <button
           disabled={true}
@@ -63,6 +64,7 @@ const GroupCard = ({ item, handleId, setMyGroup, myGroup }) => {
         <button onClick={() => handleClick()}>Se inscrever</button>
       )}
       <button onClick={() => handleId(item.id)}>Mais informacoes</button>
+
       <Snackbars open={open} severity="success">
         Inscrição realizada com sucesso
       </Snackbars>

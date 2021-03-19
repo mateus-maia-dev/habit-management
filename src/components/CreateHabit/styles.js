@@ -13,10 +13,14 @@ export const Container = styled.div`
     font-size: 1rem;
     text-align: center;
 
-    background: #3a3a3a;
+    background: #928383;
     color: #fff;
     box-shadow: 0 3px 5px 2px rgba(0, 0, 0, 0.3);
 
     cursor: pointer;
+
+    &:hover {
+      background-color: red;
+    }
   }
 `;
