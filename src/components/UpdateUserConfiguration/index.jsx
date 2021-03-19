@@ -55,6 +55,7 @@ const FormRegistro = () => {
         },
       })
       .then((response) => setUser(response.data));
+    // eslint-disable-next-line
   }, [user]);
 
   return (

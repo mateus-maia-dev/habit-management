@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import api from "../../services/api";
 import GroupCard from "./GroupCard";
 import { Container } from "./ListStyle";
@@ -32,16 +32,24 @@ const GroupList = ({ items, handleId }) => {
           },
         })
         .then((response) => setMyGroup(response.data));
+    // eslint-disable-next-line
   }, [userData]);
-  
+
   useEffect(() => {
     handleUserData();
+    // eslint-disable-next-line
   }, []);
 
   return (
     <Container>
       {items.map((item, index) => (
-        <GroupCard key={index} item={item} handleId={handleId} setMyGroup={setMyGroup} myGroup={myGroup}/>
+        <GroupCard
+          key={index}
+          item={item}
+          handleId={handleId}
+          setMyGroup={setMyGroup}
+          myGroup={myGroup}
+        />
       ))}
     </Container>
   );
