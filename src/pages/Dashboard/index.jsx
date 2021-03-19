@@ -22,6 +22,7 @@ import jwt_decoded from "jwt-decode";
 
 import Habit from "../Habit/index";
 import OneGroupPage from "../../components/OneGroupPage/index";
+import { ButtonsContainer } from "../../components/PersonalHabits/CardStyle";
 
 const Dashboard = () => {
   const dispatch = useDispatch();

@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const CardContainer = styled.div`
   width: 250px;
-  height: auto;
+  height: 270px;
+  /* height: auto; */
   margin: 10px;
   border-radius: 5px;
   background: #f1f1f1;
@@ -12,6 +13,7 @@ export const CardContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   text-align: center;
+  padding: 10px;
 
   h2 {
     font-size: 1.2rem;
@@ -117,3 +119,8 @@ export const ContentButtons = styled.div`
 //     margin-bottom: 20px;
 //   }
 // `;
+
+export const ButtonsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
