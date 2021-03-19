@@ -8,8 +8,6 @@ import { FormWrapper } from "./styles";
 import { useDispatch } from "react-redux";
 import { groupCreateThunk } from "../../../store/modules/groupReduce/thunk";
 
-import api from "../../../services/api";
-
 const schema = yup.object().shape({
   name: yup.string().required("campo obrigatório."),
   description: yup.string().required("campo obrigatório."),

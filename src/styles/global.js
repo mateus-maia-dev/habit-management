@@ -1,7 +1,4 @@
 import { createGlobalStyle } from "styled-components";
-import mixer from "../images/mixer.png";
-import guitar from "../images/guitar.png";
-import band from "../images/band.png";
 
 export default createGlobalStyle`
     * {

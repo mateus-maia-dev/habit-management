@@ -22,7 +22,6 @@ import jwt_decoded from "jwt-decode";
 
 import Habit from "../Habit/index";
 import OneGroupPage from "../../components/OneGroupPage/index";
-import { ButtonsContainer } from "../../components/PersonalHabits/CardStyle";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -31,6 +30,7 @@ const Dashboard = () => {
   const [showMygroup, setShowMygroup] = useState(false);
 
   const [userData, setUserData] = useState([]);
+  // eslint-disable-next-line
   const [groups, setGroups] = useState([]);
 
   const token = useSelector((state) => state.signInReducer);
@@ -64,6 +64,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     dispatch(requestHabitThunk());
+    // eslint-disable-next-line
   }, [changeReduce]);
 
   useEffect(() => {
@@ -92,7 +93,7 @@ const Dashboard = () => {
         <ImgDashboard>
           <Container>
             <Greetings>
-              Bem-vindo &ensp;<span>{userData.username}</span>{" "}
+              Bem-vindo &ensp;<span>{userData.username}</span>
             </Greetings>
             <HeaderLine>
               <h1>MEUS HÁBITOS</h1>

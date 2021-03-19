@@ -30,7 +30,7 @@ const HabitsCard = ({ item, handleId }) => {
         </button>
       </ButtonsContainer>
 
-      <button onClick={() => handleId(item.id)}>Mais Informacoes</button>
+      <button onClick={() => handleId(item.id)}>Saiba mais</button>
     </CardContainer>
   );
 };

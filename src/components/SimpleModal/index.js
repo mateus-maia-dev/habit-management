@@ -2,10 +2,8 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import { ButtonStyled } from "./styles";
-import Button from "../Buttons/index";
-import DeleteIcon from "@material-ui/icons/Delete";
+
 import EditIcon from "@material-ui/icons/Edit";
-import AddIcon from "@material-ui/icons/Add";
 
 function getModalStyle() {
   const top = 50;

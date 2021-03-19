@@ -3,9 +3,6 @@ import { useState } from "react";
 import { CardContainer, ContentCard, ContentButtons } from "./CardStyle";
 import Snackbars from "../Snackbar";
 import api from "../../services/api";
-// import { useDispatch } from "react-redux";
-// import { getOneGroupThunk } from "../../store/modules/getOneGroup/thunk";
-// import { useHistory } from "react-router-dom";
 
 const GroupCard = ({ item, handleId, setMyGroup, myGroup }) => {
   const token = localStorage.getItem("token");
@@ -16,6 +13,7 @@ const GroupCard = ({ item, handleId, setMyGroup, myGroup }) => {
     Number(myGroup.id) === Number(item.id)
       ? setSubscribed(true)
       : setSubscribed(false);
+    // eslint-disable-next-line
   }, [myGroup]);
 
   const handleClick = () => {
