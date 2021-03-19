@@ -155,8 +155,4 @@ export const ImgDashboard = styled.div`
   margin: auto;
 `;
 
-export const ButtonsContainer = styled.div`
-  &:hover {
-    background-color: red;
-  }
-`;
+export const ButtonsContainer = styled.div``;

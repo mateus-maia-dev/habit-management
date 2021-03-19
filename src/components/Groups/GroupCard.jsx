@@ -16,6 +16,7 @@ const GroupCard = ({ item, handleId, setMyGroup, myGroup }) => {
     Number(myGroup.id) === Number(item.id)
       ? setSubscribed(true)
       : setSubscribed(false);
+    // eslint-disable-next-line
   }, [myGroup]);
 
   const handleClick = () => {
