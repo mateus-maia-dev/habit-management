@@ -1,4 +1,4 @@
-import { CardContainer, ContentCard } from "./CardStyle";
+import { CardContainer, ContentCard, ButtonsContainer } from "./CardStyle";
 import UpdateHabit from "../UpdateHabit/index";
 import DeleteIcon from "@material-ui/icons/Delete";
 
@@ -23,12 +23,12 @@ const HabitsCard = ({ item, handleId }) => {
           <p>{item.frequency}</p>
         </div>
       </ContentCard>
-      <span>
+      <ButtonsContainer>
         <UpdateHabit id={item.id} />
         <button onClick={() => dispatch(deleteHabitThunk(item.id))}>
           Excluir <DeleteIcon />
         </button>
-      </span>
+      </ButtonsContainer>
 
       <button onClick={() => handleId(item.id)}>Mais Informacoes</button>
     </CardContainer>

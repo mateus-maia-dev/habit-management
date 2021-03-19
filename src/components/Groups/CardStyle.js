@@ -11,6 +11,7 @@ export const CardContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   text-align: center;
+  padding: 10px;
 
   h2 {
     font-size: 1.2rem;
