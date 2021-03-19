@@ -8,11 +8,8 @@ import {
   DisplayF,
   Section,
 } from "./styles";
-import api from "../../services/api";
-import { useEffect, useState } from "react";
-import { Doughnut } from "react-chartjs-2";
 
-const token = localStorage.getItem("token");
+import { Doughnut } from "react-chartjs-2";
 
 const OneHabit = ({ userHabit, showOneHabit, setShowOneHabit }) => {
   //const [habit, setHabit] = useState({});
