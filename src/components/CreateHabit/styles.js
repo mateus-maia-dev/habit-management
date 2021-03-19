@@ -2,25 +2,16 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   button {
-    height: 30px;
-
-    border: 0px;
-    border-radius: 15px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    padding: 0 30px;
-
-    font-size: 1rem;
-    text-align: center;
-
-    background: #928383;
-    color: #fff;
-    box-shadow: 0 3px 5px 2px rgba(0, 0, 0, 0.3);
-
-    cursor: pointer;
+    background-color: #d5d5d5;
+    margin-left: 0px;
+    padding: 5px 10px;
+    color: #282c34;
+    margin-top: 5px;
+    font-size: 1.25rem;
 
     &:hover {
-      background-color: red;
+      font-weight: bold;
+      background-color: #d5d5d5;
     }
   }
 `;

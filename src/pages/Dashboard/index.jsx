@@ -93,7 +93,7 @@ const Dashboard = () => {
         <ImgDashboard>
           <Container>
             <Greetings>
-              Bem-vindo &ensp;<span>{userData.username}</span>{" "}
+              Bem-vindo &ensp;<span>{userData.username}</span>
             </Greetings>
             <HeaderLine>
               <h1>MEUS HÁBITOS</h1>

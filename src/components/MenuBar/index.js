@@ -10,7 +10,7 @@ import {
   ButtonsContainer,
   ContainerNav,
 } from "./styles";
-import { useState } from "react";
+
 import { useHistory } from "react-router-dom";
 
 export const MenuBar = ({ open, setOpen }) => {

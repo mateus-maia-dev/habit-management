@@ -63,12 +63,12 @@ export const HeaderLine = styled.div`
     padding: 5px 10px;
     color: #282c34;
     margin-top: 5px;
-    border-radius: 15px;
-    box-shadow: 0 3px 5px 2px rgba(0, 0, 0, 0.3);
-    cursor: pointer;
+    font-size: 1.25rem;
+    border: none;
 
     &:hover {
-      background-color: red;
+      font-weight: bold;
+      background-color: #d5d5d5;
     }
 
     @media (min-width: 400px) {
